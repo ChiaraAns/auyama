@@ -14,7 +14,6 @@ ganz ohne Programmierkenntnisse. Sie müssen nur ein paar Textdateien bearbeiten
 |---|---|---|
 | `menu.json` | Die **Monatskarte** (Gerichte, Preise, vegan/vegetarisch) | jeden Monat |
 | `events.json` | **Termine** (Salsa Nights, Filmabende …) | bei jedem neuen Event |
-| `lexikon.json` | Das **ABC** „¿Qué es eso?“: venezolanische Begriffe kurz erklärt | selten |
 | `restaurant.json` | **Öffnungszeiten**, Telefon, Adresse, Instagram | selten |
 | `texts.json` | Alle **Texte** der Website auf Deutsch und Englisch | selten |
 | `assets/` | Logo und **Fotos** | bei neuen Fotos |
@@ -60,6 +59,22 @@ Ganz oben in der Datei:
 ```
 
 Die Überschrift lautet dann automatisch „Monatskarte November 2026“.
+
+### Startseite und eigene Speisekarten-Seite
+
+- Auf der **Startseite** steht eine appetitliche **Vorschau**: die Gerichte mit `"highlight": true`
+  (am besten 3 bis 5), dazu alle Kategorien mit „ab“-Preis und ein Knopf zur ganzen Karte.
+- Die **ganze Karte** steht auf der eigenen Seite `speisekarte.html`. Beide lesen dieselbe `menu.json`.
+- Ein Highlight kann ein Foto bekommen: `"bild": "assets/pokebowls.jpg"` und eine Bildbeschreibung
+  `"bildAlt"`. Mit `"bildFokus": "40% 78%"` lässt sich der sichtbare Bildausschnitt verschieben
+  (links/rechts in %, oben/unten in %). Ohne Foto erscheint eine bunte Fliesenkachel.
+
+### „¿Qué comemos hoy?“
+
+Gäste tippen auf ihre Laune und bekommen einen Vorschlag aus der aktuellen Monatskarte. Gesteuert
+wird das über `"stimmung"` bei jeder Kategorie: `"leicht"`, `"satt"` oder `"trinken"`.
+„Ohne Fleisch“ nutzt die Labels vegetarisch/vegan, „Überrasch mich“ wählt aus allen Gerichten.
+Neue Kategorie? Einfach eine passende `"stimmung"` dazuschreiben.
 
 ### Ein Gericht
 
@@ -179,26 +194,7 @@ Die Website spricht Gäste mit **„du“** an. Wer lieber „Sie“ möchte, ä
 
 ---
 
-## 5. Das ABC ändern (`lexikon.json`)
-
-Unter „¿Qué es eso?“ erklärt die Website venezolanische Begriffe auf Fliesen zum Umdrehen.
-Dieselben Begriffe werden in der Speisekarte **automatisch antippbar** (gepunktet unterstrichen).
-
-```json
-{
-  "id": "tequenos",
-  "wort": { "de": "Tequeños", "en": "Tequeños" },
-  "suchwoerter": ["Tequeños", "Tequeño"],
-  "text": { "de": "Knusprige Teigstangen mit Käsefüllung.", "en": "Crispy pastry sticks filled with cheese." }
-},
-```
-
-- `suchwoerter`: so oft, wie das Wort in der Karte vorkommen kann (Einzahl, Mehrzahl, Englisch).
-- Neue Monatskarte mit neuem Gericht? Einfach einen passenden Begriff ergänzen.
-
----
-
-## 6. Fotos austauschen (`assets/`)
+## 5. Fotos austauschen (`assets/`)
 
 - Neues Foto **mit demselben Dateinamen** in den Ordner `assets/` hochladen (z. B. `pokebowls.jpg`
   ersetzen) – fertig.
@@ -210,10 +206,10 @@ Dieselben Begriffe werden in der Speisekarte **automatisch antippbar** (gepunkte
 | Datei | Wo zu sehen? |
 |---|---|
 | `logo.jpg` | Kopfzeile, Fußzeile |
-| `pokebowls.jpg` | Startbereich, Speisekarte (Bowls), Galerie |
-| `salat-mango-avocado.jpg` | Über uns, Galerie |
-| `burrito-guacamole.jpg` | Speisekarte (Burritos), Galerie |
-| `burrito-salsa.jpg` | Galerie |
+| `pokebowls.jpg` | Startbereich, Vorschau, Speisekarte (Bowls), Galerie |
+| `salat-mango-avocado.jpg` | Über uns, Vorschau, Galerie |
+| `burrito-guacamole.jpg` | Vorschau, Speisekarte (Burritos), Galerie |
+| `burrito-salsa.jpg` | Über uns, Galerie |
 | `og-image.jpg` | Vorschaubild beim Teilen (WhatsApp, Facebook …), 1200 × 630 px |
 | `favicon*.png`, `favicon.ico`, `apple-touch-icon.png` | Symbol im Browser-Tab / Homescreen |
 
@@ -244,8 +240,5 @@ Dieselben Begriffe werden in der Speisekarte **automatisch antippbar** (gepunkte
 - **Lokal testen:** Die JSON-Dateien werden per `fetch` geladen und funktionieren daher nicht
   per Doppelklick auf `index.html`. Stattdessen im Projektordner `python3 -m http.server`
   ausführen und <http://localhost:8000> öffnen.
-- Dateien: `index.html`, `css/style.css`, `js/main.js`, Daten-Dateien im Hauptverzeichnis.
-- `auyama-vorschau.html` ist eine **eigenständige Vorschau** (alles in einer Datei, öffnet per
-  Doppelklick, auch offline, z. B. zum Verschicken per E-Mail). Sie ist ein **Schnappschuss** und
-  übernimmt spätere Änderungen an den JSON-Dateien **nicht**. Für die echte Website wird sie nicht
-  gebraucht.
+- Dateien: `index.html` (Startseite), `speisekarte.html` (ganze Karte), `css/style.css`,
+  `js/main.js`, Daten-Dateien im Hauptverzeichnis.

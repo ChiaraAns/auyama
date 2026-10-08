@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-Static HTML/CSS/vanilla JS, no framework, no build step, relative paths only, hosted on GitHub Pages (https://chiaraans.github.io/auyama/). Content lives in JSON files the owner edits without programming knowledge: `menu.json`, `events.json`, `restaurant.json`, `texts.json`, plus `lexikon.json` for the dish glossary.
+Static HTML/CSS/vanilla JS, no framework, no build step, relative paths only, hosted on GitHub Pages (https://chiaraans.github.io/auyama/). Content lives in JSON files the owner edits without programming knowledge: `menu.json`, `events.json`, `restaurant.json`, `texts.json`. Two pages: `index.html` (onepager) and `speisekarte.html` (full monthly menu).
 
 ## Users
 
@@ -33,7 +33,9 @@ Venezuelan-Caribbean cooking and a deli ("Feinkost") in the middle of Freising's
 
 ## Capabilities and Constraints
 
-Live open/closed status, today highlighted in the hours table, sticky mobile action bar (call, route, menu), monthly menu with category jump links and vegetarian/vegan filter, events with automatic hiding of past dates and .ics download, DE/EN language switch, click-to-load Google Map (GDPR), local SEO with schema.org Restaurant JSON-LD, dish glossary explaining Venezuelan terms.
+Live open/closed status, today highlighted in the hours table, sticky mobile action bar (call, route, menu), monthly menu preview on the home page (highlight dishes, category prices) with a separate full menu page (category jump links, vegetarian/vegan filter), "¿Qué comemos hoy?" dish picker by mood (light, filling, meat free, drinks, surprise) drawn from the monthly menu, events with automatic hiding of past dates and .ics download, DE/EN language switch, click-to-load Google Map (GDPR), local SEO with schema.org Restaurant JSON-LD.
+
+Removed by user request: the dish glossary tiles ("¿Qué es eso?").
 
 Removed by user request: the "Feinkost & Catering" section and the catering enquiry. The user asked that the site look finished: no visible draft labels, placeholders or "example" badges.
 

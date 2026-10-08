@@ -76,7 +76,10 @@
     <symbol id="i-film" viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2v2h2V7zm0 4v2h2v-2zm0 4v2h2v-2zm12-8v2h2V7zm0 4v2h2v-2zm0 4v2h2v-2zM9 7v10h6V7z"/></symbol>
     <symbol id="i-cal" viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2zm-2 8h14v9H5zm6 2v2.5H8.5v2H11V19h2v-2.5h2.5v-2H13V12z"/></symbol>
     <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C9 4 4 9.5 4 16c0 1.4.3 2.7.8 4 1-3.6 3.6-7.4 8.2-9.5-3.6 2.8-5.6 6.2-6.4 9.5 1 .3 2 .5 3 .5C16 20.5 20 15 20 4z"/></symbol>
-    <symbol id="i-turn" viewBox="0 0 24 24"><path d="M17.65 6.35A8 8 0 1 0 20 12h-2a6 6 0 1 1-1.76-4.24L13 11h7V4z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 1.8v3M12 19.2v3M1.8 12h3M19.2 12h3M4.8 4.8l2.1 2.1M17.1 17.1l2.1 2.1M4.8 19.2l2.1-2.1M17.1 6.9l2.1-2.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-bowl" viewBox="0 0 24 24"><path d="M2.5 11h19a9.5 9.5 0 0 1-19 0zm4.5-2.2C7 6.5 8.6 5 10.6 5c.9-1.6 3.6-2 5 0 1.8 0 3.4 1.4 3.4 3.8z"/></symbol>
+    <symbol id="i-cup" viewBox="0 0 24 24"><path d="M5 3h14l-1.6 17.2A2 2 0 0 1 15.4 22H8.6a2 2 0 0 1-2-1.8zm2.2 2 .5 5h8.6l.5-5zM14 1l3 0-1.5 4h-1.6z"/></symbol>
+    <symbol id="i-dice" viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm3 3.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-4 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-4 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
   </svg>
 
@@ -89,7 +92,7 @@
         <ul>
           <li><a href="#ueber-uns" data-i18n="nav.about">Über uns</a></li>
           <li><a href="#karte" data-i18n="nav.menu">Speisekarte</a></li>
-          <li><a href="#abc" data-i18n="nav.abc">ABC</a></li>
+          <li><a href="#was-essen" data-i18n="nav.craving">Was essen?</a></li>
           <li><a href="#events" data-i18n="nav.events">Events</a></li>
           <li><a href="#galerie" data-i18n="nav.gallery">Galerie</a></li>
           <li><a href="#anfahrt" data-i18n="nav.visit">Anfahrt</a></li>
@@ -153,79 +156,115 @@
       </div>
     </section>
 
-    <div class="cenefa" aria-hidden="true"></div>
+    <!-- Laufband -->
+    <div class="ribbon-zone" aria-hidden="true">
+      <div class="ribbon"><div class="ribbon-track" data-marquee></div></div>
+    </div>
 
     <!-- Über uns -->
-    <section class="room room--cal about" id="ueber-uns" aria-labelledby="about-title">
+    <section class="room room--terracota about" id="ueber-uns" aria-labelledby="about-title">
       <div class="wrap about-grid">
         <div class="about-text">
-          <h2 id="about-title" lang="es" data-i18n="about.title">Hola, Freising.</h2>
-          <p class="about-lead" data-i18n="about.p1">Auyama ist das venezolanische Wort für Kürbis. Und unser Name für einen Ort, an dem es nach Zuhause schmeckt.</p>
-          <p data-i18n="about.p2">Im alten Entleutner-Haus in der Oberen Hauptstraße kochen wir venezolanisch und karibisch, mit regionalen Zutaten: Arepas, Bowls, Currys und Pabellón Criollo. Die Karte wechselt jeden Monat.</p>
-          <p data-i18n="about.p3">Im Laden warten erlesene Weine und Hausgemachtes zum Mitnehmen: Marmeladen, Chutneys, Pestos und Saucen. Komm vorbei, wir freuen uns auf dich.</p>
+          <h2 id="about-title" lang="es" data-i18n-html="about.title">¡Hola, <span class="squiggle">Freising!</span></h2>
+          <p class="about-lead" data-i18n="about.lead">Auyama heißt Kürbis. Bei uns heißt es: Willkommen zu Hause.</p>
+          <p data-i18n="about.p2">Im alten Entleutner-Haus in der Oberen Hauptstraße kochen wir venezolanisch und karibisch, mit regionalen Zutaten. Jeden Monat gibt es eine neue Karte.</p>
+          <p data-i18n="about.p3">Im Laden warten erlesene Weine und Hausgemachtes zum Mitnehmen: Marmeladen, Chutneys, Pestos und Saucen.</p>
+          <ul class="stickers" role="list">
+            <li class="sticker sticker--mango" data-i18n="about.s1">Jeden Monat neue Karte</li>
+            <li class="sticker sticker--cal" data-i18n="about.s2">Regionale Zutaten</li>
+            <li class="sticker sticker--auyama" data-i18n="about.s3">Weine &amp; Eingemachtes</li>
+            <li class="sticker sticker--verde" data-i18n="about.s4">Salsa &amp; Kino</li>
+          </ul>
         </div>
-        <figure class="about-photo">
-          <img src="assets/salat-mango-avocado.jpg" width="828" height="991" loading="lazy" decoding="async"
-               alt="Bunter Salat mit Mango, Avocado und Cashewkernen, im begrünten Innenhof in die Kamera gehalten"
-               data-i18n-attr="alt:about.imgAlt">
-        </figure>
+
+        <div class="collage">
+          <figure class="snap snap--a">
+            <img src="assets/salat-mango-avocado.jpg" width="828" height="991" loading="lazy" decoding="async"
+                 alt="Bunter Salat mit Mango, Avocado und Cashewkernen, im begrünten Innenhof in die Kamera gehalten" data-i18n-attr="alt:about.img1">
+          </figure>
+          <figure class="snap snap--b">
+            <img src="assets/burrito-salsa.jpg" width="828" height="1014" loading="lazy" decoding="async"
+                 alt="Angeschnittener Burrito mit Bohnen, dazu Salsa und Salat" data-i18n-attr="alt:about.img2">
+          </figure>
+          <svg class="stamp" viewBox="0 0 200 200" aria-hidden="true">
+            <defs><path id="stamp-circle" d="M100 100m-74 0a74 74 0 1 1 148 0a74 74 0 1 1-148 0"/></defs>
+            <circle cx="100" cy="100" r="98" class="stamp-bg"/>
+            <text class="stamp-text"><textPath href="#stamp-circle" textLength="460" lengthAdjust="spacing" data-stamp-text>Hecho en Freising · con mucho amor · </textPath></text>
+            <clipPath id="stamp-clip"><rect x="70" y="70" width="60" height="60" rx="9"/></clipPath>
+            <g class="stamp-flor" clip-path="url(#stamp-clip)">
+              <g transform="translate(70 70) scale(0.9375)">
+                <rect width="64" height="64" fill="#14321D"/>
+                <g fill="#D08230"><path d="M0 0h22A22 22 0 0 1 0 22z"/><path d="M64 0v22A22 22 0 0 1 42 0z"/><path d="M64 64H42a22 22 0 0 1 22-22z"/><path d="M0 64V42a22 22 0 0 1 22 22z"/></g>
+                <g fill="#F6EFE2"><path d="M32 31C37 24 37 15 32 7 27 15 27 24 32 31z"/><path d="M32 31C37 24 37 15 32 7 27 15 27 24 32 31z" transform="rotate(90 32 32)"/><path d="M32 31C37 24 37 15 32 7 27 15 27 24 32 31z" transform="rotate(180 32 32)"/><path d="M32 31C37 24 37 15 32 7 27 15 27 24 32 31z" transform="rotate(270 32 32)"/></g>
+                <circle cx="32" cy="32" r="4" fill="#F2B53A"/>
+              </g>
+            </g>
+          </svg>
+          <p class="collage-quote" lang="es" data-i18n="about.quote">Mi casa es tu casa.</p>
+        </div>
       </div>
     </section>
 
-    <div class="cenefa cenefa--thin" aria-hidden="true"></div>
-
-    <!-- Monatskarte -->
-    <section class="room room--cal menu" id="karte" aria-labelledby="menu-title">
+    <!-- Monatskarte: Vorschau -->
+    <section class="room room--verde preview" id="karte" aria-labelledby="menu-title">
       <div class="wrap">
         <header class="room-head">
-          <h2 id="menu-title"><span data-i18n="menu.title">Monatskarte</span> <span class="accent" data-menu-month>Oktober 2026</span></h2>
-          <p class="room-lead" data-i18n="menu.lead">Jeden Monat neu. Das kochen wir gerade für dich.</p>
+          <h2 id="menu-title"><span data-i18n="menu.title">Monatskarte</span> <span class="accent-mango" data-menu-month>Oktober 2026</span></h2>
+          <p class="room-lead" data-i18n="preview.lead">Ein kleiner Vorgeschmack. Jeden Monat kochen wir neu für dich.</p>
         </header>
+        <ul class="dishes" role="list" data-preview-root></ul>
+        <nav class="cat-chips" aria-label="Alle Kategorien der Monatskarte" data-i18n-attr="aria-label:preview.categoriesLabel">
+          <ul role="list" data-preview-cats></ul>
+        </nav>
+        <a class="btn btn--auyama btn--big" href="speisekarte.html">
+          <svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg>
+          <span data-i18n="preview.cta">Ganze Karte ansehen</span>
+          <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </section>
 
-        <div class="menu-bar">
-          <nav class="menu-tabs" aria-label="Kategorien der Speisekarte" data-i18n-attr="aria-label:menu.tabsLabel">
-            <ul data-menu-tabs></ul>
-          </nav>
-          <div class="menu-filter" role="group" aria-labelledby="filter-label">
-            <span id="filter-label" class="visually-hidden" data-i18n="menu.filterLabel">Speisekarte filtern</span>
-            <button type="button" data-filter="alle" aria-pressed="true" data-i18n="menu.filterAll">Alle</button>
-            <button type="button" data-filter="vegetarisch" aria-pressed="false" data-i18n="menu.filterVeg">Vegetarisch</button>
-            <button type="button" data-filter="vegan" aria-pressed="false" data-i18n="menu.filterVegan">Vegan</button>
+    <!-- ¿Qué comemos hoy? -->
+    <section class="room room--mango craving" id="was-essen" aria-labelledby="craving-title">
+      <div class="wrap craving-grid">
+        <div class="craving-text">
+          <h2 id="craving-title" lang="es" data-i18n="craving.title">¿Qué comemos hoy?</h2>
+          <p class="room-lead" data-i18n="craving.lead">Noch unentschlossen? Sag uns, worauf du Lust hast.</p>
+          <div class="moods" role="group" aria-label="Worauf hast du Lust?" data-i18n-attr="aria-label:craving.moodsLabel">
+            <button type="button" class="mood mood--leicht" data-mood="leicht" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg><span data-i18n="craving.leicht">Leicht &amp; frisch</span></button>
+            <button type="button" class="mood mood--satt" data-mood="satt" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-bowl"/></svg><span data-i18n="craving.satt">Richtig satt</span></button>
+            <button type="button" class="mood mood--veggie" data-mood="veggie" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg><span data-i18n="craving.veggie">Ohne Fleisch</span></button>
+            <button type="button" class="mood mood--trinken" data-mood="trinken" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-cup"/></svg><span data-i18n="craving.trinken">Was zum Trinken</span></button>
+            <button type="button" class="mood mood--surprise" data-mood="surprise" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-dice"/></svg><span data-i18n="craving.surprise">Überrasch mich</span></button>
           </div>
         </div>
-        <p class="visually-hidden" aria-live="polite" data-menu-announce></p>
 
-        <p class="menu-hint" data-i18n="menu.termHint">Tippe auf unterstrichene Wörter, wir erklären sie dir.</p>
-
-        <div class="menu-grid" data-menu-root>
-          <p class="menu-loading" data-i18n="menu.loading">Die Karte wird geladen …</p>
+        <div class="ticket-wrap">
+          <article class="ticket" data-ticket aria-live="polite">
+            <div class="ticket-empty" data-ticket-empty>
+              <svg class="ticket-empty-icon" aria-hidden="true"><use href="#i-bowl"/></svg>
+              <p class="ticket-dish" data-i18n="craving.emptyTitle">Tipp auf deine Laune.</p>
+              <p class="ticket-details" data-i18n="craving.emptyText">Wir suchen dir was Leckeres aus der Monatskarte aus.</p>
+            </div>
+            <div class="ticket-result" data-ticket-result hidden>
+              <h3 class="ticket-dish" data-ticket-dish></h3>
+              <p class="ticket-details" data-ticket-details></p>
+              <p class="ticket-cat" data-ticket-cat></p>
+              <p class="ticket-price" data-ticket-price></p>
+              <div class="ticket-actions">
+                <button type="button" class="btn btn--verde btn--small" data-ticket-again>
+                  <svg class="icon" aria-hidden="true"><use href="#i-dice"/></svg>
+                  <span data-i18n="craving.again">Noch eine Idee</span>
+                </button>
+                <a class="btn btn--outline btn--small" href="tel:+491702321409" data-tel>
+                  <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+                  <span data-i18n="craving.call">Anrufen</span>
+                </a>
+              </div>
+            </div>
+            <p class="ticket-stamp" lang="es" data-i18n="craving.stamp">Tu antojo de hoy</p>
+          </article>
         </div>
-        <noscript><p class="notice">Bitte JavaScript aktivieren, um die Karte zu sehen. Oder ruf uns an: 0170 2321409.</p></noscript>
-
-        <footer class="menu-foot">
-          <p class="menu-closing" lang="es" data-i18n="menu.closing">¡Buen provecho!</p>
-          <p class="menu-note" data-menu-footnote>Über Allergene und Zusatzstoffe informieren wir Sie gerne an der Theke.</p>
-        </footer>
-      </div>
-
-      <div class="term-pop" id="term-pop" role="dialog" aria-modal="false" aria-labelledby="term-pop-title" hidden>
-        <p class="term-pop-title" id="term-pop-title"></p>
-        <p class="term-pop-text"></p>
-        <button type="button" class="term-pop-close" data-term-close>
-          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
-          <span class="visually-hidden" data-i18n="abc.close">Schließen</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- ABC der venezolanischen Küche -->
-    <section class="room room--auyama abc" id="abc" aria-labelledby="abc-title">
-      <div class="wrap">
-        <header class="room-head">
-          <h2 id="abc-title" lang="es" data-i18n="abc.title">¿Qué es eso?</h2>
-          <p class="room-lead" data-i18n="abc.lead">Neu in der venezolanischen Küche? Tipp auf eine Fliese.</p>
-        </header>
-        <ul class="abc-grid" role="list" data-abc-root></ul>
       </div>
     </section>
 
@@ -391,7 +430,7 @@
       <svg aria-hidden="true"><use href="#i-pin"/></svg>
       <span data-i18n="bar.route">Route</span>
     </a>
-    <a href="#karte" class="mobile-bar-main">
+    <a href="speisekarte.html" class="mobile-bar-main">
       <svg aria-hidden="true"><use href="#i-menu"/></svg>
       <span data-i18n="bar.menu">Karte</span>
     </a>

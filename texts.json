@@ -13,12 +13,14 @@
       "label": "Hauptnavigation",
       "about": "Über uns",
       "menu": "Speisekarte",
-      "abc": "ABC",
       "events": "Events",
       "gallery": "Galerie",
       "visit": "Anfahrt",
       "toggle": "Menü öffnen",
-      "close": "Menü schließen"
+      "close": "Menü schließen",
+      "craving": "Was essen?",
+      "home": "Start",
+      "fullMenu": "Ganze Karte"
     },
     "hero": {
       "title": "Venezuela auf dem Teller. <em>Mitten in Freising.</em>",
@@ -54,11 +56,18 @@
       "Sonntag"
     ],
     "about": {
-      "title": "Hola, Freising.",
-      "p1": "Auyama ist das venezolanische Wort für Kürbis. Und unser Name für einen Ort, an dem es nach Zuhause schmeckt.",
-      "p2": "Im alten Entleutner-Haus in der Oberen Hauptstraße kochen wir venezolanisch und karibisch, mit regionalen Zutaten: Arepas, Bowls, Currys und Pabellón Criollo. Die Karte wechselt jeden Monat.",
-      "p3": "Im Laden warten erlesene Weine und Hausgemachtes zum Mitnehmen: Marmeladen, Chutneys, Pestos und Saucen. Komm vorbei, wir freuen uns auf dich.",
-      "imgAlt": "Bunter Salat mit Mango, Avocado und Cashewkernen, im begrünten Innenhof in die Kamera gehalten"
+      "title": "¡Hola, <span class=\"squiggle\">Freising!</span>",
+      "lead": "Auyama heißt Kürbis. Bei uns heißt es: Willkommen zu Hause.",
+      "p2": "Im alten Entleutner-Haus in der Oberen Hauptstraße kochen wir venezolanisch und karibisch, mit regionalen Zutaten. Jeden Monat gibt es eine neue Karte.",
+      "p3": "Im Laden warten erlesene Weine und Hausgemachtes zum Mitnehmen: Marmeladen, Chutneys, Pestos und Saucen.",
+      "quote": "Mi casa es tu casa.",
+      "s1": "Jeden Monat neue Karte",
+      "s2": "Regionale Zutaten",
+      "s3": "Weine & Eingemachtes",
+      "s4": "Salsa & Kino",
+      "stamp": "Hecho en Freising · con mucho amor · ",
+      "img1": "Bunter Salat mit Mango, Avocado und Cashewkernen, im begrünten Innenhof in die Kamera gehalten",
+      "img2": "Angeschnittener Burrito mit Bohnen, dazu Salsa und Salat"
     },
     "menu": {
       "title": "Monatskarte",
@@ -74,14 +83,7 @@
       "vegetarisch": "vegetarisch",
       "countAll": "Alle Gerichte werden angezeigt.",
       "countFiltered": "{anzahl} passende Gerichte werden angezeigt.",
-      "termHint": "Tippe auf unterstrichene Wörter, wir erklären sie dir.",
       "closing": "¡Buen provecho!"
-    },
-    "abc": {
-      "title": "¿Qué es eso?",
-      "lead": "Neu in der venezolanischen Küche? Tipp auf eine Fliese.",
-      "flip": "Erklärung zeigen",
-      "close": "Schließen"
     },
     "events": {
       "title": "Salsa Nights & Filmabende",
@@ -128,11 +130,52 @@
     "bar": {
       "label": "Schnellzugriff",
       "route": "Route",
-      "menu": "Karte"
+      "menu": "Karte",
+      "home": "Start"
     },
     "lightbox": {
       "label": "Bild in groß",
       "close": "Schließen"
+    },
+    "marquee": [
+      "¡Bienvenidos!",
+      "Arepas",
+      "Bowls",
+      "Currys",
+      "Hausgemachte Limonaden",
+      "Salsa Nights",
+      "Filmabende",
+      "Hecho en Freising"
+    ],
+    "preview": {
+      "lead": "Ein kleiner Vorgeschmack. Jeden Monat kochen wir neu für dich.",
+      "cta": "Ganze Karte ansehen",
+      "from": "ab {preis}",
+      "categoriesLabel": "Alle Kategorien der Monatskarte"
+    },
+    "craving": {
+      "title": "¿Qué comemos hoy?",
+      "lead": "Noch unentschlossen? Sag uns, worauf du Lust hast.",
+      "moodsLabel": "Worauf hast du Lust?",
+      "leicht": "Leicht & frisch",
+      "satt": "Richtig satt",
+      "veggie": "Ohne Fleisch",
+      "trinken": "Was zum Trinken",
+      "surprise": "Überrasch mich",
+      "emptyTitle": "Tipp auf deine Laune.",
+      "emptyText": "Wir suchen dir was Leckeres aus der Monatskarte aus.",
+      "stamp": "Tu antojo de hoy",
+      "again": "Noch eine Idee",
+      "call": "Anrufen",
+      "toMenu": "Zur ganzen Karte",
+      "announce": "Unser Vorschlag: {gericht}, {preis}"
+    },
+    "fullmenu": {
+      "metaTitle": "Speisekarte {monat} · Auyama Freising",
+      "metaDescription": "Die Monatskarte von Auyama in Freising: venezolanische und karibische Küche, Arepas, Bowls, Burritos, Currys und hausgemachte Limonaden.",
+      "back": "Zurück zur Startseite",
+      "hungryTitle": "Hunger bekommen?",
+      "hungryText": "Ruf an oder komm einfach vorbei. Wir freuen uns auf dich."
     }
   },
   "en": {
@@ -148,12 +191,14 @@
       "label": "Main navigation",
       "about": "About",
       "menu": "Menu",
-      "abc": "ABC",
       "events": "Events",
       "gallery": "Gallery",
       "visit": "Visit",
       "toggle": "Open menu",
-      "close": "Close menu"
+      "close": "Close menu",
+      "craving": "What to eat?",
+      "home": "Home",
+      "fullMenu": "Full menu"
     },
     "hero": {
       "title": "Venezuela on a plate. <em>Right in Freising.</em>",
@@ -189,11 +234,18 @@
       "Sunday"
     ],
     "about": {
-      "title": "Hola, Freising.",
-      "p1": "Auyama is the Venezuelan word for pumpkin. And our name for a place that tastes like home.",
-      "p2": "In the old Entleutner house on Obere Hauptstraße we cook Venezuelan and Caribbean food with regional ingredients: arepas, bowls, curries and pabellón criollo. The menu changes every month.",
-      "p3": "Our shop has fine wines and homemade treats to take away: jams, chutneys, pestos and sauces. Come by, we look forward to seeing you.",
-      "imgAlt": "Colourful salad with mango, avocado and cashews, held up in the leafy courtyard"
+      "title": "¡Hola, <span class=\"squiggle\">Freising!</span>",
+      "lead": "Auyama means pumpkin. Here it means: welcome home.",
+      "p2": "In the old Entleutner house on Obere Hauptstraße we cook Venezuelan and Caribbean food with regional ingredients. There is a new menu every month.",
+      "p3": "Our shop has fine wines and homemade treats to take away: jams, chutneys, pestos and sauces.",
+      "quote": "Mi casa es tu casa.",
+      "s1": "New menu every month",
+      "s2": "Regional ingredients",
+      "s3": "Wines & preserves",
+      "s4": "Salsa & cinema",
+      "stamp": "Hecho en Freising · con mucho amor · ",
+      "img1": "Colourful salad with mango, avocado and cashews, held up in the leafy courtyard",
+      "img2": "Burrito with beans cut open, with salsa and salad"
     },
     "menu": {
       "title": "Menu",
@@ -209,14 +261,7 @@
       "vegetarisch": "vegetarian",
       "countAll": "Showing all dishes.",
       "countFiltered": "Showing {anzahl} matching dishes.",
-      "termHint": "Tap the underlined words and we'll explain them.",
       "closing": "¡Buen provecho!"
-    },
-    "abc": {
-      "title": "¿Qué es eso?",
-      "lead": "New to Venezuelan food? Tap a tile.",
-      "flip": "Show explanation",
-      "close": "Close"
     },
     "events": {
       "title": "Salsa nights & film nights",
@@ -263,11 +308,52 @@
     "bar": {
       "label": "Quick access",
       "route": "Directions",
-      "menu": "Menu"
+      "menu": "Menu",
+      "home": "Home"
     },
     "lightbox": {
       "label": "Full size image",
       "close": "Close"
+    },
+    "marquee": [
+      "¡Bienvenidos!",
+      "Arepas",
+      "Bowls",
+      "Curries",
+      "Homemade lemonades",
+      "Salsa nights",
+      "Film nights",
+      "Hecho en Freising"
+    ],
+    "preview": {
+      "lead": "A little taste of what is cooking. New every month, just for you.",
+      "cta": "See the full menu",
+      "from": "from {preis}",
+      "categoriesLabel": "All categories on the monthly menu"
+    },
+    "craving": {
+      "title": "¿Qué comemos hoy?",
+      "lead": "Can't decide? Tell us what you're in the mood for.",
+      "moodsLabel": "What are you in the mood for?",
+      "leicht": "Light & fresh",
+      "satt": "Properly full",
+      "veggie": "No meat",
+      "trinken": "Something to drink",
+      "surprise": "Surprise me",
+      "emptyTitle": "Tap your mood.",
+      "emptyText": "We'll pick something tasty from this month's menu for you.",
+      "stamp": "Tu antojo de hoy",
+      "again": "Another idea",
+      "call": "Call",
+      "toMenu": "Full menu",
+      "announce": "Our pick: {gericht}, {preis}"
+    },
+    "fullmenu": {
+      "metaTitle": "Menu {monat} · Auyama Freising",
+      "metaDescription": "The monthly menu at Auyama in Freising: Venezuelan and Caribbean cooking, arepas, bowls, burritos, curries and homemade lemonades.",
+      "back": "Back to the homepage",
+      "hungryTitle": "Feeling hungry?",
+      "hungryText": "Give us a call or just drop by. We look forward to seeing you."
     }
   }
 }

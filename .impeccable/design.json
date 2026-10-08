@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-08T10:13:19.047256Z",
+  "generatedAt": "2026-10-08T10:47:03.262433+00:00",
   "title": "Design System: Auyama Freising",
   "extensions": {
     "colorMeta": {
@@ -123,6 +123,21 @@
           "#f0cbc2",
           "#faeeeb"
         ]
+      },
+      "terracota-deep": {
+        "role": "tertiary",
+        "displayName": "Terracota Deep",
+        "canonical": "#9a3c24",
+        "tonalRamp": [
+          "#3a170e",
+          "#5c2416",
+          "#7e321f",
+          "#9a3c24",
+          "#bf5a3f",
+          "#d48a75",
+          "#e6b8ab",
+          "#f4e1db"
+        ]
       }
     },
     "typographyMeta": {
@@ -235,17 +250,34 @@
       "description": "Diet label in the menu.",
       "html": "<span class=\"ds-diet\">vegan</span>",
       "css": ".ds-diet{display:inline-flex;padding:.1rem .5rem;border-radius:4px;background:#2a7448;color:#fff;font:700 .78rem 'Bricolage Grotesque',system-ui,sans-serif}"
+    },
+    {
+      "name": "Order Slip",
+      "kind": "card",
+      "refersTo": "ticket",
+      "description": "Paper order slip showing the dish picked by mood.",
+      "html": "<article class=\"ds-slip\"><h3>Arepa vegan</h3><p>gefüllt mit Linsen und Mango</p><p class=\"ds-slip-price\">12,80 €</p><span class=\"ds-slip-stamp\">Tu antojo de hoy</span></article>",
+      "css": ".ds-slip{--z:9px;position:relative;width:320px;padding:2rem 1.5rem 3.5rem;background:#f6efe2;color:#0b220e;transform:rotate(-1.5deg);-webkit-mask:radial-gradient(var(--z) at 50% 0,#0000 98%,#000) 50% 0/25px 51% repeat-x,radial-gradient(var(--z) at 50% 100%,#0000 98%,#000) 50% 100%/25px 51% repeat-x;mask:radial-gradient(var(--z) at 50% 0,#0000 98%,#000) 50% 0/25px 51% repeat-x,radial-gradient(var(--z) at 50% 100%,#0000 98%,#000) 50% 100%/25px 51% repeat-x;font-family:'Bricolage Grotesque',system-ui,sans-serif}.ds-slip h3{font:400 2rem/1.05 Gloock,Georgia,serif;margin:0 0 .5rem}.ds-slip-price{font:400 2.4rem/1 Gloock,Georgia,serif;color:#94500f}.ds-slip-stamp{position:absolute;right:1.2rem;bottom:1.2rem;border:2px solid #a8442a;color:#a8442a;padding:.2rem .6rem;border-radius:6px;font:400 1rem Gloock,Georgia,serif;transform:rotate(-7deg)}"
+    },
+    {
+      "name": "Sticker",
+      "kind": "chip",
+      "refersTo": "sticker",
+      "description": "Short fact as a tilted sticker.",
+      "html": "<span class=\"ds-sticker\">Regionale Zutaten</span>",
+      "css": ".ds-sticker{display:inline-block;padding:.55rem 1rem;border-radius:8px;background:#f2b53a;color:#0b220e;font:700 .95rem 'Bricolage Grotesque',system-ui,sans-serif;transform:rotate(-2deg);box-shadow:0 10px 18px -12px rgba(0,0,0,.6);transition:transform .4s}.ds-sticker:hover{transform:rotate(0) scale(1.05)}"
     }
   ],
   "narrative": {
     "northStar": "Mosaico",
-    "overview": "The site is a Venezuelan cement tile floor seen from above. Every working part of the first viewport is a tile; rooms are separated by cenefas; the dish ABC is a grid of tiles that turn over.",
+    "overview": "The site is a Venezuelan cement tile floor seen from above, with the playful things of a Latin American table placed on it: a scroll-linked ribbon, photo prints, stamps, stickers, price tags and an order slip (comanda) that picks today's dish.",
     "keyCharacteristics": [
       "Square tiles with 6px corners and 8px grout gaps",
       "Authored SVG tile ornaments",
       "Cenefa bands as section dividers",
       "Committed colour fields",
-      "One orchestrated entrance, one signature interaction"
+      "Playful but placed: tilts of 2 to 6 degrees on real objects",
+      "One orchestrated entrance, one signature interaction (the order slip)"
     ],
     "rules": [
       {
@@ -267,7 +299,8 @@
     "dos": [
       "Keep every first viewport element a working tile.",
       "Separate rooms with cenefas.",
-      "Use the authored tile SVGs for ornament."
+      "Use the authored tile SVGs for ornament.",
+      "Keep playfulness to small tilts, real objects and the palette."
     ],
     "donts": [
       "No kickers or eyebrows above headings.",

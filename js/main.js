@@ -5,7 +5,6 @@
      restaurant.json – Telefon, Adresse, Instagram, Öffnungszeiten
      menu.json       – Monatskarte
      events.json     – Termine
-     lexikon.json    – ABC der venezolanischen Küche
      texts.json      – alle Texte auf Deutsch und Englisch
    ========================================================================== */
 (function () {
@@ -16,7 +15,7 @@
   var SCHEMA_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   var LANG_KEY = 'auyama-lang';
 
-  var state = { lang: 'de', texts: null, restaurant: null, menu: null, events: null, lexikon: null, filter: 'alle' };
+  var state = { lang: 'de', texts: null, restaurant: null, menu: null, events: null, filter: 'alle', mood: null, pick: null };
 
   /* ---------- Hilfsfunktionen ---------- */
 
@@ -278,116 +277,7 @@
     } catch (e) { /* bleibt unverändert */ }
   }
 
-  /* ---------- ABC (lexikon.json) ---------- */
-
-  function terms() { return (state.lexikon && state.lexikon.begriffe) || []; }
-
-  function renderAbc() {
-    var root = $('[data-abc-root]');
-    if (!root) return;
-    root.innerHTML = '';
-    terms().forEach(function (b) {
-      var word = loc(b.wort);
-      var btn = el('button', { type: 'button', className: 'abc-btn', 'aria-pressed': 'false', id: 'abc-' + b.id }, [
-        el('span', { className: 'abc-face abc-front' }, [
-          el('span', { className: 'abc-word', text: word }),
-          el('span', { html: icon('i-turn', 'abc-turn') })
-        ]),
-        el('span', { className: 'abc-face abc-back' }, [
-          el('span', { className: 'abc-word', 'aria-hidden': 'true', text: word }),
-          el('span', { className: 'abc-text', text: loc(b.text) })
-        ])
-      ]);
-      btn.setAttribute('aria-label', word + ': ' + t('abc.flip'));
-      btn.addEventListener('click', function () {
-        var on = btn.getAttribute('aria-pressed') !== 'true';
-        btn.setAttribute('aria-pressed', String(on));
-        btn.setAttribute('aria-label', on ? word + ': ' + loc(b.text) : word + ': ' + t('abc.flip'));
-      });
-      root.appendChild(el('li', { className: 'abc-tile' }, [btn]));
-    });
-  }
-
-  /** Begriffe aus dem ABC in einem Text der Speisekarte antippbar machen */
-  var termRegexCache = null;
-  function termMatcher() {
-    if (termRegexCache) return termRegexCache;
-    var list = [];
-    terms().forEach(function (b) {
-      (b.suchwoerter || []).forEach(function (w) { list.push({ word: w, id: b.id }); });
-    });
-    list.sort(function (a, b) { return b.word.length - a.word.length; });
-    var esc = function (s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); };
-    var source = '(' + list.map(function (x) { return esc(x.word); }).join('|') + ')';
-    var re;
-    try { re = new RegExp('(?<![\\p{L}])' + source, 'giu'); } catch (e) { re = new RegExp(source, 'gi'); }
-    termRegexCache = { re: re, list: list };
-    return termRegexCache;
-  }
-
-  function withTerms(text) {
-    var frag = document.createDocumentFragment();
-    if (!terms().length || !text) { frag.appendChild(document.createTextNode(text || '')); return frag; }
-    var m = termMatcher();
-    var last = 0;
-    var match;
-    m.re.lastIndex = 0;
-    while ((match = m.re.exec(text)) !== null) {
-      var found = match[1] || match[0];
-      var start = match.index + (match[0].length - found.length);
-      var entry = m.list.filter(function (x) { return x.word.toLowerCase() === found.toLowerCase(); })[0];
-      if (!entry) continue;
-      frag.appendChild(document.createTextNode(text.slice(last, start)));
-      var b = el('button', { type: 'button', className: 'term', 'data-term': entry.id, 'aria-expanded': 'false', 'aria-controls': 'term-pop' }, [found]);
-      frag.appendChild(b);
-      last = start + found.length;
-    }
-    frag.appendChild(document.createTextNode(text.slice(last)));
-    return frag;
-  }
-
-  var openTerm = null;
-  function showTerm(btn) {
-    var pop = $('#term-pop');
-    var entry = terms().filter(function (b) { return b.id === btn.getAttribute('data-term'); })[0];
-    if (!pop || !entry) return;
-    if (openTerm === btn) { hideTerm(true); return; }
-    hideTerm(false);
-    $('.term-pop-title', pop).textContent = loc(entry.wort);
-    $('.term-pop-text', pop).textContent = loc(entry.text);
-    pop.hidden = false;
-    var host = pop.offsetParent || document.body;
-    var hostRect = host.getBoundingClientRect();
-    var r = btn.getBoundingClientRect();
-    var w = pop.offsetWidth;
-    var left = Math.min(Math.max(r.left, 16), window.innerWidth - w - 16) - hostRect.left;
-    pop.style.left = left + 'px';
-    pop.style.top = (r.bottom - hostRect.top + 10) + 'px';
-    btn.setAttribute('aria-expanded', 'true');
-    openTerm = btn;
-    $('.term-pop-close', pop).focus({ preventScroll: true });
-  }
-  function hideTerm(restoreFocus) {
-    var pop = $('#term-pop');
-    if (pop) pop.hidden = true;
-    if (openTerm) {
-      openTerm.setAttribute('aria-expanded', 'false');
-      if (restoreFocus) openTerm.focus({ preventScroll: true });
-    }
-    openTerm = null;
-  }
-  function setupTerms() {
-    document.addEventListener('click', function (e) {
-      var term = e.target.closest && e.target.closest('.term');
-      if (term) { e.preventDefault(); showTerm(term); return; }
-      if (e.target.closest && e.target.closest('[data-term-close]')) { hideTerm(true); return; }
-      if (openTerm && !(e.target.closest && e.target.closest('#term-pop'))) hideTerm(false);
-    });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && openTerm) hideTerm(true); });
-    window.addEventListener('resize', function () { if (openTerm) hideTerm(false); });
-  }
-
-  /* ---------- Monatskarte ---------- */
+  /* ---------- Monatskarte (eigene Seite) ---------- */
 
   function formatPrice(p) {
     var n = typeof p === 'number' ? p : parseFloat(String(p).replace(/\s|€/g, '').replace(',', '.'));
@@ -400,12 +290,7 @@
     var tabs = $('[data-menu-tabs]');
     var m = state.menu;
     if (!root || !m) return;
-    hideTerm(false);
-
-    var monthLabel = loc(m.monat) + ' ' + (m.jahr || '');
-    $$('[data-menu-month]').forEach(function (n) { n.textContent = monthLabel; });
-    var heroMenu = $('[data-hero-menu]');
-    if (heroMenu) heroMenu.textContent = t('hero.menuTitle', { monat: monthLabel });
+    var monthLabel = renderMonth();
 
     root.innerHTML = '';
     tabs.innerHTML = '';
@@ -424,15 +309,14 @@
          * Gerichten (Dressings, Dips, Brühen sind aus der Beschreibung nicht ersichtlich).
          */
         var label = g.label === 'vegan' || g.label === 'vegetarisch' ? g.label : '';
-        var nameNode = el('span', { className: 'menu-item-name' });
-        nameNode.appendChild(withTerms(loc(g.name)));
+        var nameNode = el('span', { className: 'menu-item-name', text: loc(g.name) });
         var detailsNode = null;
         if (g.menge || g.details) {
           detailsNode = el('p', { className: 'menu-item-details' }, [
             g.menge ? el('span', { className: 'menu-item-size', text: g.menge }) : null,
             g.menge && g.details ? ' · ' : null
           ]);
-          if (g.details) detailsNode.appendChild(withTerms(loc(g.details)));
+          if (g.details) detailsNode.appendChild(document.createTextNode(loc(g.details)));
         }
         items.appendChild(el('li', { className: 'menu-item', 'data-diet': label || null }, [
           el('div', { className: 'menu-item-head' }, [nameNode, el('span', { className: 'menu-item-price', text: formatPrice(g.preis) })]),
@@ -450,11 +334,190 @@
       ]));
     });
 
+    if (document.body.classList.contains('page-menu')) {
+      document.title = t('fullmenu.metaTitle', { monat: monthLabel });
+      var d = $('meta[name="description"]');
+      if (d && t('fullmenu.metaDescription')) d.setAttribute('content', t('fullmenu.metaDescription'));
+    }
+
     var foot = $('[data-menu-footnote]');
     if (foot && m.fussnote) foot.textContent = loc(m.fussnote);
 
     applyFilter(false);
     setupScrollSpy();
+  }
+
+  /** Monat in Überschriften und Hero-Fliese */
+  function renderMonth() {
+    var m = state.menu;
+    if (!m) return '';
+    var monthLabel = loc(m.monat) + ' ' + (m.jahr || '');
+    $$('[data-menu-month]').forEach(function (n) { n.textContent = monthLabel; });
+    var heroMenu = $('[data-hero-menu]');
+    if (heroMenu) heroMenu.textContent = t('hero.menuTitle', { monat: monthLabel });
+    return monthLabel;
+  }
+
+  function priceValue(p) {
+    var n = typeof p === 'number' ? p : parseFloat(String(p).replace(/\s|€/g, '').replace(',', '.'));
+    return isNaN(n) ? null : n;
+  }
+
+  /* ---------- Startseite: Vorschau der Monatskarte ---------- */
+
+  function renderPreview() {
+    var root = $('[data-preview-root]');
+    var cats = $('[data-preview-cats]');
+    var m = state.menu;
+    if (!root || !m) return;
+    renderMonth();
+
+    var picks = [];
+    (m.kategorien || []).forEach(function (cat) {
+      (cat.gerichte || []).forEach(function (g) { if (g.highlight) picks.push({ g: g, cat: cat }); });
+    });
+    // Mit Foto zuerst, damit die große Kachel immer ein Bild hat
+    picks.sort(function (a, b) { return (b.g.bild ? 1 : 0) - (a.g.bild ? 1 : 0); });
+    picks = picks.slice(0, 5);
+
+    root.innerHTML = '';
+    var colorIndex = 0;
+    picks.forEach(function (p, i) {
+      var g = p.g;
+      var label = g.label === 'vegan' || g.label === 'vegetarisch' ? g.label : '';
+      var plate = el('div', { className: 'dish-plate' }, [
+        el('h3', { className: 'dish-name', text: loc(g.name) }),
+        g.details ? el('p', { className: 'dish-details', text: loc(g.details) }) : null,
+        label ? el('span', { className: 'diet diet--' + label, html: icon('i-leaf', '') + '<span>' + t('menu.' + label) + '</span>' }) : null
+      ]);
+      var cls = 'dish' + (i === 0 ? ' dish--lead' : '');
+      if (g.bild) cls += ' dish--photo';
+      else cls += ' dish--color ' + (colorIndex++ % 2 === 0 ? 'dish--auyama' : 'dish--terracota');
+      root.appendChild(el('li', { className: cls }, [
+        g.bild ? el('img', { className: 'dish-img', src: g.bild, alt: loc(g.bildAlt), loading: 'lazy', decoding: 'async', width: '828', height: '1000', style: g.bildFokus ? 'object-position: ' + g.bildFokus : null }) : null,
+        el('span', { className: 'dish-price', text: formatPrice(g.preis) }),
+        plate
+      ]));
+    });
+
+    if (cats) {
+      cats.innerHTML = '';
+      (m.kategorien || []).forEach(function (cat, ci) {
+        var min = null;
+        (cat.gerichte || []).forEach(function (g) {
+          var v = priceValue(g.preis);
+          if (v !== null && (min === null || v < min)) min = v;
+        });
+        var a = el('a', { href: 'speisekarte.html#kat-' + (cat.id || ci) }, [loc(cat.name)]);
+        if (min !== null) a.appendChild(el('span', { text: t('preview.from', { preis: formatPrice(min) }) }));
+        cats.appendChild(el('li', null, [a]));
+      });
+    }
+  }
+
+  /* ---------- ¿Qué comemos hoy? ---------- */
+
+  function moodPool(mood) {
+    var pool = [];
+    ((state.menu && state.menu.kategorien) || []).forEach(function (cat) {
+      var st = cat.stimmung || [];
+      (cat.gerichte || []).forEach(function (g) {
+        var drink = st.indexOf('trinken') !== -1;
+        var ok = false;
+        if (mood === 'trinken') ok = drink;
+        else if (mood === 'veggie') ok = !drink && (g.label === 'vegan' || g.label === 'vegetarisch');
+        else if (mood === 'surprise') ok = !drink;
+        else ok = st.indexOf(mood) !== -1;
+        if (ok) pool.push({ g: g, cat: cat });
+      });
+    });
+    return pool;
+  }
+
+  function pickDish(mood) {
+    var pool = moodPool(mood);
+    if (!pool.length) return null;
+    var prev = state.pick && state.pick.g;
+    var options = pool.length > 1 ? pool.filter(function (p) { return p.g !== prev; }) : pool;
+    return options[Math.floor(Math.random() * options.length)];
+  }
+
+  function renderTicket(animate) {
+    var ticket = $('[data-ticket]');
+    if (!ticket) return;
+    var p = state.pick;
+    $('[data-ticket-empty]').hidden = !!p;
+    $('[data-ticket-result]').hidden = !p;
+    $$('[data-mood]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-mood') === state.mood)); });
+    if (!p) return;
+    var g = p.g;
+    var label = g.label === 'vegan' || g.label === 'vegetarisch' ? g.label : '';
+    $('[data-ticket-dish]').textContent = loc(g.name);
+    var details = [g.menge, loc(g.details)].filter(Boolean).join(' · ');
+    var det = $('[data-ticket-details]');
+    det.textContent = details;
+    det.hidden = !details;
+    var cat = $('[data-ticket-cat]');
+    cat.innerHTML = '';
+    cat.appendChild(el('span', { text: loc(p.cat.name) }));
+    if (label) cat.appendChild(el('span', { className: 'diet diet--' + label, html: icon('i-leaf', '') + '<span>' + t('menu.' + label) + '</span>' }));
+    $('[data-ticket-price]').textContent = formatPrice(g.preis);
+    if (animate && !prefersReducedMotion()) {
+      ticket.classList.remove('is-new');
+      void ticket.offsetWidth;
+      ticket.classList.add('is-new');
+    }
+  }
+
+  function setupCraving() {
+    if (!$('[data-ticket]')) return;
+    $$('[data-mood]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        state.mood = b.getAttribute('data-mood');
+        state.pick = pickDish(state.mood);
+        renderTicket(true);
+      });
+    });
+    var again = $('[data-ticket-again]');
+    if (again) again.addEventListener('click', function () {
+      if (!state.mood) return;
+      state.pick = pickDish(state.mood);
+      renderTicket(true);
+    });
+  }
+
+  /* ---------- Laufband & Stempel ---------- */
+
+  /** Das Laufband bewegt sich mit dem Scrollen (kein Endlos-Loop, bei reduzierter Bewegung statisch) */
+  function setupRibbon() {
+    var track = $('[data-marquee]');
+    if (!track || prefersReducedMotion()) return;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var half = track.scrollWidth / 2;
+      var x = half ? -((window.scrollY * 0.45) % half) : 0;
+      track.style.transform = 'translateX(' + x + 'px)';
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+  }
+
+  function renderMarquee() {
+    var track = $('[data-marquee]');
+    if (track) {
+      var items = t('marquee');
+      if (Array.isArray(items) && items.length) {
+        track.innerHTML = '';
+        for (var r = 0; r < 4; r++) {
+          items.forEach(function (w) { track.appendChild(el('span', { className: 'ribbon-item', text: w })); });
+        }
+      }
+    }
+    var stamp = $('[data-stamp-text]');
+    if (stamp && t('about.stamp')) stamp.textContent = t('about.stamp');
   }
 
   function renderMenuError() {
@@ -659,8 +722,8 @@
     renderContact();
     renderStatus();
     renderHours();
-    renderAbc();
-    if (state.menu) renderMenu();
+    renderMarquee();
+    if (state.menu) { renderMonth(); renderMenu(); renderPreview(); renderTicket(false); }
     renderEvents();
   }
 
@@ -743,7 +806,8 @@
     setupNav();
     setupLightbox();
     setupMap();
-    setupTerms();
+    setupCraving();
+    setupRibbon();
 
     var year = $('[data-year]');
     if (year) year.textContent = String(new Date().getFullYear());
@@ -765,13 +829,17 @@
       load('texts.json', 'texts'),
       load('restaurant.json', 'restaurant'),
       load('menu.json', 'menu'),
-      load('events.json', 'events'),
-      load('lexikon.json', 'lexikon')
+      load('events.json', 'events')
     ]).then(function () {
       applyTexts();
       renderAll();
       syncStructuredData();
       if (!state.menu) renderMenuError();
+      if (location.hash) {
+        // Sprungmarken wie speisekarte.html#kat-arepas nach dem Rendern ansteuern
+        var target = document.getElementById(location.hash.slice(1));
+        if (target) target.scrollIntoView();
+      }
       setInterval(function () { renderStatus(); renderHours(); }, 60 * 1000);
     });
   }
