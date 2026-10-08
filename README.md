@@ -13,8 +13,9 @@ ganz ohne Programmierkenntnisse. Sie müssen nur ein paar Textdateien bearbeiten
 | Datei | Was steht drin? | Wie oft ändern? |
 |---|---|---|
 | `menu.json` | Die **Monatskarte** (Gerichte, Preise, vegan/vegetarisch) | jeden Monat |
-| `events.json` | **Termine** (Salsa-Nights, Filmabende …) | bei jedem neuen Event |
-| `restaurant.json` | **Öffnungszeiten**, Telefon, E-Mail, Adresse, Instagram | selten |
+| `events.json` | **Termine** (Salsa Nights, Filmabende …) | bei jedem neuen Event |
+| `lexikon.json` | Das **ABC** „¿Qué es eso?“: venezolanische Begriffe kurz erklärt | selten |
+| `restaurant.json` | **Öffnungszeiten**, Telefon, Adresse, Instagram | selten |
 | `texts.json` | Alle **Texte** der Website auf Deutsch und Englisch | selten |
 | `assets/` | Logo und **Fotos** | bei neuen Fotos |
 
@@ -109,7 +110,7 @@ Ein Termin sieht so aus:
   "datum": "2026-11-14",
   "beginn": "19:00",
   "ende": "23:00",
-  "titel": { "de": "Salsa-Night mit DJ", "en": "Salsa Night with DJ" },
+  "titel": { "de": "Salsa Night mit DJ", "en": "Salsa night with DJ" },
   "beschreibung": { "de": "Tanzen bis Mitternacht. Eintritt frei.", "en": "Dance the night away. Free entry." }
 },
 ```
@@ -120,16 +121,18 @@ Ein Termin sieht so aus:
 | `datum` | **Jahr-Monat-Tag**, z. B. `"2026-11-14"` für den 14. November 2026 |
 | `beginn` / `ende` | Uhrzeit, z. B. `"19:00"`. `ende` ist optional |
 | `titel`, `beschreibung` | Text auf Deutsch und (optional) Englisch |
-| `beispiel` | `true` = zeigt ein „Beispiel“-Schild. **Bei echten Terminen weglassen!** |
 
 - **Vergangene Termine verschwinden automatisch** am Tag nach dem Event – Sie müssen sie nicht löschen
   (können es aber, damit die Datei übersichtlich bleibt).
 - Die Reihenfolge ist egal, die Website sortiert nach Datum.
-- Jeder Termin bekommt automatisch einen Knopf **„Zum Kalender hinzufügen“** (Kalenderdatei für
+- Jeder Termin bekommt automatisch einen Knopf **„In den Kalender“** (Kalenderdatei für
   iPhone, Android, Outlook).
+- Sind keine kommenden Termine eingetragen, zeigt die Website einen freundlichen Hinweis auf Instagram.
 
-> **Im Entwurf:** Die beiden „Salsa-Night“-Termine sind **Beispiele** (Datum ausgedacht, mit
-> `"beispiel": true` markiert). Bitte durch echte Termine ersetzen oder löschen.
+> **Wichtig:** Die Website zeigt nur Termine, die hier eingetragen sind. Instagram-Posts werden
+> **nicht** automatisch übernommen (dafür bräuchte es einen Zugang zur Instagram-Schnittstelle,
+> den eine einfache Website nicht sicher speichern kann). Neue Salsa Nights also bitte hier
+> eintragen, am besten gleich, wenn sie auf Instagram angekündigt werden.
 
 ---
 
@@ -149,9 +152,9 @@ Ein Termin sieht so aus:
 
 - **Geschlossen:** leere Klammern `[]`.
 - **Mittagspause:** zwei Zeiten, z. B. `["12:00-14:30", "17:30-21:00"]`.
-- Automatisch aktualisiert werden: der **Live-Status** („Jetzt geöffnet – bis 16:00“ /
-  „Geschlossen – öffnet Di 12:00“, deutsche Zeit), die **Tabelle** mit dem heutigen Tag
-  hervorgehoben und die Angaben für **Google**.
+- Automatisch aktualisiert werden: der **Live-Status** („Geöffnet, heute bis 16:00 Uhr“ /
+  „Geschlossen, wir öffnen am Dienstag um 12:00 Uhr“, deutsche Zeit), die **Tabelle** mit dem
+  heutigen Tag hervorgehoben, die Kurzfassung in der Fußzeile und die Angaben für **Google**.
 - **Sonderhinweis** (z. B. Urlaub): unter `"sonderhinweis"` eintragen, z. B.
   `"de": "Vom 24.12. bis 6.1. machen wir Urlaub."` – leer lassen (`""`), wenn es nichts gibt.
 
@@ -160,7 +163,7 @@ Ein Termin sieht so aus:
 > also korrekt. Wer ganz sicher gehen will, passt sie dort bei einer dauerhaften Änderung
 > zusätzlich an. Und: Öffnungszeiten auch im **Google-Unternehmensprofil** ändern!
 
-In derselben Datei stehen außerdem **Telefon**, **E-Mail**, **Adresse** und **Instagram**.
+In derselben Datei stehen außerdem **Telefon**, **Adresse** und **Instagram**.
 `telefonLink` ist die Nummer im internationalen Format ohne Leerzeichen (`+491702321409`) – das
 ist die Nummer, die beim Antippen von „Anrufen“ gewählt wird.
 
@@ -172,28 +175,45 @@ Alle Texte der Website stehen hier – oben Deutsch (`"de"`), darunter Englisch 
 Ändern Sie nur den Text **rechts vom Doppelpunkt**. Wörter in geschweiften Klammern wie
 `{zeit}` oder `{monat}` sind Platzhalter, die die Website automatisch füllt – bitte stehen lassen.
 
-Mit „Entwurfstext – bitte anpassen“ markierte Abschnitte (Über uns, Feinkost & Catering) sind
-Vorschläge. Sobald die echten Texte drinstehen, die Markierung entfernen: In `index.html` die
-Zeilen mit `class="placeholder-tag"` löschen.
+Die Website spricht Gäste mit **„du“** an. Wer lieber „Sie“ möchte, ändert das hier.
 
 ---
 
-## 5. Fotos austauschen (`assets/`)
+## 5. Das ABC ändern (`lexikon.json`)
+
+Unter „¿Qué es eso?“ erklärt die Website venezolanische Begriffe auf Fliesen zum Umdrehen.
+Dieselben Begriffe werden in der Speisekarte **automatisch antippbar** (gepunktet unterstrichen).
+
+```json
+{
+  "id": "tequenos",
+  "wort": { "de": "Tequeños", "en": "Tequeños" },
+  "suchwoerter": ["Tequeños", "Tequeño"],
+  "text": { "de": "Knusprige Teigstangen mit Käsefüllung.", "en": "Crispy pastry sticks filled with cheese." }
+},
+```
+
+- `suchwoerter`: so oft, wie das Wort in der Karte vorkommen kann (Einzahl, Mehrzahl, Englisch).
+- Neue Monatskarte mit neuem Gericht? Einfach einen passenden Begriff ergänzen.
+
+---
+
+## 6. Fotos austauschen (`assets/`)
 
 - Neues Foto **mit demselben Dateinamen** in den Ordner `assets/` hochladen (z. B. `pokebowls.jpg`
   ersetzen) – fertig.
 - Empfehlung: JPG, ca. **1200 px** an der langen Seite, unter **300 KB** (z. B. mit
   <https://squoosh.app> verkleinern). Hochformat oder quadratisch funktioniert am besten.
-- **Wichtig:** Die Fotos im Entwurf sind **Platzhalter** (teils Gästefotos von Google). Für die
-  Live-Version bitte durch **eigene Fotos** ersetzen – wegen der Bildrechte.
+- **Wichtig:** Die aktuellen Fotos stammen teils von Gästen (Google). Für die Live-Version bitte
+  durch **eigene Fotos** ersetzen, wegen der Bildrechte.
 
 | Datei | Wo zu sehen? |
 |---|---|
-| `logo.jpg` | Kopfzeile, Startbereich, Fußzeile |
+| `logo.jpg` | Kopfzeile, Fußzeile |
 | `pokebowls.jpg` | Startbereich, Speisekarte (Bowls), Galerie |
 | `salat-mango-avocado.jpg` | Über uns, Galerie |
 | `burrito-guacamole.jpg` | Speisekarte (Burritos), Galerie |
-| `burrito-salsa.jpg` | Feinkost & Catering, Galerie |
+| `burrito-salsa.jpg` | Galerie |
 | `og-image.jpg` | Vorschaubild beim Teilen (WhatsApp, Facebook …), 1200 × 630 px |
 | `favicon*.png`, `favicon.ico`, `apple-touch-icon.png` | Symbol im Browser-Tab / Homescreen |
 
@@ -201,12 +221,10 @@ Zeilen mit `class="placeholder-tag"` löschen.
 
 ## Vor dem Livegang: Checkliste
 
-- [ ] E-Mail-Adresse in `restaurant.json` eintragen (aktuell `PLATZHALTER@ihre-domain.de`)
-- [ ] Texte „Über uns“ und „Feinkost & Catering“ in `texts.json` anpassen, Platzhalter-Markierungen entfernen
-- [ ] Beispiel-Events in `events.json` ersetzen
+- [ ] Name des Inhabers in `impressum.html` eintragen, Impressum und Datenschutz rechtlich prüfen lassen
+- [ ] Aktuelle Termine (Salsa Nights, Filmabende) in `events.json` eintragen
 - [ ] vegan/vegetarisch-Labels in `menu.json` bestätigen
-- [ ] Eigene Fotos statt Platzhalter-Fotos
-- [ ] `impressum.html` und `datenschutz.html` vollständig ausfüllen (rechtlich prüfen lassen)
+- [ ] Eigene Fotos statt Gästefotos
 - [ ] Bei eigener Domain: Adressen `https://chiaraans.github.io/auyama/` in `index.html` (Open Graph, JSON-LD) anpassen
 - [ ] Link zur Website im Google-Unternehmensprofil und in der Instagram-Bio eintragen
 
@@ -216,8 +234,11 @@ Zeilen mit `class="placeholder-tag"` löschen.
 
 - Statisches HTML/CSS/Vanilla-JS, kein Framework, kein Build-Schritt. Läuft auf GitHub Pages
   (Settings → Pages → Branch auswählen). Alle Pfade sind relativ.
-- Schriften (Fraunces, DM Sans – Google Fonts) sind **lokal** in `assets/fonts/` eingebunden,
-  damit keine Daten an Google übertragen werden.
+- Schriften (Gloock und Bricolage Grotesque, Google Fonts) sind **lokal** in `assets/fonts/`
+  eingebunden, damit keine Daten an Google übertragen werden.
+- Gestaltung: Leitidee „Mosaico“ (venezolanischer Zementfliesenboden), dokumentiert in
+  `DESIGN.md`. Produktwissen in `PRODUCT.md`. Das Design-Skill **Impeccable** liegt in
+  `.claude/skills/impeccable` und steht in jeder Claude-Code-Sitzung zu diesem Repo bereit.
 - Google Maps lädt erst nach Klick (Zwei-Klick-Lösung, DSGVO).
 - Sprache DE/EN: automatisch nach Browsersprache, Auswahl wird im Browser gespeichert.
 - **Lokal testen:** Die JSON-Dateien werden per `fetch` geladen und funktionieren daher nicht
@@ -225,6 +246,6 @@ Zeilen mit `class="placeholder-tag"` löschen.
   ausführen und <http://localhost:8000> öffnen.
 - Dateien: `index.html`, `css/style.css`, `js/main.js`, Daten-Dateien im Hauptverzeichnis.
 - `auyama-vorschau.html` ist eine **eigenständige Vorschau** (alles in einer Datei, öffnet per
-  Doppelklick, auch offline – z. B. zum Verschicken per E-Mail). Sie ist ein **Schnappschuss
-  vom 08.10.2026** und übernimmt spätere Änderungen an den JSON-Dateien **nicht**. Für die echte
-  Website wird sie nicht gebraucht und kann gelöscht werden.
+  Doppelklick, auch offline, z. B. zum Verschicken per E-Mail). Sie ist ein **Schnappschuss** und
+  übernimmt spätere Änderungen an den JSON-Dateien **nicht**. Für die echte Website wird sie nicht
+  gebraucht.

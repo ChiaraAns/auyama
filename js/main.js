@@ -2,9 +2,10 @@
    Auyama Freising – Seitenlogik (Vanilla JS, kein Framework)
 
    Datenquellen (alle im Hauptverzeichnis, ohne Programmierkenntnisse pflegbar):
-     restaurant.json – Telefon, E-Mail, Adresse, Öffnungszeiten
+     restaurant.json – Telefon, Adresse, Instagram, Öffnungszeiten
      menu.json       – Monatskarte
      events.json     – Termine
+     lexikon.json    – ABC der venezolanischen Küche
      texts.json      – alle Texte auf Deutsch und Englisch
    ========================================================================== */
 (function () {
@@ -15,14 +16,7 @@
   var SCHEMA_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   var LANG_KEY = 'auyama-lang';
 
-  var state = {
-    lang: 'de',
-    texts: null,
-    restaurant: null,
-    menu: null,
-    events: null,
-    filter: 'alle'
-  };
+  var state = { lang: 'de', texts: null, restaurant: null, menu: null, events: null, lexikon: null, filter: 'alle' };
 
   /* ---------- Hilfsfunktionen ---------- */
 
@@ -33,11 +27,12 @@
     var node = document.createElement(tag);
     if (attrs) {
       Object.keys(attrs).forEach(function (k) {
-        if (attrs[k] === null || attrs[k] === undefined || attrs[k] === false) return;
-        if (k === 'text') node.textContent = attrs[k];
-        else if (k === 'html') node.innerHTML = attrs[k];
-        else if (k === 'className') node.className = attrs[k];
-        else node.setAttribute(k, attrs[k] === true ? '' : attrs[k]);
+        var v = attrs[k];
+        if (v === null || v === undefined || v === false) return;
+        if (k === 'text') node.textContent = v;
+        else if (k === 'html') node.innerHTML = v;
+        else if (k === 'className') node.className = v;
+        else node.setAttribute(k, v === true ? '' : v);
       });
     }
     (children || []).forEach(function (c) {
@@ -47,6 +42,10 @@
     return node;
   }
 
+  function icon(id, cls) {
+    return '<svg class="' + (cls || 'icon') + '" aria-hidden="true"><use href="#' + id + '"/></svg>';
+  }
+
   function loadJSON(url) {
     return fetch(url, { cache: 'no-cache' }).then(function (r) {
       if (!r.ok) throw new Error(url + ': ' + r.status);
@@ -54,7 +53,7 @@
     });
   }
 
-  /** Text aus texts.json holen, z. B. t('status.open', {zeit: '16:00'}) */
+  /** Text aus texts.json, z. B. t('status.openDetail', {zeit: '16:00'}) */
   function t(path, vars) {
     var value = lookup(state.lang, path);
     if (value === undefined) value = lookup('de', path);
@@ -69,7 +68,7 @@
     return path.split('.').reduce(function (o, k) { return o && o[k] !== undefined ? o[k] : undefined; }, state.texts[lang]);
   }
 
-  /** Mehrsprachiges Feld aus JSON: {"de": "...", "en": "..."} oder einfacher Text */
+  /** Mehrsprachiges Feld {"de": "...", "en": "..."} oder einfacher Text */
   function loc(field) {
     if (field === null || field === undefined) return '';
     if (typeof field === 'string') return field;
@@ -77,20 +76,23 @@
   }
 
   function storageGet(key) { try { return window.localStorage.getItem(key); } catch (e) { return null; } }
-  function storageSet(key, v) { try { window.localStorage.setItem(key, v); } catch (e) { /* privat-Modus */ } }
+  function storageSet(key, v) { try { window.localStorage.setItem(key, v); } catch (e) { /* privater Modus */ } }
+
+  function prefersReducedMotion() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
 
   /* ---------- Zeit in Europe/Berlin ---------- */
 
-  /** Liefert Wochentag (0 = Montag), Minuten seit Mitternacht und Datum (JJJJ-MM-TT) in Berliner Zeit. */
+  /** Wochentag (0 = Montag), Minuten seit Mitternacht und Datum (JJJJ-MM-TT) in Berliner Zeit */
   function berlinNow() {
     var parts = {};
     new Intl.DateTimeFormat('en-GB', {
       timeZone: TZ, weekday: 'short', year: 'numeric', month: '2-digit', day: '2-digit',
       hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
     }).formatToParts(new Date()).forEach(function (p) { parts[p.type] = p.value; });
-    var wd = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(parts.weekday);
     return {
-      day: wd,
+      day: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].indexOf(parts.weekday),
       minutes: parseInt(parts.hour, 10) * 60 + parseInt(parts.minute, 10),
       date: parts.year + '-' + parts.month + '-' + parts.day
     };
@@ -109,8 +111,7 @@
       var bits = String(s).split(/\s*[-–]\s*/);
       var start = toMinutes(bits[0]);
       var end = toMinutes(bits[1]);
-      if (start === null || end === null) return null;
-      return { start: start, end: end };
+      return start === null || end === null ? null : { start: start, end: end };
     }).filter(Boolean).sort(function (a, b) { return a.start - b.start; });
   }
 
@@ -119,48 +120,59 @@
     return DAY_KEYS.map(function (k) { return parseRanges(oz[k]); });
   }
 
-  /* ---------- Live-Status "Jetzt geöffnet / Geschlossen" ---------- */
+  /* ---------- Live-Status ---------- */
 
   function computeStatus() {
     var week = weekHours();
     var now = berlinNow();
     var today = week[now.day];
+    var i;
 
-    for (var i = 0; i < today.length; i++) {
+    for (i = 0; i < today.length; i++) {
       var r = today[i];
       if (now.minutes >= r.start && now.minutes < r.end) {
         var soon = r.end - now.minutes <= 60;
-        return { open: true, soon: soon, text: t(soon ? 'status.closingSoon' : 'status.open', { zeit: fromMinutes(r.end) }) };
+        return {
+          state: soon ? 'soon' : 'open',
+          title: t(soon ? 'status.soonTitle' : 'status.openTitle'),
+          detail: t(soon ? 'status.soonDetail' : 'status.openDetail', { zeit: fromMinutes(r.end) })
+        };
       }
     }
-    for (var j = 0; j < today.length; j++) {
-      if (today[j].start > now.minutes) {
-        return { open: false, text: t('status.opensToday', { zeit: fromMinutes(today[j].start) }) };
+    for (i = 0; i < today.length; i++) {
+      if (today[i].start > now.minutes) {
+        return { state: 'closed', title: t('status.closedTitle'), detail: t('status.opensToday', { zeit: fromMinutes(today[i].start) }) };
       }
     }
     for (var d = 1; d <= 7; d++) {
       var idx = (now.day + d) % 7;
       if (week[idx].length) {
         var zeit = fromMinutes(week[idx][0].start);
-        if (d === 1) return { open: false, text: t('status.opensTomorrow', { zeit: zeit }) };
-        return { open: false, text: t('status.opensOn', { tag: t('daysShort')[idx], zeit: zeit }) };
+        var detail = d === 1 ? t('status.opensTomorrow', { zeit: zeit }) : t('status.opensOn', { tag: t('days')[idx], zeit: zeit });
+        return { state: 'closed', title: t('status.closedTitle'), detail: detail };
       }
     }
-    return { open: false, text: t('status.closed') };
+    return { state: 'closed', title: t('status.closedTitle'), detail: t('status.closedLong') };
   }
 
   function renderStatus() {
     if (!state.restaurant || !state.texts) return;
     var s = computeStatus();
-    $$('[data-status]').forEach(function (node) {
-      node.hidden = false;
-      node.classList.toggle('is-open', s.open && !s.soon);
-      node.classList.toggle('is-soon', !!s.soon);
-      $('[data-status-text]', node).textContent = s.text;
-    });
+    var tile = $('[data-status-tile]');
+    if (tile) {
+      tile.setAttribute('data-state', s.state);
+      $('[data-status-title]', tile).textContent = s.title;
+      $('[data-status-detail]', tile).textContent = s.detail;
+    }
+    var pill = $('[data-status-pill]');
+    if (pill) {
+      pill.hidden = false;
+      pill.setAttribute('data-state', s.state);
+      $('[data-status-pill-text]', pill).textContent = s.title + ' · ' + s.detail;
+    }
   }
 
-  /* ---------- Öffnungszeiten-Tabelle ---------- */
+  /* ---------- Öffnungszeiten ---------- */
 
   function renderHours() {
     var body = $('[data-hours]');
@@ -176,20 +188,55 @@
       var times = ranges.length
         ? ranges.map(function (r) { return fromMinutes(r.start) + ' – ' + fromMinutes(r.end); }).join(', ')
         : t('visit.closed');
-      var row = el('tr', {
+      body.appendChild(el('tr', {
         className: (isToday ? 'is-today ' : '') + (ranges.length ? '' : 'is-closed'),
         'aria-current': isToday ? 'date' : null
-      }, [th, el('td', { text: times })]);
-      body.appendChild(row);
+      }, [th, el('td', { text: times })]));
     });
 
     var note = $('[data-hours-note]');
     var text = loc(state.restaurant.sonderhinweis);
     note.hidden = !text;
     note.textContent = text;
+
+    renderHoursShort(week);
   }
 
-  /* ---------- Kontaktdaten aus restaurant.json übernehmen ---------- */
+  /** Kurzfassung für die Fußzeile: aufeinanderfolgende Tage mit gleichen Zeiten werden zusammengefasst */
+  function renderHoursShort(week) {
+    var target = $('[data-hours-short]');
+    if (!target) return;
+    var de = state.lang === 'de';
+    var short = de ? ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'] : ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    var hour = function (min) {
+      var h = Math.floor(min / 60), m = min % 60;
+      if (de) return h + (m ? ':' + pad(m) : '');
+      var h12 = h % 12 || 12;
+      return h12 + (m ? ':' + pad(m) : '') + (h < 12 ? ' am' : ' pm');
+    };
+    var key = function (r) { return r.map(function (x) { return x.start + '-' + x.end; }).join(','); };
+    var groups = [];
+    week.forEach(function (ranges, i) {
+      if (!ranges.length) return;
+      var last = groups[groups.length - 1];
+      if (last && last.to === i - 1 && last.key === key(ranges)) last.to = i;
+      else groups.push({ from: i, to: i, key: key(ranges), ranges: ranges });
+    });
+    var join = de ? ' bis ' : ' to ';
+    var lines = groups.map(function (g) {
+      var dayPart = g.from === g.to ? short[g.from]
+        : (g.to === g.from + 1 ? short[g.from] + (de ? ' und ' : ' and ') + short[g.to] : short[g.from] + join + short[g.to]);
+      var timePart = g.ranges.map(function (r) { return hour(r.start) + join + hour(r.end) + (de ? ' Uhr' : ''); }).join(', ');
+      return dayPart + ' ' + timePart;
+    });
+    target.innerHTML = '';
+    lines.forEach(function (line, i) {
+      if (i) target.appendChild(el('br'));
+      target.appendChild(document.createTextNode(line));
+    });
+  }
+
+  /* ---------- Kontaktdaten ---------- */
 
   function renderContact() {
     var r = state.restaurant;
@@ -197,26 +244,15 @@
     var a = r.adresse || {};
     var addressLine = a.strasse + ', ' + a.plz + ' ' + a.ort;
     var routeUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(addressLine);
-
     $$('[data-tel]').forEach(function (n) { n.href = 'tel:' + r.telefonLink; });
     $$('[data-tel-text]').forEach(function (n) { n.textContent = r.telefon; });
     $$('[data-route]').forEach(function (n) { n.href = routeUrl; });
-    $$('[data-address]').forEach(function (n) { n.textContent = addressLine; });
     $$('[data-street]').forEach(function (n) { n.textContent = a.strasse; });
     $$('[data-city]').forEach(function (n) { n.textContent = a.plz + ' ' + a.ort; });
     $$('[data-instagram]').forEach(function (n) { n.href = 'https://instagram.com/' + r.instagram; });
-    $$('[data-email]').forEach(function (n) { n.href = 'mailto:' + r.email; });
-    $$('[data-email-text]').forEach(function (n) { n.textContent = r.email; });
-
-    // Catering-/Gruppenanfrage: mailto mit vorausgefülltem Betreff und Text
-    $$('[data-mailto]').forEach(function (n) {
-      n.href = 'mailto:' + r.email +
-        '?subject=' + encodeURIComponent(t('mail.subject')) +
-        '&body=' + encodeURIComponent(t('mail.body'));
-    });
   }
 
-  /** schema.org-Daten mit den aktuellen Öffnungszeiten aus restaurant.json abgleichen */
+  /** schema.org-Daten mit restaurant.json abgleichen */
   function syncStructuredData() {
     var script = $('#ld-restaurant');
     var r = state.restaurant;
@@ -226,20 +262,129 @@
       var groups = {};
       weekHours().forEach(function (ranges, i) {
         ranges.forEach(function (rg) {
-          var key = fromMinutes(rg.start) + '-' + fromMinutes(rg.end);
-          (groups[key] = groups[key] || []).push(SCHEMA_DAYS[i]);
+          var k = fromMinutes(rg.start) + '-' + fromMinutes(rg.end);
+          (groups[k] = groups[k] || []).push(SCHEMA_DAYS[i]);
         });
       });
-      data.openingHoursSpecification = Object.keys(groups).map(function (key) {
-        var p = key.split('-');
-        return { '@type': 'OpeningHoursSpecification', dayOfWeek: groups[key], opens: p[0], closes: p[1] };
+      data.openingHoursSpecification = Object.keys(groups).map(function (k) {
+        var p = k.split('-');
+        return { '@type': 'OpeningHoursSpecification', dayOfWeek: groups[k], opens: p[0], closes: p[1] };
       });
       data.telephone = r.telefonLink;
       data.address.streetAddress = r.adresse.strasse;
       data.address.postalCode = r.adresse.plz;
       data.address.addressLocality = r.adresse.ort;
       script.textContent = JSON.stringify(data, null, 2);
-    } catch (e) { /* JSON-LD bleibt unverändert */ }
+    } catch (e) { /* bleibt unverändert */ }
+  }
+
+  /* ---------- ABC (lexikon.json) ---------- */
+
+  function terms() { return (state.lexikon && state.lexikon.begriffe) || []; }
+
+  function renderAbc() {
+    var root = $('[data-abc-root]');
+    if (!root) return;
+    root.innerHTML = '';
+    terms().forEach(function (b) {
+      var word = loc(b.wort);
+      var btn = el('button', { type: 'button', className: 'abc-btn', 'aria-pressed': 'false', id: 'abc-' + b.id }, [
+        el('span', { className: 'abc-face abc-front' }, [
+          el('span', { className: 'abc-word', text: word }),
+          el('span', { html: icon('i-turn', 'abc-turn') })
+        ]),
+        el('span', { className: 'abc-face abc-back' }, [
+          el('span', { className: 'abc-word', 'aria-hidden': 'true', text: word }),
+          el('span', { className: 'abc-text', text: loc(b.text) })
+        ])
+      ]);
+      btn.setAttribute('aria-label', word + ': ' + t('abc.flip'));
+      btn.addEventListener('click', function () {
+        var on = btn.getAttribute('aria-pressed') !== 'true';
+        btn.setAttribute('aria-pressed', String(on));
+        btn.setAttribute('aria-label', on ? word + ': ' + loc(b.text) : word + ': ' + t('abc.flip'));
+      });
+      root.appendChild(el('li', { className: 'abc-tile' }, [btn]));
+    });
+  }
+
+  /** Begriffe aus dem ABC in einem Text der Speisekarte antippbar machen */
+  var termRegexCache = null;
+  function termMatcher() {
+    if (termRegexCache) return termRegexCache;
+    var list = [];
+    terms().forEach(function (b) {
+      (b.suchwoerter || []).forEach(function (w) { list.push({ word: w, id: b.id }); });
+    });
+    list.sort(function (a, b) { return b.word.length - a.word.length; });
+    var esc = function (s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); };
+    var source = '(' + list.map(function (x) { return esc(x.word); }).join('|') + ')';
+    var re;
+    try { re = new RegExp('(?<![\\p{L}])' + source, 'giu'); } catch (e) { re = new RegExp(source, 'gi'); }
+    termRegexCache = { re: re, list: list };
+    return termRegexCache;
+  }
+
+  function withTerms(text) {
+    var frag = document.createDocumentFragment();
+    if (!terms().length || !text) { frag.appendChild(document.createTextNode(text || '')); return frag; }
+    var m = termMatcher();
+    var last = 0;
+    var match;
+    m.re.lastIndex = 0;
+    while ((match = m.re.exec(text)) !== null) {
+      var found = match[1] || match[0];
+      var start = match.index + (match[0].length - found.length);
+      var entry = m.list.filter(function (x) { return x.word.toLowerCase() === found.toLowerCase(); })[0];
+      if (!entry) continue;
+      frag.appendChild(document.createTextNode(text.slice(last, start)));
+      var b = el('button', { type: 'button', className: 'term', 'data-term': entry.id, 'aria-expanded': 'false', 'aria-controls': 'term-pop' }, [found]);
+      frag.appendChild(b);
+      last = start + found.length;
+    }
+    frag.appendChild(document.createTextNode(text.slice(last)));
+    return frag;
+  }
+
+  var openTerm = null;
+  function showTerm(btn) {
+    var pop = $('#term-pop');
+    var entry = terms().filter(function (b) { return b.id === btn.getAttribute('data-term'); })[0];
+    if (!pop || !entry) return;
+    if (openTerm === btn) { hideTerm(true); return; }
+    hideTerm(false);
+    $('.term-pop-title', pop).textContent = loc(entry.wort);
+    $('.term-pop-text', pop).textContent = loc(entry.text);
+    pop.hidden = false;
+    var host = pop.offsetParent || document.body;
+    var hostRect = host.getBoundingClientRect();
+    var r = btn.getBoundingClientRect();
+    var w = pop.offsetWidth;
+    var left = Math.min(Math.max(r.left, 16), window.innerWidth - w - 16) - hostRect.left;
+    pop.style.left = left + 'px';
+    pop.style.top = (r.bottom - hostRect.top + 10) + 'px';
+    btn.setAttribute('aria-expanded', 'true');
+    openTerm = btn;
+    $('.term-pop-close', pop).focus({ preventScroll: true });
+  }
+  function hideTerm(restoreFocus) {
+    var pop = $('#term-pop');
+    if (pop) pop.hidden = true;
+    if (openTerm) {
+      openTerm.setAttribute('aria-expanded', 'false');
+      if (restoreFocus) openTerm.focus({ preventScroll: true });
+    }
+    openTerm = null;
+  }
+  function setupTerms() {
+    document.addEventListener('click', function (e) {
+      var term = e.target.closest && e.target.closest('.term');
+      if (term) { e.preventDefault(); showTerm(term); return; }
+      if (e.target.closest && e.target.closest('[data-term-close]')) { hideTerm(true); return; }
+      if (openTerm && !(e.target.closest && e.target.closest('#term-pop'))) hideTerm(false);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && openTerm) hideTerm(true); });
+    window.addEventListener('resize', function () { if (openTerm) hideTerm(false); });
   }
 
   /* ---------- Monatskarte ---------- */
@@ -250,22 +395,17 @@
     return new Intl.NumberFormat(state.lang === 'de' ? 'de-DE' : 'en-IE', { style: 'currency', currency: 'EUR' }).format(n);
   }
 
-  var LEAF_ICON = '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 4C9 4 4 9.5 4 16c0 1.4.3 2.7.8 4 1-3.6 3.6-7.4 8.2-9.5-3.6 2.8-5.6 6.2-6.4 9.5 1 .3 2 .5 3 .5C16 20.5 20 15 20 4z"/></svg>';
-
   function renderMenu() {
     var root = $('[data-menu-root]');
     var tabs = $('[data-menu-tabs]');
     var m = state.menu;
     if (!root || !m) return;
+    hideTerm(false);
 
     var monthLabel = loc(m.monat) + ' ' + (m.jahr || '');
     $$('[data-menu-month]').forEach(function (n) { n.textContent = monthLabel; });
-
-    var heroCard = $('[data-hero-card]');
-    if (heroCard) {
-      $('[data-hero-card-title]', heroCard).textContent = t('hero.cardTitle', { monat: monthLabel });
-      heroCard.hidden = false;
-    }
+    var heroMenu = $('[data-hero-menu]');
+    if (heroMenu) heroMenu.textContent = t('hero.menuTitle', { monat: monthLabel });
 
     root.innerHTML = '';
     tabs.innerHTML = '';
@@ -273,49 +413,41 @@
     (m.kategorien || []).forEach(function (cat, ci) {
       var id = 'kat-' + (cat.id || ci);
       var headingId = id + '-titel';
-
-      tabs.appendChild(el('li', { 'data-tab-for': id }, [
-        el('a', { href: '#' + id, text: loc(cat.name) })
-      ]));
+      tabs.appendChild(el('li', { 'data-tab-for': id }, [el('a', { href: '#' + id, text: loc(cat.name) })]));
 
       var items = el('ul', { className: 'menu-items', role: 'list' });
       (cat.gerichte || []).forEach(function (g) {
         /*
-         * Labels "vegetarisch" / "vegan" werden nur gesetzt, wo es eindeutig aus der
-         * Beschreibung hervorgeht (Feld "label" in menu.json).
+         * Labels "vegetarisch" / "vegan" (Feld "label" in menu.json) nur dort, wo es
+         * eindeutig aus der Beschreibung hervorgeht.
          * Bitte beim Inhaber bestätigen – vor allem bei den als "vegan" markierten
          * Gerichten (Dressings, Dips, Brühen sind aus der Beschreibung nicht ersichtlich).
          */
         var label = g.label === 'vegan' || g.label === 'vegetarisch' ? g.label : '';
-        var nameNode = el('span', { className: 'menu-item-name' }, [loc(g.name)]);
+        var nameNode = el('span', { className: 'menu-item-name' });
+        nameNode.appendChild(withTerms(loc(g.name)));
         var detailsNode = null;
         if (g.menge || g.details) {
           detailsNode = el('p', { className: 'menu-item-details' }, [
             g.menge ? el('span', { className: 'menu-item-size', text: g.menge }) : null,
-            g.menge && g.details ? ' · ' : null,
-            g.details ? loc(g.details) : null
+            g.menge && g.details ? ' · ' : null
           ]);
+          if (g.details) detailsNode.appendChild(withTerms(loc(g.details)));
         }
-
-        var li = el('li', { className: 'menu-item', 'data-diet': label || null }, [
-          el('div', { className: 'menu-item-head' }, [
-            nameNode,
-            el('span', { className: 'menu-item-price', text: formatPrice(g.preis) })
-          ]),
+        items.appendChild(el('li', { className: 'menu-item', 'data-diet': label || null }, [
+          el('div', { className: 'menu-item-head' }, [nameNode, el('span', { className: 'menu-item-price', text: formatPrice(g.preis) })]),
           detailsNode,
-          label ? el('span', { className: 'diet diet--' + label, html: LEAF_ICON + '<span>' + t('menu.' + label) + '</span>' }) : null
-        ]);
-        items.appendChild(li);
+          label ? el('span', { className: 'diet diet--' + label, html: icon('i-leaf', '') + '<span>' + t('menu.' + label) + '</span>' }) : null
+        ]));
       });
 
-      var section = el('section', { className: 'menu-cat', id: id, 'aria-labelledby': headingId }, [
+      root.appendChild(el('section', { className: 'menu-cat', id: id, 'aria-labelledby': headingId }, [
         cat.bild ? el('div', { className: 'menu-cat-img' }, [
-          el('img', { src: cat.bild, alt: loc(cat.bildAlt), loading: 'lazy', decoding: 'async', width: '828', height: '400' })
+          el('img', { src: cat.bild, alt: loc(cat.bildAlt), loading: 'lazy', decoding: 'async', width: '828', height: '414' })
         ]) : null,
         el('h3', { id: headingId, text: loc(cat.name) }),
         items
-      ]);
-      root.appendChild(section);
+      ]));
     });
 
     var foot = $('[data-menu-footnote]');
@@ -330,67 +462,58 @@
     if (!root) return;
     var tel = (state.restaurant && state.restaurant.telefon) || '0170 2321409';
     root.innerHTML = '';
-    root.appendChild(el('p', { className: 'notice', text: t('menu.error', { telefon: tel }) || ('Die Speisekarte konnte nicht geladen werden. Telefon: ' + tel) }));
+    root.appendChild(el('p', { className: 'notice', text: t('menu.error', { telefon: tel }) || ('Die Karte lädt gerade nicht. Telefon: ' + tel) }));
   }
 
   function applyFilter(announce) {
     var f = state.filter;
-    var visibleCount = 0;
+    var count = 0;
     $$('.menu-cat').forEach(function (cat) {
-      var anyVisible = false;
+      var any = false;
       $$('.menu-item', cat).forEach(function (item) {
         var diet = item.getAttribute('data-diet');
-        var show = f === 'alle' ||
-          (f === 'vegan' && diet === 'vegan') ||
-          (f === 'vegetarisch' && (diet === 'vegetarisch' || diet === 'vegan'));
+        var show = f === 'alle' || (f === 'vegan' && diet === 'vegan') || (f === 'vegetarisch' && (diet === 'vegetarisch' || diet === 'vegan'));
         item.hidden = !show;
-        if (show) { anyVisible = true; visibleCount++; }
+        if (show) { any = true; count++; }
       });
-      cat.hidden = !anyVisible;
+      cat.hidden = !any;
       var tab = $('[data-tab-for="' + cat.id + '"]');
-      if (tab) tab.hidden = !anyVisible;
+      if (tab) tab.hidden = !any;
     });
-    $$('[data-filter]').forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.getAttribute('data-filter') === f));
-    });
+    $$('[data-filter]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-filter') === f)); });
     if (announce) {
       var live = $('[data-menu-announce]');
-      if (live) live.textContent = f === 'alle' ? t('menu.countAll') : t('menu.countFiltered', { anzahl: visibleCount });
+      if (live) live.textContent = f === 'alle' ? t('menu.countAll') : t('menu.countFiltered', { anzahl: count });
     }
   }
 
-  var spyObserver = null;
+  var spy = null;
   function setupScrollSpy() {
     if (!('IntersectionObserver' in window)) return;
-    if (spyObserver) spyObserver.disconnect();
-    spyObserver = new IntersectionObserver(function (entries) {
+    if (spy) spy.disconnect();
+    spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         $$('[data-menu-tabs] a').forEach(function (a) {
           var active = a.getAttribute('href') === '#' + entry.target.id;
           if (active) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
-          if (active && a.parentNode.parentNode.scrollTo) {
+          if (active) {
             var ul = a.parentNode.parentNode;
-            ul.scrollTo({ left: a.parentNode.offsetLeft - 16, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+            if (ul.scrollTo) ul.scrollTo({ left: a.parentNode.offsetLeft - 16, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
           }
         });
       });
-    }, { rootMargin: '-35% 0px -60% 0px' });
-    $$('.menu-cat').forEach(function (c) { spyObserver.observe(c); });
+    }, { rootMargin: '-30% 0px -65% 0px' });
+    $$('.menu-cat').forEach(function (c) { spy.observe(c); });
   }
 
   /* ---------- Events ---------- */
 
-  var ICONS = {
-    salsa: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 18.5V6.2l11-2.2v11.5a3 3 0 1 1-2-2.83V7.4l-7 1.4v9.7a3 3 0 1 1-2-2.83z"/></svg>',
-    film: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2v2h2V7zm0 4v2h2v-2zm0 4v2h2v-2zm12-8v2h2V7zm0 4v2h2v-2zm0 4v2h2v-2zM9 7v10h6V7z"/></svg>',
-    other: '<svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2l2.9 6.6L22 9.3l-5.4 4.8L18.2 21 12 17.3 5.8 21l1.6-6.9L2 9.3l7.1-.7z"/></svg>'
-  };
+  var EVENT_ICONS = { salsa: 'i-music', film: 'i-film', other: 'i-cal' };
 
   function upcomingEvents() {
     var today = berlinNow().date;
-    var list = (state.events && state.events.termine) || [];
-    return list
+    return ((state.events && state.events.termine) || [])
       .filter(function (e) { return /^\d{4}-\d{2}-\d{2}$/.test(e.datum) && e.datum >= today; }) // Vergangenes ausblenden
       .sort(function (a, b) { return (a.datum + (a.beginn || '')).localeCompare(b.datum + (b.beginn || '')); });
   }
@@ -413,28 +536,27 @@
     if (!root) return;
     root.innerHTML = '';
     var events = state.events ? upcomingEvents() : [];
-    $('[data-events-empty]').hidden = events.length > 0;
+    $('[data-events-empty]').hidden = events.length > 0 || !state.texts;
 
     events.forEach(function (ev) {
-      var type = ICONS[ev.typ] ? ev.typ : 'other';
+      var type = EVENT_ICONS[ev.typ] ? ev.typ : 'other';
       var dp = dateParts(ev.datum);
       var time = ev.beginn
         ? (ev.ende ? t('events.timeRange', { beginn: ev.beginn, ende: ev.ende }) : t('events.time', { zeit: ev.beginn }))
         : '';
-      var btn = el('button', { type: 'button', className: 'btn btn-small btn-mango' }, [t('events.addToCalendar')]);
+      var btn = el('button', { type: 'button', className: 'btn btn--small btn-cal', html: icon('i-cal') + '<span>' + t('events.addToCalendar') + '</span>' });
       btn.addEventListener('click', function () { downloadICS(ev); });
+      var metaText = t('events.' + type) + ' · ' + dp.long + (time ? ' · ' + time.replace(/ /g, '\u00a0') : '');
 
-      root.appendChild(el('li', { className: 'event-card event-card--' + type + (ev.beispiel ? ' event-card--example' : '') }, [
-        ev.beispiel ? el('span', { className: 'event-badge', text: t('events.example') }) : null,
+      root.appendChild(el('li', { className: 'event event--' + type }, [
         el('div', { className: 'event-date', 'aria-hidden': 'true' }, [
           el('span', { className: 'event-date-wd', text: dp.weekday }),
           el('span', { className: 'event-date-day', text: dp.day }),
           el('span', { className: 'event-date-month', text: dp.month })
         ]),
         el('div', { className: 'event-body' }, [
-          el('p', { className: 'event-type', html: ICONS[type] + '<span>' + t('events.' + type) + '</span>' }),
           el('h3', { text: loc(ev.titel) }),
-          el('p', { className: 'event-meta', text: dp.long + (time ? ' · ' + time.replace(/ /g, '\u00a0') : '') }),
+          el('p', { className: 'event-meta' }, [el('span', { html: icon(EVENT_ICONS[type], 'event-type-icon') }), metaText]),
           ev.beschreibung ? el('p', { className: 'event-desc', text: loc(ev.beschreibung) }) : null,
           btn
         ])
@@ -449,9 +571,7 @@
   }
   /** Zeilen nach RFC 5545 auf max. 75 Byte umbrechen */
   function icsFold(line) {
-    var out = [];
-    var cur = '';
-    var bytes = 0;
+    var out = [], cur = '', bytes = 0;
     var enc = window.TextEncoder ? new TextEncoder() : null;
     Array.from(line).forEach(function (ch) {
       var len = enc ? enc.encode(ch).length : 1;
@@ -468,27 +588,10 @@
     var place = 'Auyama, ' + r.adresse.strasse + ', ' + r.adresse.plz + ' ' + r.adresse.ort;
     var stamp = new Date().toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z');
     var lines = [
-      'BEGIN:VCALENDAR',
-      'VERSION:2.0',
-      'PRODID:-//Auyama Freising//Website//DE',
-      'CALSCALE:GREGORIAN',
-      'METHOD:PUBLISH',
-      'BEGIN:VTIMEZONE',
-      'TZID:Europe/Berlin',
-      'BEGIN:DAYLIGHT',
-      'TZOFFSETFROM:+0100',
-      'TZOFFSETTO:+0200',
-      'TZNAME:CEST',
-      'DTSTART:19700329T020000',
-      'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU',
-      'END:DAYLIGHT',
-      'BEGIN:STANDARD',
-      'TZOFFSETFROM:+0200',
-      'TZOFFSETTO:+0100',
-      'TZNAME:CET',
-      'DTSTART:19701025T030000',
-      'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU',
-      'END:STANDARD',
+      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Auyama Freising//Website//DE', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
+      'BEGIN:VTIMEZONE', 'TZID:Europe/Berlin',
+      'BEGIN:DAYLIGHT', 'TZOFFSETFROM:+0100', 'TZOFFSETTO:+0200', 'TZNAME:CEST', 'DTSTART:19700329T020000', 'RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU', 'END:DAYLIGHT',
+      'BEGIN:STANDARD', 'TZOFFSETFROM:+0200', 'TZOFFSETTO:+0100', 'TZNAME:CET', 'DTSTART:19701025T030000', 'RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU', 'END:STANDARD',
       'END:VTIMEZONE',
       'BEGIN:VEVENT',
       'UID:' + ev.datum + '-' + (ev.beginn || '0000').replace(':', '') + '-' + (ev.typ || 'event') + '@auyama-freising',
@@ -501,7 +604,7 @@
       lines.push('DTSTART;VALUE=DATE:' + ev.datum.replace(/-/g, ''));
     }
     var title = loc(ev.titel);
-    var typeLabel = t('events.' + (ICONS[ev.typ] ? ev.typ : 'other'));
+    var typeLabel = t('events.' + (EVENT_ICONS[ev.typ] ? ev.typ : 'other'));
     if (typeLabel && title.toLowerCase().indexOf(typeLabel.toLowerCase()) === -1) title = typeLabel + ': ' + title;
     lines.push('SUMMARY:' + icsEscape(title));
     if (ev.beschreibung) lines.push('DESCRIPTION:' + icsEscape(loc(ev.beschreibung)));
@@ -509,8 +612,7 @@
     if (/^https?:/.test(window.location.href)) lines.push('URL:' + window.location.href.split('#')[0]);
     lines.push('END:VEVENT', 'END:VCALENDAR');
 
-    var ics = lines.map(icsFold).join('\r\n') + '\r\n';
-    var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+    var blob = new Blob([lines.map(icsFold).join('\r\n') + '\r\n'], { type: 'text/calendar;charset=utf-8' });
     var url = URL.createObjectURL(blob);
     var a = el('a', { href: url, download: 'auyama-' + ev.datum + '.ics' });
     document.body.appendChild(a);
@@ -529,17 +631,9 @@
 
   function applyTexts() {
     if (!state.texts) return;
-    var lang = state.lang;
-    document.documentElement.lang = lang;
-
-    $$('[data-i18n]').forEach(function (n) {
-      var v = t(n.getAttribute('data-i18n'));
-      if (v) n.textContent = v;
-    });
-    $$('[data-i18n-html]').forEach(function (n) {
-      var v = t(n.getAttribute('data-i18n-html'));
-      if (v) n.innerHTML = v;
-    });
+    document.documentElement.lang = state.lang;
+    $$('[data-i18n]').forEach(function (n) { var v = t(n.getAttribute('data-i18n')); if (v) n.textContent = v; });
+    $$('[data-i18n-html]').forEach(function (n) { var v = t(n.getAttribute('data-i18n-html')); if (v) n.innerHTML = v; });
     $$('[data-i18n-attr]').forEach(function (n) {
       n.getAttribute('data-i18n-attr').split(';').forEach(function (pair) {
         var p = pair.split(':');
@@ -547,14 +641,10 @@
         if (v) n.setAttribute(p[0].trim(), v);
       });
     });
-
     document.title = t('meta.title') || document.title;
     var desc = $('meta[name="description"]');
     if (desc && t('meta.description')) desc.setAttribute('content', t('meta.description'));
-
-    $$('[data-lang]').forEach(function (b) {
-      b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === lang));
-    });
+    $$('[data-lang]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === state.lang)); });
     updateNavToggleLabel();
   }
 
@@ -569,18 +659,18 @@
     renderContact();
     renderStatus();
     renderHours();
+    renderAbc();
     if (state.menu) renderMenu();
     renderEvents();
   }
 
-  /* ---------- Navigation (Handy) ---------- */
+  /* ---------- Navigation ---------- */
 
   function updateNavToggleLabel() {
     var btn = $('.nav-toggle');
     if (!btn) return;
-    var open = btn.getAttribute('aria-expanded') === 'true';
     var label = $('.visually-hidden', btn);
-    var v = t(open ? 'nav.close' : 'nav.toggle');
+    var v = t(btn.getAttribute('aria-expanded') === 'true' ? 'nav.close' : 'nav.toggle');
     if (label && v) label.textContent = v;
   }
 
@@ -603,42 +693,16 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.classList.contains('is-open')) { close(); btn.focus(); }
     });
-
-    var header = $('#site-header');
-    var onScroll = function () { header.classList.toggle('is-scrolled', window.scrollY > 8); };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
   }
 
-  /* ---------- Scroll-Animationen ---------- */
-
-  function prefersReducedMotion() {
-    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  }
-
-  function setupReveal() {
-    var items = $$('.reveal');
-    if (prefersReducedMotion() || !('IntersectionObserver' in window)) {
-      items.forEach(function (n) { n.classList.add('is-visible'); });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-    items.forEach(function (n) { io.observe(n); });
-  }
-
-  /* ---------- Galerie-Lightbox ---------- */
+  /* ---------- Galerie ---------- */
 
   function setupLightbox() {
     var dialog = $('[data-lightbox-dialog]');
     if (!dialog || typeof dialog.showModal !== 'function') return;
-    var img = $('[data-lightbox-img]', dialog);
+    var frame = $('[data-lightbox-frame]', dialog);
+    var img = el('img', { alt: '' });
+    frame.appendChild(img);
     var opener = null;
     $$('[data-lightbox]').forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -653,7 +717,7 @@
     dialog.addEventListener('close', function () { if (opener) opener.focus(); });
   }
 
-  /* ---------- Google Maps (lädt erst nach Klick – Datenschutz) ---------- */
+  /* ---------- Google Maps (lädt erst nach Klick, Datenschutz) ---------- */
 
   function setupMap() {
     var wrap = $('[data-map]');
@@ -664,10 +728,7 @@
       var q = encodeURIComponent('Auyama, ' + a.strasse + ', ' + a.plz + ' ' + a.ort);
       var iframe = el('iframe', {
         src: 'https://maps.google.com/maps?q=' + q + '&z=17&output=embed&hl=' + state.lang,
-        title: t('map.iframeTitle') || 'Karte',
-        loading: 'lazy',
-        referrerpolicy: 'no-referrer-when-downgrade',
-        allowfullscreen: true
+        title: t('map.iframeTitle') || 'Karte', loading: 'lazy', referrerpolicy: 'no-referrer-when-downgrade', allowfullscreen: true
       });
       wrap.innerHTML = '';
       wrap.appendChild(iframe);
@@ -680,9 +741,9 @@
   function init() {
     state.lang = detectLang();
     setupNav();
-    setupReveal();
     setupLightbox();
     setupMap();
+    setupTerms();
 
     var year = $('[data-year]');
     if (year) year.textContent = String(new Date().getFullYear());
@@ -691,10 +752,7 @@
       b.addEventListener('click', function () { setLang(b.getAttribute('data-lang'), true); });
     });
     $$('[data-filter]').forEach(function (b) {
-      b.addEventListener('click', function () {
-        state.filter = b.getAttribute('data-filter');
-        applyFilter(true);
-      });
+      b.addEventListener('click', function () { state.filter = b.getAttribute('data-filter'); applyFilter(true); });
     });
 
     var load = function (url, key) {
@@ -707,13 +765,13 @@
       load('texts.json', 'texts'),
       load('restaurant.json', 'restaurant'),
       load('menu.json', 'menu'),
-      load('events.json', 'events')
+      load('events.json', 'events'),
+      load('lexikon.json', 'lexikon')
     ]).then(function () {
       applyTexts();
       renderAll();
       syncStructuredData();
       if (!state.menu) renderMenuError();
-      // Status jede Minute aktualisieren (und um Mitternacht die Tabelle)
       setInterval(function () { renderStatus(); renderHours(); }, 60 * 1000);
     });
   }

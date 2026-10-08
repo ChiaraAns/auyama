@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Termine. Datum im Format JJJJ-MM-TT, Uhrzeit HH:MM. \"ende\" ist optional. \"typ\": \"salsa\" oder \"film\" (bestimmt nur das Symbol). Vergangene Termine werden automatisch ausgeblendet. \"beispiel\": true zeigt ein Beispiel-Schild – bei echten Terminen weglassen. Mehr dazu in der README.md.",
+  "_hinweis": "Termine mit festem Datum. Datum im Format JJJJ-MM-TT, Uhrzeit HH:MM. \"ende\" ist optional. \"typ\": \"salsa\" oder \"film\". Vergangene Termine verschwinden automatisch. Salsa Nights und Filmabende werden zusätzlich immer als feste Formate angezeigt. Mehr dazu in der README.md.",
 
   "termine": [
     {
@@ -7,40 +7,12 @@
       "datum": "2026-10-11",
       "beginn": "17:00",
       "titel": {
-        "de": "„La Clave – Das Geheimnis der kubanischen Musik“",
-        "en": "“La Clave – Das Geheimnis der kubanischen Musik”"
+        "de": "La Clave: Das Geheimnis der kubanischen Musik",
+        "en": "La Clave: Das Geheimnis der kubanischen Musik"
       },
       "beschreibung": {
-        "de": "Filmabend im Auyama. Eintritt frei.",
+        "de": "Filmabend im Auyama. Der Eintritt ist frei.",
         "en": "Film night at Auyama. Free entry."
-      }
-    },
-    {
-      "typ": "salsa",
-      "beispiel": true,
-      "datum": "2026-10-23",
-      "beginn": "19:00",
-      "titel": {
-        "de": "Salsa-Night mit DJ",
-        "en": "Salsa Night with DJ"
-      },
-      "beschreibung": {
-        "de": "BEISPIEL-TERMIN – Datum, Uhrzeit und Text bitte durch echte Angaben ersetzen. Salsa-Night mit DJ im Auyama.",
-        "en": "SAMPLE EVENT – please replace date, time and text with real details. Salsa night with a DJ at Auyama."
-      }
-    },
-    {
-      "typ": "salsa",
-      "beispiel": true,
-      "datum": "2026-11-07",
-      "beginn": "19:00",
-      "titel": {
-        "de": "Salsa-Night mit DJ",
-        "en": "Salsa Night with DJ"
-      },
-      "beschreibung": {
-        "de": "BEISPIEL-TERMIN – Datum, Uhrzeit und Text bitte durch echte Angaben ersetzen. Salsa-Night mit DJ im Auyama.",
-        "en": "SAMPLE EVENT – please replace date, time and text with real details. Salsa night with a DJ at Auyama."
       }
     }
   ]

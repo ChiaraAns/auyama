@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-08T10:13:19.047256Z",
+  "title": "Design System: Auyama Freising",
+  "extensions": {
+    "colorMeta": {
+      "grout": {
+        "role": "primary",
+        "displayName": "Grout",
+        "canonical": "#0b220e",
+        "tonalRamp": [
+          "#0f2e13",
+          "#1b5523",
+          "#287b33",
+          "#38ad47",
+          "#5dcb6b",
+          "#93dc9d",
+          "#c5ecca",
+          "#ecf9ed"
+        ]
+      },
+      "verde": {
+        "role": "primary",
+        "displayName": "Verde",
+        "canonical": "#14321d",
+        "tonalRamp": [
+          "#112c19",
+          "#20502e",
+          "#2f7544",
+          "#42a45f",
+          "#66c282",
+          "#99d6ab",
+          "#c8e9d2",
+          "#edf8f0"
+        ]
+      },
+      "auyama": {
+        "role": "secondary",
+        "displayName": "Auyama",
+        "canonical": "#d08230",
+        "tonalRamp": [
+          "#321f0b",
+          "#5b3915",
+          "#85531e",
+          "#bb752a",
+          "#d79650",
+          "#e5b98b",
+          "#f1d9c1",
+          "#faf2ea"
+        ]
+      },
+      "auyama-ink": {
+        "role": "secondary",
+        "displayName": "Auyama Ink",
+        "canonical": "#94500f",
+        "tonalRamp": [
+          "#381e06",
+          "#66370a",
+          "#94500f",
+          "#d07115",
+          "#eb923d",
+          "#f2b67d",
+          "#f8d8ba",
+          "#fdf2e8"
+        ]
+      },
+      "mango": {
+        "role": "tertiary",
+        "displayName": "Mango",
+        "canonical": "#f2b53a",
+        "tonalRamp": [
+          "#392804",
+          "#694907",
+          "#996a0a",
+          "#d7950e",
+          "#f2b436",
+          "#f6cd79",
+          "#fae4b7",
+          "#fdf6e7"
+        ]
+      },
+      "cal": {
+        "role": "neutral",
+        "displayName": "Cal",
+        "canonical": "#f6efe2",
+        "tonalRamp": [
+          "#2f230e",
+          "#56411b",
+          "#7d5e27",
+          "#af8536",
+          "#cca55c",
+          "#ddc392",
+          "#eddfc5",
+          "#f9f4ec"
+        ]
+      },
+      "tropico": {
+        "role": "tertiary",
+        "displayName": "Tropico",
+        "canonical": "#2a7448",
+        "tonalRamp": [
+          "#102d1c",
+          "#1e5233",
+          "#2b784a",
+          "#3da869",
+          "#62c68a",
+          "#96d9b1",
+          "#c7ebd5",
+          "#ecf8f1"
+        ]
+      },
+      "terracota": {
+        "role": "tertiary",
+        "displayName": "Terracota",
+        "canonical": "#a8442a",
+        "tonalRamp": [
+          "#31140c",
+          "#5a2416",
+          "#833521",
+          "#b84a2e",
+          "#d46e54",
+          "#e29e8d",
+          "#f0cbc2",
+          "#faeeeb"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "hero": {
+        "displayName": "Hero",
+        "purpose": "First viewport headline only."
+      },
+      "display": {
+        "displayName": "Display",
+        "purpose": "Room headings and Spanish accents."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Menu categories, tiles, events."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running copy."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Footer column headings only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "float",
+        "value": "0 18px 40px -14px rgba(11, 34, 14, 0.55)",
+        "purpose": "Popover and map consent card floating above the floor."
+      },
+      {
+        "name": "bar",
+        "value": "0 16px 34px -10px rgba(0, 0, 0, 0.6)",
+        "purpose": "Fixed mobile action bar."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-tile",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All transitions; exponential ease-out."
+      },
+      {
+        "name": "settle",
+        "value": "1s, 70ms stagger, from translateY(-12px) scale(1.025) blur(3px)",
+        "purpose": "Hero tiles settle into the floor once on load."
+      },
+      {
+        "name": "flip",
+        "value": "rotateY(180deg) 0.8s",
+        "purpose": "ABC tiles turn over."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "760px"
+      },
+      {
+        "name": "nav",
+        "value": "960px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main action: call, route.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Anrufen</a>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;min-height:50px;padding:.7rem 1.35rem;border-radius:6px;background:#d08230;color:#0b220e;font:650 1rem/1.1 'Bricolage Grotesque',system-ui,sans-serif;text-decoration:none;transition:background-color .25s cubic-bezier(.16,1,.3,1)}.ds-btn:hover{background:#f2b53a}.ds-btn:focus-visible{outline:3px solid #0b220e;outline-offset:3px}"
+    },
+    {
+      "name": "Status Tile",
+      "kind": "custom",
+      "refersTo": "tile-status",
+      "description": "Live open or closed status in Europe/Berlin time.",
+      "html": "<div class=\"ds-tile\"><p class=\"ds-tile-t\"><span class=\"ds-dot\"></span>Geöffnet</p><p class=\"ds-tile-d\">heute bis 16:00 Uhr</p></div>",
+      "css": ".ds-tile{width:190px;height:190px;border-radius:6px;background:#f6efe2;color:#0b220e;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;gap:.35rem;box-sizing:border-box}.ds-tile-t{margin:0;display:flex;align-items:center;gap:.5rem;font:400 1.7rem/1.05 Gloock,Georgia,serif}.ds-tile-d{margin:0;font:400 .95rem/1.35 'Bricolage Grotesque',system-ui,sans-serif;color:#3d5443}.ds-dot{width:11px;height:11px;border-radius:50%;background:#37a165}"
+    },
+    {
+      "name": "Menu Tile",
+      "kind": "custom",
+      "refersTo": "tile-menu",
+      "description": "Link to the monthly menu.",
+      "html": "<a class=\"ds-mt\" href=\"#\"><span class=\"ds-mt-t\">Monatskarte Oktober 2026</span><span class=\"ds-mt-s\">Jetzt neu auf der Karte</span></a>",
+      "css": ".ds-mt{width:388px;height:190px;box-sizing:border-box;border-radius:6px;background:#d08230;color:#0b220e;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;gap:.3rem;text-decoration:none;transition:background-color .3s}.ds-mt:hover{background:#f2b53a}.ds-mt-t{font:400 1.7rem/1.05 Gloock,Georgia,serif}.ds-mt-s{font:400 .95rem/1.35 'Bricolage Grotesque',system-ui,sans-serif}"
+    },
+    {
+      "name": "Cenefa",
+      "kind": "custom",
+      "refersTo": "cenefa",
+      "description": "Tile border band between rooms.",
+      "html": "<div class=\"ds-cenefa\"></div>",
+      "css": ".ds-cenefa{height:32px;width:100%;background:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F6EFE2'/%3E%3Cg fill='%23D08230'%3E%3Cpath d='M0 0h22A22 22 0 0 1 0 22z'/%3E%3Cpath d='M64 0v22A22 22 0 0 1 42 0z'/%3E%3Cpath d='M64 64H42a22 22 0 0 1 22-22z'/%3E%3Cpath d='M0 64V42a22 22 0 0 1 22 22z'/%3E%3C/g%3E%3Ccircle cx='32' cy='32' r='4' fill='%23F2B53A'/%3E%3C/svg%3E\") left center/32px 32px repeat-x}"
+    },
+    {
+      "name": "Vegan Badge",
+      "kind": "chip",
+      "refersTo": "diet-vegan",
+      "description": "Diet label in the menu.",
+      "html": "<span class=\"ds-diet\">vegan</span>",
+      "css": ".ds-diet{display:inline-flex;padding:.1rem .5rem;border-radius:4px;background:#2a7448;color:#fff;font:700 .78rem 'Bricolage Grotesque',system-ui,sans-serif}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Mosaico",
+    "overview": "The site is a Venezuelan cement tile floor seen from above. Every working part of the first viewport is a tile; rooms are separated by cenefas; the dish ABC is a grid of tiles that turn over.",
+    "keyCharacteristics": [
+      "Square tiles with 6px corners and 8px grout gaps",
+      "Authored SVG tile ornaments",
+      "Cenefa bands as section dividers",
+      "Committed colour fields",
+      "One orchestrated entrance, one signature interaction"
+    ],
+    "rules": [
+      {
+        "section": "Colors",
+        "name": "The Pigment Rule",
+        "body": "Colour commits at room scale."
+      },
+      {
+        "section": "Colors",
+        "name": "The Contrast Rule",
+        "body": "Cal text on verde, ink on auyama and mango. Never cal on auyama."
+      },
+      {
+        "section": "Typography",
+        "name": "The No Kicker Rule",
+        "body": "No small label above a heading or tile title."
+      }
+    ],
+    "dos": [
+      "Keep every first viewport element a working tile.",
+      "Separate rooms with cenefas.",
+      "Use the authored tile SVGs for ornament."
+    ],
+    "donts": [
+      "No kickers or eyebrows above headings.",
+      "No emoji or Unicode glyphs as icons.",
+      "No invented dates, dishes, prices or reviews.",
+      "No cal text on auyama."
+    ]
+  }
+}

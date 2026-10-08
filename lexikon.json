@@ -1,0 +1,78 @@
+{
+  "_hinweis": "Kleines ABC der venezolanischen Küche. \"suchwoerter\": Wörter, die in der Speisekarte automatisch antippbar werden. Neue Begriffe einfach als weiteren Block ergänzen. Mehr dazu in der README.md.",
+
+  "begriffe": [
+    {
+      "id": "auyama",
+      "wort": { "de": "Auyama", "en": "Auyama" },
+      "suchwoerter": ["Kürbis", "pumpkin"],
+      "text": {
+        "de": "So heißt der Kürbis in Venezuela. Und so heißen wir.",
+        "en": "The Venezuelan word for pumpkin. And our name."
+      }
+    },
+    {
+      "id": "arepa",
+      "wort": { "de": "Arepa", "en": "Arepa" },
+      "suchwoerter": ["Arepa"],
+      "text": {
+        "de": "Fladen aus Maismehl, außen knusprig, innen weich. Aufgeschnitten und gefüllt ist sie das Brot Venezuelas.",
+        "en": "A corn flour flatbread, crisp outside and soft inside. Split and filled, it is Venezuela's daily bread."
+      }
+    },
+    {
+      "id": "reina-pepiada",
+      "wort": { "de": "Reina Pepiada", "en": "Reina Pepiada" },
+      "suchwoerter": ["Reina Pepiada"],
+      "text": {
+        "de": "Cremige Füllung aus Hähnchen und Avocado. Benannt nach einer venezolanischen Miss World der 1950er Jahre.",
+        "en": "A creamy filling of chicken and avocado, named in honour of a Venezuelan Miss World of the 1950s."
+      }
+    },
+    {
+      "id": "carne-mechada",
+      "wort": { "de": "Carne Mechada", "en": "Carne Mechada" },
+      "suchwoerter": ["Carne Mechada"],
+      "text": {
+        "de": "Rindfleisch, lange geschmort und in feine Fasern gezupft. Herzhaft und zart.",
+        "en": "Beef, slowly braised and pulled into fine shreds. Hearty and tender."
+      }
+    },
+    {
+      "id": "pabellon",
+      "wort": { "de": "Pabellón Criollo", "en": "Pabellón Criollo" },
+      "suchwoerter": ["Pabellón Criollo"],
+      "text": {
+        "de": "Das Nationalgericht Venezuelas: Reis, schwarze Bohnen, Carne Mechada und gebratene Kochbanane auf einem Teller.",
+        "en": "Venezuela's national dish: rice, black beans, carne mechada and fried plantain on one plate."
+      }
+    },
+    {
+      "id": "kochbanane",
+      "wort": { "de": "Kochbanane", "en": "Plantain" },
+      "suchwoerter": ["Kochbanane", "plantain"],
+      "text": {
+        "de": "Die große Schwester der Banane. Reif und gebraten wird sie süß und karamellig.",
+        "en": "The banana's bigger sister. Ripe and fried, it turns sweet and caramelised."
+      }
+    },
+    {
+      "id": "tamarinde",
+      "wort": { "de": "Tamarinde", "en": "Tamarind" },
+      "suchwoerter": ["Tamarinde", "tamarind"],
+      "text": {
+        "de": "Tropische Schotenfrucht mit süßsaurem Fruchtfleisch. Bei uns als hausgemachte Limonade.",
+        "en": "A tropical pod fruit with sweet and sour pulp. Here as homemade lemonade."
+      }
+    },
+    {
+      "id": "guave",
+      "wort": { "de": "Guave", "en": "Guava" },
+      "suchwoerter": ["Guaven", "Guave", "guava"],
+      "text": {
+        "de": "Duftende Tropenfrucht, süß und ein wenig blumig. Probier sie als Schorle.",
+        "en": "A fragrant tropical fruit, sweet and a little floral. Try it as a spritzer."
+      }
+    }
+  ]
+}

@@ -3,21 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Auyama Freising – Venezolanische &amp; karibische Küche und Feinkost in der Altstadt</title>
-  <meta name="description" content="Auyama in der Freisinger Altstadt: venezolanisch-karibische Küche und Feinkost. Arepas, Burritos, Bowls und Currys – Monatskarte, Salsa-Nights und Filmabende. Obere Hauptstr. 41, Freising.">
-  <meta name="theme-color" content="#14321D">
+  <title>Auyama Freising · Venezolanische und karibische Küche in der Altstadt</title>
+  <meta name="description" content="Venezolanische und karibische Küche mitten in der Freisinger Altstadt. Arepas, Bowls und Currys, jeden Monat eine neue Karte. Dazu Salsa Nights und Filmabende. Obere Hauptstr. 41, Freising.">
+  <meta name="theme-color" content="#0B220E">
 
-  <!-- Open Graph (Vorschau beim Teilen auf WhatsApp, Facebook & Co.).
-       Absolute Adressen: bei eigener Domain hier anpassen. -->
+  <!-- Open Graph (Vorschau beim Teilen). Bei eigener Domain die Adressen anpassen. -->
   <meta property="og:type" content="restaurant">
   <meta property="og:site_name" content="Auyama Freising">
-  <meta property="og:title" content="Auyama Freising – Venezolanische &amp; karibische Küche">
-  <meta property="og:description" content="Familiär, farbenfroh, frisch: venezolanisch-karibische Küche und Feinkost mitten in der Freisinger Altstadt.">
+  <meta property="og:title" content="Auyama · Venezuela auf dem Teller, mitten in Freising">
+  <meta property="og:description" content="Venezolanische und karibische Küche in der Freisinger Altstadt. Jeden Monat eine neue Karte, dazu Salsa Nights und Filmabende.">
   <meta property="og:url" content="https://chiaraans.github.io/auyama/">
   <meta property="og:image" content="https://chiaraans.github.io/auyama/assets/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Logo von Auyama Feinkost neben zwei bunten Pokebowls">
+  <meta property="og:image:alt" content="Logo von Auyama Feinkost neben zwei bunten Bowls">
   <meta property="og:locale" content="de_DE">
   <meta property="og:locale:alternate" content="en_GB">
   <meta name="twitter:card" content="summary_large_image">
@@ -27,26 +26,26 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-  <link rel="preload" href="assets/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="assets/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/gloock-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/pokebowls.jpg" as="image">
   <link rel="stylesheet" href="css/style.css">
 
   <script>document.documentElement.classList.add('js');</script>
   <script src="js/main.js" defer></script>
 
-  <!-- Strukturierte Daten für Google (Restaurant). Öffnungszeiten & Telefon werden
-       beim Laden automatisch aus restaurant.json aktualisiert. -->
+  <!-- Strukturierte Daten für Google. Öffnungszeiten und Telefon werden beim Laden aus restaurant.json übernommen. -->
   <script type="application/ld+json" id="ld-restaurant">
   {
     "@context": "https://schema.org",
     "@type": "Restaurant",
     "name": "Auyama",
     "alternateName": "Auyama Feinkost",
-    "description": "Venezolanisch-karibische Küche und Feinkost mitten in der Freisinger Altstadt.",
+    "description": "Venezolanische und karibische Küche mitten in der Freisinger Altstadt.",
     "url": "https://chiaraans.github.io/auyama/",
     "image": "https://chiaraans.github.io/auyama/assets/og-image.jpg",
     "logo": "https://chiaraans.github.io/auyama/assets/logo.jpg",
-    "telephone": "+49 170 2321409",
+    "telephone": "+491702321409",
     "servesCuisine": ["Venezuelan", "Caribbean"],
     "hasMenu": "https://chiaraans.github.io/auyama/#karte",
     "address": {
@@ -57,18 +56,8 @@
       "addressCountry": "DE"
     },
     "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday"],
-        "opens": "12:00",
-        "closes": "16:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Friday", "Saturday"],
-        "opens": "12:00",
-        "closes": "21:00"
-      }
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday", "Thursday"], "opens": "12:00", "closes": "16:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "12:00", "closes": "21:00" }
     ],
     "sameAs": ["https://instagram.com/auyama_freising"]
   }
@@ -77,24 +66,35 @@
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">Zum Inhalt springen</a>
 
-  <!-- ===================== Kopfzeile ===================== -->
-  <header class="site-header" id="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#top">
-        <img class="brand-badge" src="assets/logo.jpg" width="48" height="48" alt="Auyama Feinkost – zum Seitenanfang" data-i18n-attr="alt:brand.alt">
-      </a>
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M6 3h10l3 3v15H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm2.5 6v1.8h8V9zm0 3.6v1.8h8v-1.8zm0 3.6V18h5v-1.8z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13m0 0-5.5-5.5M18 12l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-insta" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.1"/></symbol>
+    <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18.5V6.2l11-2.2v11.5a3 3 0 1 1-2-2.83V7.4l-7 1.4v9.7a3 3 0 1 1-2-2.83z"/></symbol>
+    <symbol id="i-film" viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1 2v2h2V7zm0 4v2h2v-2zm0 4v2h2v-2zm12-8v2h2V7zm0 4v2h2v-2zm0 4v2h2v-2zM9 7v10h6V7z"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><path d="M7 2v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2zm-2 8h14v9H5zm6 2v2.5H8.5v2H11V19h2v-2.5h2.5v-2H13V12z"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M20 4C9 4 4 9.5 4 16c0 1.4.3 2.7.8 4 1-3.6 3.6-7.4 8.2-9.5-3.6 2.8-5.6 6.2-6.4 9.5 1 .3 2 .5 3 .5C16 20.5 20 15 20 4z"/></symbol>
+    <symbol id="i-turn" viewBox="0 0 24 24"><path d="M17.65 6.35A8 8 0 1 0 20 12h-2a6 6 0 1 1-1.76-4.24L13 11h7V4z"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+  </svg>
 
+  <header class="site-header" id="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top">
+        <img class="brand-badge" src="assets/logo.jpg" width="44" height="44" alt="Auyama Feinkost, zum Seitenanfang" data-i18n-attr="alt:brand.alt">
+      </a>
       <nav class="main-nav" id="main-nav" aria-label="Hauptnavigation" data-i18n-attr="aria-label:nav.label">
         <ul>
           <li><a href="#ueber-uns" data-i18n="nav.about">Über uns</a></li>
           <li><a href="#karte" data-i18n="nav.menu">Speisekarte</a></li>
+          <li><a href="#abc" data-i18n="nav.abc">ABC</a></li>
           <li><a href="#events" data-i18n="nav.events">Events</a></li>
-          <li><a href="#feinkost" data-i18n="nav.deli">Feinkost &amp; Catering</a></li>
           <li><a href="#galerie" data-i18n="nav.gallery">Galerie</a></li>
-          <li><a href="#anfahrt" data-i18n="nav.visit">Öffnungszeiten</a></li>
+          <li><a href="#anfahrt" data-i18n="nav.visit">Anfahrt</a></li>
         </ul>
       </nav>
-
       <div class="header-actions">
         <div class="lang-switch" role="group" aria-label="Sprache wählen / Choose language">
           <button type="button" data-lang="de" aria-pressed="true" lang="de" title="Deutsch">DE</button>
@@ -102,7 +102,7 @@
         </div>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
           <span class="visually-hidden" data-i18n="nav.toggle">Menü öffnen</span>
-          <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         </button>
       </div>
     </div>
@@ -110,99 +110,79 @@
 
   <main id="main">
 
-    <!-- ===================== 1. Hero ===================== -->
+    <!-- Hero: ein Fliesenboden. Jede Fliese hat eine Aufgabe. -->
     <section class="hero" id="top" aria-labelledby="hero-title">
-      <div class="container hero-grid">
-        <div class="hero-text">
-          <img class="hero-badge" src="assets/logo.jpg" width="150" height="150" alt="Logo: Auyama Feinkost" data-i18n-attr="alt:hero.logoAlt">
-          <p class="eyebrow eyebrow--mango" lang="es">¡Bienvenidos!</p>
-          <h1 id="hero-title" data-i18n-html="hero.title">Venezolanisch-karibische Küche <em>&amp; Feinkost</em></h1>
-          <p class="lead" data-i18n="hero.lead">Mitten in der Freisinger Altstadt – familiär, farbenfroh, frisch.</p>
-
-          <p class="status" data-status hidden>
-            <span class="status-dot" aria-hidden="true"></span>
-            <span class="status-text" data-status-text></span>
-          </p>
-
-          <div class="btn-row">
-            <a class="btn btn-primary" href="tel:+491702321409" data-tel>
-              <svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+      <div class="floor">
+        <div class="tile tile--slab" style="--i:0">
+          <h1 id="hero-title" data-i18n-html="hero.title">Venezuela auf dem Teller. <em>Mitten in Freising.</em></h1>
+          <p class="hero-lead" data-i18n="hero.lead">Arepas, Bowls und Currys, mit viel Liebe gekocht. Jeden Monat eine neue Karte.</p>
+          <div class="actions">
+            <a class="btn btn--auyama" href="tel:+491702321409" data-tel>
+              <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
               <span data-i18n="cta.call">Anrufen</span>
             </a>
-            <a class="btn btn-ghost" href="#karte">
-              <span data-i18n="cta.menu">Zur Speisekarte</span>
-              <svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M12 4v14m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <a class="btn btn--line" href="https://www.google.com/maps/dir/?api=1&amp;destination=Obere+Hauptstr.+41%2C+85354+Freising" data-route target="_blank" rel="noopener">
+              <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+              <span data-i18n="cta.route">Route</span>
             </a>
           </div>
-
-          <p class="hero-address">
-            <svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-            <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Obere+Hauptstr.+41%2C+85354+Freising" data-route target="_blank" rel="noopener">
-              <span data-address>Obere Hauptstr. 41, 85354 Freising</span>
-            </a>
-          </p>
         </div>
 
-        <div class="hero-media">
+        <figure class="tile tile--photo" style="--i:1">
           <img src="assets/pokebowls.jpg" width="828" height="1095" fetchpriority="high"
-               alt="Zwei bunte karibische Pokebowls mit Reis, schwarzen Bohnen, Avocado, Cashewkernen und Blüten, daneben Limonade und ein Blumenstrauß"
+               alt="Zwei bunte Bowls mit Reis, schwarzen Bohnen, Avocado, Cashewkernen und Blüten, von oben fotografiert, daneben Limonade und Blumen"
                data-i18n-attr="alt:hero.imgAlt">
-          <a class="hero-card" href="#karte" data-hero-card hidden>
-            <span class="hero-card-kicker" data-i18n="hero.cardKicker">Jetzt neu</span>
-            <span class="hero-card-title" data-hero-card-title></span>
-          </a>
+        </figure>
+
+        <div class="tile tile--ornament" style="--i:2" aria-hidden="true"></div>
+
+        <div class="tile tile--status" style="--i:3" data-status-tile>
+          <p class="status-title"><span class="status-dot" aria-hidden="true"></span><span data-status-title>Willkommen</span></p>
+          <p class="status-detail" data-status-detail>Di bis Sa ab 12 Uhr</p>
+        </div>
+
+        <a class="tile tile--menu" style="--i:4" href="#karte">
+          <span class="tile-title" data-hero-menu>Monatskarte Oktober 2026</span>
+          <span class="tile-sub" data-i18n="hero.menuKicker">Jetzt neu auf der Karte</span>
+          <svg class="tile-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+
+        <div class="tile tile--welcome" style="--i:5">
+          <p lang="es" data-i18n="hero.welcome">¡Bienvenidos!</p>
         </div>
       </div>
-      <div class="wave wave--cream" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0 62c180 38 360 52 560 26S940 4 1120 18s260 50 320 58v34H0z"/></svg></div>
     </section>
 
-    <!-- ===================== 2. Über uns ===================== -->
-    <section class="section section--cream" id="ueber-uns" aria-labelledby="about-title">
-      <div class="container about-grid">
-        <div class="about-text reveal">
-          <p class="eyebrow" lang="es">Hola, Freising</p>
-          <h2 id="about-title" data-i18n="about.title">Venezuela trifft Freising</h2>
-          <!-- PLATZHALTER: Entwurfstext – vom Inhaber anpassen lassen (Datei texts.json, Abschnitt "about"). -->
-          <p class="placeholder-tag" data-i18n="placeholder.text">Entwurfstext – bitte anpassen</p>
-          <p data-i18n="about.p1">„Auyama“ – so heißt der Kürbis in Venezuela. Genauso bunt und herzlich wie sein Namensgeber ist unser kleines Restaurant mitten in der Freisinger Altstadt.</p>
-          <p data-i18n="about.p2">Bei uns trifft venezolanisch-karibische Küche auf Freisinger Gemütlichkeit: Arepas, Burritos, Bowls und Klassiker wie Pabellón Criollo – frisch zubereitet, mit einer Karte, die jeden Monat wechselt.</p>
-          <p data-i18n="about.p3">Und weil gutes Essen auch zu Hause schmeckt, sind wir nicht nur Restaurant, sondern auch Feinkostladen. [Hier ein paar Sätze zu Ihrer Geschichte und Ihrem Sortiment ergänzen.]</p>
+    <div class="cenefa" aria-hidden="true"></div>
 
-          <ul class="values" role="list">
-            <li>
-              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 20.5s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.6a4.3 4.3 0 0 1 7.5 2.7c0 5.6-7.5 10.2-7.5 10.2z"/></svg>
-              <span data-i18n="about.v1">Familiär</span>
-            </li>
-            <li>
-              <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5c1.6 2 1.6 4 0 6-1.6-2-1.6-4 0-6zm0 13c1.6 2 1.6 4 0 6-1.6-2-1.6-4 0-6zM2.5 12c2-1.6 4-1.6 6 0-2 1.6-4 1.6-6 0zm13 0c2-1.6 4-1.6 6 0-2 1.6-4 1.6-6 0z"/></svg>
-              <span data-i18n="about.v2">Farbenfroh</span>
-            </li>
-            <li>
-              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 4C9 4 4 9.5 4 16c0 1.4.3 2.7.8 4 1-3.6 3.6-7.4 8.2-9.5-3.6 2.8-5.6 6.2-6.4 9.5 1 .3 2 .5 3 .5C16 20.5 20 15 20 4z"/></svg>
-              <span data-i18n="about.v3">Frisch</span>
-            </li>
-          </ul>
+    <!-- Über uns -->
+    <section class="room room--cal about" id="ueber-uns" aria-labelledby="about-title">
+      <div class="wrap about-grid">
+        <div class="about-text">
+          <h2 id="about-title" lang="es" data-i18n="about.title">Hola, Freising.</h2>
+          <p class="about-lead" data-i18n="about.p1">Auyama ist das venezolanische Wort für Kürbis. Und unser Name für einen Ort, an dem es nach Zuhause schmeckt.</p>
+          <p data-i18n="about.p2">Im alten Entleutner-Haus in der Oberen Hauptstraße kochen wir venezolanisch und karibisch, mit regionalen Zutaten: Arepas, Bowls, Currys und Pabellón Criollo. Die Karte wechselt jeden Monat.</p>
+          <p data-i18n="about.p3">Im Laden warten erlesene Weine und Hausgemachtes zum Mitnehmen: Marmeladen, Chutneys, Pestos und Saucen. Komm vorbei, wir freuen uns auf dich.</p>
         </div>
-
-        <figure class="about-media reveal">
+        <figure class="about-photo">
           <img src="assets/salat-mango-avocado.jpg" width="828" height="991" loading="lazy" decoding="async"
-               alt="Bunter Salat mit Mango, Avocado, Cashewkernen und Kresse, im begrünten Innenhof in die Kamera gehalten"
+               alt="Bunter Salat mit Mango, Avocado und Cashewkernen, im begrünten Innenhof in die Kamera gehalten"
                data-i18n-attr="alt:about.imgAlt">
         </figure>
       </div>
-      <div class="wave wave--sand" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0 40c200 46 420 64 660 40s460-62 640-48c60 5 110 14 140 20v58H0z"/></svg></div>
     </section>
 
-    <!-- ===================== 3. Monatskarte ===================== -->
-    <section class="section section--sand" id="karte" aria-labelledby="menu-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow" lang="es">¡Buen provecho!</p>
+    <div class="cenefa cenefa--thin" aria-hidden="true"></div>
+
+    <!-- Monatskarte -->
+    <section class="room room--cal menu" id="karte" aria-labelledby="menu-title">
+      <div class="wrap">
+        <header class="room-head">
           <h2 id="menu-title"><span data-i18n="menu.title">Monatskarte</span> <span class="accent" data-menu-month>Oktober 2026</span></h2>
-          <p class="lead" data-i18n="menu.lead">Unsere Karte wechselt jeden Monat. Das kochen wir gerade für Sie:</p>
+          <p class="room-lead" data-i18n="menu.lead">Jeden Monat neu. Das kochen wir gerade für dich.</p>
         </header>
 
-        <div class="menu-toolbar">
+        <div class="menu-bar">
           <nav class="menu-tabs" aria-label="Kategorien der Speisekarte" data-i18n-attr="aria-label:menu.tabsLabel">
             <ul data-menu-tabs></ul>
           </nav>
@@ -215,134 +195,112 @@
         </div>
         <p class="visually-hidden" aria-live="polite" data-menu-announce></p>
 
+        <p class="menu-hint" data-i18n="menu.termHint">Tippe auf unterstrichene Wörter, wir erklären sie dir.</p>
+
         <div class="menu-grid" data-menu-root>
-          <p class="menu-loading" data-menu-loading data-i18n="menu.loading">Speisekarte wird geladen …</p>
+          <p class="menu-loading" data-i18n="menu.loading">Die Karte wird geladen …</p>
         </div>
-        <noscript><p class="notice">Bitte JavaScript aktivieren, um die Speisekarte zu sehen – oder rufen Sie uns an: 0170 2321409.</p></noscript>
+        <noscript><p class="notice">Bitte JavaScript aktivieren, um die Karte zu sehen. Oder ruf uns an: 0170 2321409.</p></noscript>
 
-        <p class="menu-note" data-menu-footnote>Über Allergene und Zusatzstoffe informieren wir Sie gerne an der Theke.</p>
+        <footer class="menu-foot">
+          <p class="menu-closing" lang="es" data-i18n="menu.closing">¡Buen provecho!</p>
+          <p class="menu-note" data-menu-footnote>Über Allergene und Zusatzstoffe informieren wir Sie gerne an der Theke.</p>
+        </footer>
       </div>
-      <div class="wave wave--green" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0 70c160-30 340-56 560-38s400 66 620 58c110-4 200-20 260-34v54H0z"/></svg></div>
+
+      <div class="term-pop" id="term-pop" role="dialog" aria-modal="false" aria-labelledby="term-pop-title" hidden>
+        <p class="term-pop-title" id="term-pop-title"></p>
+        <p class="term-pop-text"></p>
+        <button type="button" class="term-pop-close" data-term-close>
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+          <span class="visually-hidden" data-i18n="abc.close">Schließen</span>
+        </button>
+      </div>
     </section>
 
-    <!-- ===================== 4. Events ===================== -->
-    <section class="section section--green events" id="events" aria-labelledby="events-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow eyebrow--mango" lang="es">¡Vamos a bailar!</p>
-          <h2 id="events-title" data-i18n="events.title">Salsa-Nights &amp; Filmabende</h2>
-          <p class="lead" data-i18n="events.lead">Im Auyama wird nicht nur gegessen: Bei unseren Salsa-Nights legt ein DJ auf – und an Filmabenden wird das Restaurant zum Kino.</p>
+    <!-- ABC der venezolanischen Küche -->
+    <section class="room room--auyama abc" id="abc" aria-labelledby="abc-title">
+      <div class="wrap">
+        <header class="room-head">
+          <h2 id="abc-title" lang="es" data-i18n="abc.title">¿Qué es eso?</h2>
+          <p class="room-lead" data-i18n="abc.lead">Neu in der venezolanischen Küche? Tipp auf eine Fliese.</p>
+        </header>
+        <ul class="abc-grid" role="list" data-abc-root></ul>
+      </div>
+    </section>
+
+    <!-- Events -->
+    <section class="room room--verde events" id="events" aria-labelledby="events-title">
+      <div class="wrap">
+        <header class="room-head">
+          <h2 id="events-title" data-i18n="events.title">Salsa Nights &amp; Filmabende</h2>
+          <p class="room-lead" data-i18n="events.lead">Bei uns wird nicht nur gegessen. Mal legt ein DJ Salsa auf, mal wird das Restaurant zum Kino.</p>
         </header>
 
-        <ul class="event-list" data-events-root role="list"></ul>
-        <p class="events-empty" data-events-empty hidden data-i18n="events.empty">Gerade sind keine Termine eingetragen – die aktuellen Termine finden Sie auf Instagram.</p>
+        <ul class="event-list" role="list" data-events-root></ul>
+        <p class="events-empty" data-events-empty hidden data-i18n="events.empty">Die nächsten Termine stehen bald fest. Schau solange auf Instagram vorbei.</p>
 
-        <p class="events-more reveal">
-          <svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2"/></svg>
-          <span data-i18n="events.more">Weitere Termine auf Instagram:</span>
-          <a href="https://instagram.com/auyama_freising" data-instagram target="_blank" rel="noopener">@auyama_freising</a>
-        </p>
+        <a class="insta-link" href="https://instagram.com/auyama_freising" data-instagram target="_blank" rel="noopener">
+          <svg class="icon" aria-hidden="true"><use href="#i-insta"/></svg>
+          <span data-i18n="events.more">Alle Termine auf Instagram</span>
+          <span class="insta-handle">@auyama_freising</span>
+        </a>
       </div>
-      <div class="wave wave--pumpkin" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0 52c220 50 440 60 700 30s480-60 740-24v52H0z"/></svg></div>
     </section>
 
-    <!-- ===================== 5. Feinkost & Catering ===================== -->
-    <section class="section section--pumpkin" id="feinkost" aria-labelledby="deli-title">
-      <div class="container deli-grid">
-        <figure class="deli-media reveal">
-          <img src="assets/burrito-salsa.jpg" width="828" height="1014" loading="lazy" decoding="async"
-               alt="Gefüllter Burrito mit schwarzen Bohnen, dazu Salsa, Dip und frischer Salat"
-               data-i18n-attr="alt:deli.imgAlt">
-        </figure>
-        <div class="deli-text reveal">
-          <p class="eyebrow eyebrow--dark" lang="es">Hecho con cariño</p>
-          <h2 id="deli-title" data-i18n="deli.title">Feinkost &amp; Catering</h2>
-          <!-- PLATZHALTER: Angebot, Mindestmengen, Vorlaufzeit vom Inhaber ergänzen lassen (texts.json, Abschnitt "deli"). -->
-          <p class="placeholder-tag placeholder-tag--dark" data-i18n="placeholder.text">Entwurfstext – bitte anpassen</p>
-          <p data-i18n="deli.p1">Venezolanische und karibische Spezialitäten für zu Hause – und für Ihre Feier. Ob Geburtstag, Team-Essen oder größere Gruppe im Restaurant: Erzählen Sie uns, was Sie planen, und wir machen Ihnen ein Angebot.</p>
-          <ul class="deli-list" role="list">
-            <li><strong data-i18n="deli.l1t">Feinkost zum Mitnehmen</strong> <span data-i18n="deli.l1">[Sortiment ergänzen]</span></li>
-            <li><strong data-i18n="deli.l2t">Catering</strong> <span data-i18n="deli.l2">[ab wie vielen Personen, Vorlaufzeit]</span></li>
-            <li><strong data-i18n="deli.l3t">Gruppen &amp; Feiern</strong> <span data-i18n="deli.l3">[Plätze, Menü-Vorschläge]</span></li>
-          </ul>
-          <div class="btn-row">
-            <a class="btn btn-dark" href="mailto:PLATZHALTER@ihre-domain.de" data-mailto>
-              <svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5h15A1.5 1.5 0 0 1 21 6.5v11a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5zm2 .9v.3l7 4.7 7-4.7v-.3z"/></svg>
-              <span data-i18n="deli.cta">Anfrage per E-Mail</span>
-            </a>
-            <a class="btn btn-outline-dark" href="tel:+491702321409" data-tel>
-              <span data-i18n="deli.call">Lieber anrufen</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="wave wave--cream" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0 74c240-46 480-70 740-44s480 54 700 30v50H0z"/></svg></div>
-    </section>
+    <div class="cenefa" aria-hidden="true"></div>
 
-    <!-- ===================== 6. Galerie ===================== -->
-    <!-- HINWEIS: Die Fotos sind Platzhalter für den Entwurf (teils Gästefotos von Google).
-         Für die Live-Version durch eigene Fotos ersetzen – siehe README.md. -->
-    <section class="section section--cream" id="galerie" aria-labelledby="gallery-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow" lang="es">Colores y sabores</p>
-          <h2 id="gallery-title" data-i18n="gallery.title">Galerie</h2>
+    <!-- Galerie (Fotos aus dem Entwurf: vor dem Livegang durch eigene ersetzen, siehe README) -->
+    <section class="room room--cal gallery-room" id="galerie" aria-labelledby="gallery-title">
+      <div class="wrap">
+        <header class="room-head">
+          <h2 id="gallery-title" data-i18n="gallery.title">Aus unserer Küche</h2>
         </header>
-
         <ul class="gallery" role="list">
-          <li class="gallery-item gallery-item--tall reveal">
-            <button type="button" class="gallery-btn" data-lightbox="assets/pokebowls.jpg">
-              <img src="assets/pokebowls.jpg" width="828" height="1095" loading="lazy" decoding="async"
-                   alt="Zwei Pokebowls mit Avocado, Cashewkernen und Kapuzinerkresse-Blüten, daneben ein Blumenstrauß"
-                   data-i18n-attr="alt:gallery.a1">
+          <li class="g g--a">
+            <button type="button" class="g-btn" data-lightbox="assets/pokebowls.jpg">
+              <img src="assets/pokebowls.jpg" width="828" height="1095" loading="lazy" decoding="async" alt="Zwei Bowls mit Avocado, Cashewkernen und Kapuzinerkresse, daneben ein Blumenstrauß" data-i18n-attr="alt:gallery.a1">
             </button>
           </li>
-          <li class="gallery-item reveal">
-            <button type="button" class="gallery-btn" data-lightbox="assets/burrito-guacamole.jpg">
-              <img src="assets/burrito-guacamole.jpg" width="828" height="1109" loading="lazy" decoding="async"
-                   alt="Burrito mit Pulled Beef, Guacamole und Salat auf einem grünen Tisch, im Hintergrund Limonade"
-                   data-i18n-attr="alt:gallery.a2">
+          <li class="g g--b">
+            <button type="button" class="g-btn" data-lightbox="assets/burrito-guacamole.jpg">
+              <img src="assets/burrito-guacamole.jpg" width="828" height="1109" loading="lazy" decoding="async" alt="Burrito mit Pulled Beef, Guacamole und Salat auf einem grünen Tisch" data-i18n-attr="alt:gallery.a2">
             </button>
           </li>
-          <li class="gallery-item reveal">
-            <button type="button" class="gallery-btn" data-lightbox="assets/salat-mango-avocado.jpg">
-              <img src="assets/salat-mango-avocado.jpg" width="828" height="991" loading="lazy" decoding="async"
-                   alt="Salat mit Mango, Avocado und Cashewkernen vor den Pflanzen im Innenhof"
-                   data-i18n-attr="alt:gallery.a3">
+          <li class="g g--c">
+            <button type="button" class="g-btn" data-lightbox="assets/salat-mango-avocado.jpg">
+              <img src="assets/salat-mango-avocado.jpg" width="828" height="991" loading="lazy" decoding="async" alt="Salat mit Mango, Avocado und Cashewkernen im Innenhof" data-i18n-attr="alt:gallery.a3">
             </button>
           </li>
-          <li class="gallery-item reveal">
-            <button type="button" class="gallery-btn" data-lightbox="assets/burrito-salsa.jpg">
-              <img src="assets/burrito-salsa.jpg" width="828" height="1014" loading="lazy" decoding="async"
-                   alt="Angeschnittener Burrito mit Bohnen, dazu Salsa und Salat"
-                   data-i18n-attr="alt:gallery.a4">
+          <li class="g g--d">
+            <button type="button" class="g-btn" data-lightbox="assets/burrito-salsa.jpg">
+              <img src="assets/burrito-salsa.jpg" width="828" height="1014" loading="lazy" decoding="async" alt="Angeschnittener Burrito mit Bohnen, dazu Salsa und Salat" data-i18n-attr="alt:gallery.a4">
             </button>
           </li>
-          <li class="gallery-item gallery-item--insta reveal">
+          <li class="g g--insta">
             <a href="https://instagram.com/auyama_freising" data-instagram target="_blank" rel="noopener">
-              <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></svg>
-              <span class="insta-kicker" data-i18n="gallery.insta">Mehr Fotos auf Instagram</span>
-              <span class="insta-handle">@auyama_freising</span>
+              <svg aria-hidden="true"><use href="#i-insta"/></svg>
+              <span class="g-insta-title" data-i18n="gallery.insta">Mehr auf Instagram</span>
+              <span class="g-insta-handle">@auyama_freising</span>
             </a>
           </li>
         </ul>
       </div>
-      <div class="wave wave--sand" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0 46c260 54 520 64 760 34s460-56 680-30v60H0z"/></svg></div>
     </section>
 
-    <!-- ===================== 7. Öffnungszeiten & Anfahrt ===================== -->
-    <section class="section section--sand" id="anfahrt" aria-labelledby="visit-title">
-      <div class="container">
-        <header class="section-head reveal">
-          <p class="eyebrow" lang="es">¡Te esperamos!</p>
+    <div class="cenefa cenefa--thin" aria-hidden="true"></div>
+
+    <!-- Öffnungszeiten & Anfahrt -->
+    <section class="room room--cal visit" id="anfahrt" aria-labelledby="visit-title">
+      <div class="wrap">
+        <header class="room-head">
           <h2 id="visit-title" data-i18n="visit.title">Öffnungszeiten &amp; Anfahrt</h2>
         </header>
-
         <div class="visit-grid">
-          <div class="card hours-card reveal">
-            <p class="status status--light" data-status hidden>
+          <div class="visit-hours">
+            <p class="pill" data-status-pill hidden>
               <span class="status-dot" aria-hidden="true"></span>
-              <span class="status-text" data-status-text></span>
+              <span data-status-pill-text></span>
             </p>
             <table class="hours">
               <caption class="visually-hidden" data-i18n="visit.hoursCaption">Öffnungszeiten</caption>
@@ -357,45 +315,47 @@
               </tbody>
             </table>
             <p class="hours-note" data-hours-note hidden></p>
+          </div>
 
-            <address class="visit-address">
-              <strong>Auyama</strong><br>
+          <div class="visit-place">
+            <p class="visit-welcome" lang="es" data-i18n="visit.welcome">¡Te esperamos!</p>
+            <address>
+              Auyama<br>
               <span data-street>Obere Hauptstr. 41</span><br>
-              <span data-city>85354 Freising</span><br>
-              <span data-i18n="visit.oldtown">Mitten in der Altstadt</span>
+              <span data-city>85354 Freising</span>
             </address>
-
-            <div class="btn-row">
-              <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=Obere+Hauptstr.+41%2C+85354+Freising" data-route target="_blank" rel="noopener">
-                <svg aria-hidden="true" class="icon" viewBox="0 0 24 24"><path d="M21.7 11.3 12.7 2.3a1 1 0 0 0-1.4 0l-9 9a1 1 0 0 0 0 1.4l9 9a1 1 0 0 0 1.4 0l9-9a1 1 0 0 0 0-1.4zM14 14.5V12h-4v3H8v-4a1 1 0 0 1 1-1h5V7.5l3.5 3.5z"/></svg>
-                <span data-i18n="cta.route">Route planen</span>
+            <p class="visit-oldtown" data-i18n="visit.oldtown">Mitten in der Freisinger Altstadt.</p>
+            <div class="actions">
+              <a class="btn btn--verde" href="https://www.google.com/maps/dir/?api=1&amp;destination=Obere+Hauptstr.+41%2C+85354+Freising" data-route target="_blank" rel="noopener">
+                <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+                <span data-i18n="cta.route">Route</span>
               </a>
-              <a class="btn btn-outline" href="tel:+491702321409" data-tel>
+              <a class="btn btn--outline" href="tel:+491702321409" data-tel>
+                <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
                 <span data-tel-text>0170 2321409</span>
               </a>
             </div>
           </div>
 
-          <div class="map reveal" data-map>
+          <div class="map" data-map>
             <div class="map-consent">
-              <svg aria-hidden="true" class="map-pin" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+              <svg class="map-pin" aria-hidden="true"><use href="#i-pin"/></svg>
               <p class="map-title" data-i18n="map.title">Karte anzeigen</p>
-              <p class="map-text" data-i18n="map.text">Beim Laden der Karte werden Daten an Google übertragen (siehe Datenschutz).</p>
-              <button type="button" class="btn btn-primary" data-map-load data-i18n="map.load">Google Maps laden</button>
+              <p class="map-text" data-i18n="map.text">Beim Laden werden Daten an Google übertragen.</p>
+              <button type="button" class="btn btn--verde btn--small" data-map-load data-i18n="map.load">Google Maps laden</button>
             </div>
           </div>
         </div>
       </div>
-      <div class="wave wave--green" aria-hidden="true"><svg viewBox="0 0 1440 110" preserveAspectRatio="none"><path d="M0 60c200-40 420-60 660-34s480 60 780 30v54H0z"/></svg></div>
     </section>
   </main>
 
-  <!-- ===================== 8. Footer ===================== -->
   <footer class="site-footer">
-    <div class="container footer-grid">
+    <div class="cenefa cenefa--verde" aria-hidden="true"></div>
+    <div class="wrap footer-grid">
       <div class="footer-brand">
-        <img class="footer-badge" src="assets/logo.jpg" width="96" height="96" loading="lazy" alt="Logo: Auyama Feinkost" data-i18n-attr="alt:hero.logoAlt">
-        <p lang="es" class="footer-claim">¡Hasta pronto!</p>
+        <img class="footer-badge" src="assets/logo.jpg" width="112" height="112" loading="lazy" alt="Logo: Auyama Feinkost">
+        <p class="footer-bye" lang="es" data-i18n="footer.bye">¡Hasta pronto!</p>
       </div>
       <div>
         <h2 class="footer-title" data-i18n="footer.contact">Kontakt</h2>
@@ -404,15 +364,14 @@
           <span data-street>Obere Hauptstr. 41</span><br>
           <span data-city>85354 Freising</span>
         </address>
-        <p>
-          <a href="tel:+491702321409" data-tel><span data-tel-text>0170 2321409</span></a><br>
-          <!-- PLATZHALTER: E-Mail-Adresse in restaurant.json eintragen -->
-          <a href="mailto:PLATZHALTER@ihre-domain.de" data-email><span data-email-text>PLATZHALTER@ihre-domain.de</span></a>
-        </p>
+        <p><a href="tel:+491702321409" data-tel><span data-tel-text>0170 2321409</span></a><br>
+          <a href="https://instagram.com/auyama_freising" data-instagram target="_blank" rel="noopener">@auyama_freising</a></p>
       </div>
       <div>
-        <h2 class="footer-title">Instagram</h2>
-        <p><a href="https://instagram.com/auyama_freising" data-instagram target="_blank" rel="noopener">@auyama_freising</a></p>
+        <h2 class="footer-title" data-i18n="footer.hours">Geöffnet</h2>
+        <p data-hours-short>Di bis Do 12 bis 16 Uhr<br>Fr und Sa 12 bis 21 Uhr</p>
+      </div>
+      <div>
         <h2 class="footer-title" data-i18n="footer.legal">Rechtliches</h2>
         <ul class="footer-links" role="list">
           <li><a href="impressum.html" data-i18n="footer.imprint">Impressum</a></li>
@@ -420,34 +379,32 @@
         </ul>
       </div>
     </div>
-    <p class="container footer-copy">© <span data-year>2026</span> Auyama Feinkost · Freising</p>
+    <p class="wrap footer-copy">© <span data-year>2026</span> Auyama Feinkost · Freising</p>
   </footer>
 
-  <!-- Sticky Leiste unten (nur Handy) -->
   <nav class="mobile-bar" aria-label="Schnellzugriff" data-i18n-attr="aria-label:bar.label">
     <a href="tel:+491702321409" data-tel>
-      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+      <svg aria-hidden="true"><use href="#i-phone"/></svg>
       <span data-i18n="cta.call">Anrufen</span>
     </a>
     <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Obere+Hauptstr.+41%2C+85354+Freising" data-route target="_blank" rel="noopener">
-      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+      <svg aria-hidden="true"><use href="#i-pin"/></svg>
       <span data-i18n="bar.route">Route</span>
     </a>
     <a href="#karte" class="mobile-bar-main">
-      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3h10l3 3v15H6a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm2.5 6v1.8h8V9zm0 3.6v1.8h8v-1.8zm0 3.6V18h5v-1.8z"/></svg>
-      <span data-i18n="bar.menu">Speisekarte</span>
+      <svg aria-hidden="true"><use href="#i-menu"/></svg>
+      <span data-i18n="bar.menu">Karte</span>
     </a>
   </nav>
 
-  <!-- Bild-Vollansicht -->
-  <dialog class="lightbox" data-lightbox-dialog aria-label="Bild-Vollansicht" data-i18n-attr="aria-label:lightbox.label">
+  <dialog class="lightbox" data-lightbox-dialog aria-label="Bild in groß" data-i18n-attr="aria-label:lightbox.label">
     <form method="dialog">
       <button class="lightbox-close" type="submit">
         <span class="visually-hidden" data-i18n="lightbox.close">Schließen</span>
-        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        <svg aria-hidden="true" width="22" height="22"><use href="#i-close"/></svg>
       </button>
     </form>
-    <img src="" alt="" data-lightbox-img>
+    <figure class="lightbox-frame" data-lightbox-frame></figure>
   </dialog>
 </body>
 </html>
