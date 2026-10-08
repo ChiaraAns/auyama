@@ -71,9 +71,11 @@ Die Überschrift lautet dann automatisch „Monatskarte November 2026“.
 
 ### „¿Qué comemos hoy?“
 
-Gäste tippen auf ihre Laune und bekommen einen Vorschlag aus der aktuellen Monatskarte. Gesteuert
-wird das über `"stimmung"` bei jeder Kategorie: `"leicht"`, `"satt"` oder `"trinken"`.
-„Ohne Fleisch“ nutzt die Labels vegetarisch/vegan, „Überrasch mich“ wählt aus allen Gerichten.
+Gäste wählen ihren Hunger (klein, groß, egal) und ob mit Fleisch, ohne Fleisch oder vegan, auf
+Wunsch mit Getränk. Ein „Comanda“-Bon stellt daraus ein Essen aus der aktuellen Monatskarte
+zusammen, mit Gesamtpreis und dem aktuellen Öffnungsstatus. Gesteuert wird das über
+`"stimmung"` bei jeder Kategorie: `"leicht"` (kleiner Hunger), `"satt"` (großer Hunger) oder
+`"trinken"` (Getränke). Fleisch/vegan nutzt die Labels vegetarisch/vegan.
 Neue Kategorie? Einfach eine passende `"stimmung"` dazuschreiben.
 
 ### Ein Gericht

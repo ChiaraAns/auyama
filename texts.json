@@ -56,8 +56,6 @@
       "Sonntag"
     ],
     "about": {
-      "title": "¡Hola, <span class=\"squiggle\">Freising!</span>",
-      "lead": "Auyama heißt Kürbis. Bei uns heißt es: Willkommen zu Hause.",
       "p2": "Im alten Entleutner-Haus in der Oberen Hauptstraße kochen wir venezolanisch und karibisch, mit regionalen Zutaten. Jeden Monat gibt es eine neue Karte.",
       "p3": "Im Laden warten erlesene Weine und Hausgemachtes zum Mitnehmen: Marmeladen, Chutneys, Pestos und Saucen.",
       "quote": "Mi casa es tu casa.",
@@ -66,8 +64,9 @@
       "s3": "Weine & Eingemachtes",
       "s4": "Salsa & Kino",
       "stamp": "Hecho en Freising · con mucho amor · ",
-      "img1": "Bunter Salat mit Mango, Avocado und Cashewkernen, im begrünten Innenhof in die Kamera gehalten",
-      "img2": "Angeschnittener Burrito mit Bohnen, dazu Salsa und Salat"
+      "s_a": "Auyama heißt Kürbis.",
+      "s_b": "Bei uns heißt es:",
+      "s_c": "Willkommen zu Hause."
     },
     "menu": {
       "title": "Monatskarte",
@@ -155,20 +154,23 @@
     },
     "craving": {
       "title": "¿Qué comemos hoy?",
-      "lead": "Noch unentschlossen? Sag uns, worauf du Lust hast.",
-      "moodsLabel": "Worauf hast du Lust?",
-      "leicht": "Leicht & frisch",
-      "satt": "Richtig satt",
-      "veggie": "Ohne Fleisch",
-      "trinken": "Was zum Trinken",
-      "surprise": "Überrasch mich",
-      "emptyTitle": "Tipp auf deine Laune.",
-      "emptyText": "Wir suchen dir was Leckeres aus der Monatskarte aus.",
-      "stamp": "Tu antojo de hoy",
-      "again": "Noch eine Idee",
+      "lead": "Sag uns, wie hungrig du bist. Wir stellen dir dein Essen zusammen.",
+      "hungerLabel": "Hunger",
+      "hungerSmall": "Kleiner Hunger",
+      "hungerBig": "Großer Hunger",
+      "any": "Egal",
+      "meatLabel": "Fleisch",
+      "meatYes": "Gern",
+      "meatNo": "Ohne Fleisch",
+      "meatVegan": "Vegan",
+      "drink": "Mit Getränk",
+      "slipTitle": "Comanda",
+      "total": "Zusammen",
+      "again": "Nochmal würfeln",
       "call": "Anrufen",
-      "toMenu": "Zur ganzen Karte",
-      "announce": "Unser Vorschlag: {gericht}, {preis}"
+      "none": "Dafür haben wir diesen Monat nichts. Probier eine andere Kombination.",
+      "stamp": "Tu antojo de hoy",
+      "announce": "Unser Vorschlag: {gericht}. Zusammen {preis}."
     },
     "fullmenu": {
       "metaTitle": "Speisekarte {monat} · Auyama Freising",
@@ -176,6 +178,10 @@
       "back": "Zurück zur Startseite",
       "hungryTitle": "Hunger bekommen?",
       "hungryText": "Ruf an oder komm einfach vorbei. Wir freuen uns auf dich."
+    },
+    "ribbon": {
+      "pause": "Laufband anhalten",
+      "play": "Laufband starten"
     }
   },
   "en": {
@@ -234,8 +240,6 @@
       "Sunday"
     ],
     "about": {
-      "title": "¡Hola, <span class=\"squiggle\">Freising!</span>",
-      "lead": "Auyama means pumpkin. Here it means: welcome home.",
       "p2": "In the old Entleutner house on Obere Hauptstraße we cook Venezuelan and Caribbean food with regional ingredients. There is a new menu every month.",
       "p3": "Our shop has fine wines and homemade treats to take away: jams, chutneys, pestos and sauces.",
       "quote": "Mi casa es tu casa.",
@@ -244,8 +248,9 @@
       "s3": "Wines & preserves",
       "s4": "Salsa & cinema",
       "stamp": "Hecho en Freising · con mucho amor · ",
-      "img1": "Colourful salad with mango, avocado and cashews, held up in the leafy courtyard",
-      "img2": "Burrito with beans cut open, with salsa and salad"
+      "s_a": "Auyama means pumpkin.",
+      "s_b": "Here it means:",
+      "s_c": "Welcome home."
     },
     "menu": {
       "title": "Menu",
@@ -333,20 +338,23 @@
     },
     "craving": {
       "title": "¿Qué comemos hoy?",
-      "lead": "Can't decide? Tell us what you're in the mood for.",
-      "moodsLabel": "What are you in the mood for?",
-      "leicht": "Light & fresh",
-      "satt": "Properly full",
-      "veggie": "No meat",
-      "trinken": "Something to drink",
-      "surprise": "Surprise me",
-      "emptyTitle": "Tap your mood.",
-      "emptyText": "We'll pick something tasty from this month's menu for you.",
-      "stamp": "Tu antojo de hoy",
-      "again": "Another idea",
+      "lead": "Tell us how hungry you are. We'll put your meal together.",
+      "hungerLabel": "Hunger",
+      "hungerSmall": "A little hungry",
+      "hungerBig": "Really hungry",
+      "any": "Either",
+      "meatLabel": "Meat",
+      "meatYes": "Sure",
+      "meatNo": "No meat",
+      "meatVegan": "Vegan",
+      "drink": "With a drink",
+      "slipTitle": "Comanda",
+      "total": "Together",
+      "again": "Roll again",
       "call": "Call",
-      "toMenu": "Full menu",
-      "announce": "Our pick: {gericht}, {preis}"
+      "none": "Nothing on this month's menu matches. Try another combination.",
+      "stamp": "Tu antojo de hoy",
+      "announce": "Our pick: {gericht}. Together {preis}."
     },
     "fullmenu": {
       "metaTitle": "Menu {monat} · Auyama Freising",
@@ -354,6 +362,10 @@
       "back": "Back to the homepage",
       "hungryTitle": "Feeling hungry?",
       "hungryText": "Give us a call or just drop by. We look forward to seeing you."
+    },
+    "ribbon": {
+      "pause": "Pause the ribbon",
+      "play": "Play the ribbon"
     }
   }
 }

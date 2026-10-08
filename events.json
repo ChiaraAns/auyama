@@ -1,5 +1,5 @@
 {
-  "_hinweis": "Termine mit festem Datum. Datum im Format JJJJ-MM-TT, Uhrzeit HH:MM. \"ende\" ist optional. \"typ\": \"salsa\" oder \"film\". Vergangene Termine verschwinden automatisch. Salsa Nights und Filmabende werden zusätzlich immer als feste Formate angezeigt. Mehr dazu in der README.md.",
+  "_hinweis": "Termine mit festem Datum. Datum im Format JJJJ-MM-TT, Uhrzeit HH:MM. \"ende\" ist optional. \"typ\": \"salsa\" oder \"film\". Vergangene Termine verschwinden automatisch. Mehr dazu in der README.md.",
 
   "termine": [
     {
