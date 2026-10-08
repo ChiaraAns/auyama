@@ -335,6 +335,11 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: 0.2
 .room--terracota { background: var(--terracota-deep); color: var(--cal); }
 .room--mango { background: var(--mango); color: var(--ink); }
 .room--terracota .room-lead { color: rgba(246, 239, 226, 0.86); }
+.room--grout { background: var(--grout); color: var(--cal); }
+.room--grout .room-lead { color: rgba(246, 239, 226, 0.82); }
+.room--verde2 { background: var(--verde-2); color: var(--cal); }
+.room--verde2 .room-lead { color: rgba(246, 239, 226, 0.84); }
+.room--cal2 { background: var(--cal-2); }
 .room--mango .room-lead { color: #3a2408; }
 
 .room-head { margin-bottom: clamp(2.2rem, 5vw, 3.5rem); max-width: 48rem; }
@@ -346,7 +351,7 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: 0.2
 .accent-mango { color: var(--mango); }
 
 /* ---------- Laufband ---------- */
-.ribbon-zone { overflow: hidden; background: linear-gradient(var(--grout) 50%, var(--terracota-deep) 50%); padding-block: 14px; }
+.ribbon-zone { overflow: hidden; background: linear-gradient(var(--grout) 50%, var(--cal) 50%); padding-block: 14px; }
 .ribbon {
   position: relative; z-index: 2; width: 104%; margin-left: -2%;
   background: var(--auyama); color: var(--ink);
@@ -365,13 +370,13 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: 0.2
 .about { padding-top: clamp(3.5rem, 8vw, 6rem); overflow: hidden; }
 .about-grid { display: grid; gap: clamp(3rem, 6vw, 5rem); align-items: center; }
 @media (min-width: 900px) { .about-grid { grid-template-columns: 1.05fr 0.95fr; } }
-.about-text h2 { font-size: clamp(3.2rem, 8.6vw, 6.6rem); line-height: 0.98; margin-bottom: 1.6rem; color: var(--cal); }
+.about-text h2 { font-size: clamp(3.2rem, 8.6vw, 6.6rem); line-height: 0.98; margin-bottom: 1.6rem; color: var(--ink); }
 .squiggle {
   white-space: nowrap; padding-bottom: 0.14em;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 14' preserveAspectRatio='none'%3E%3Cpath d='M2 8c9-7 17-7 26 0s17 7 26 0 17-7 26 0 17 7 26 0 9-5 12-3' fill='none' stroke='%23F2B53A' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E") left bottom / 100% 0.24em no-repeat;
 }
 .about-lead { font-family: var(--display); font-size: clamp(1.6rem, 3.2vw, 2.35rem); line-height: 1.18; max-width: 20ch; margin-bottom: 1.4rem; }
-.about-text p:not(.about-lead) { max-width: 50ch; color: rgba(246, 239, 226, 0.86); }
+.about-text p:not(.about-lead) { max-width: 50ch; color: var(--ink-soft); }
 
 .stickers { list-style: none; margin: 2rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px 10px; }
 .sticker {
@@ -385,6 +390,7 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: 0.2
 .sticker:nth-child(4) { --tilt: 3deg; }
 .sticker--mango { background: var(--mango); color: var(--ink); }
 .sticker--cal { background: var(--cal); color: var(--ink); }
+.sticker--terracota { background: var(--terracota-deep); color: var(--cal); }
 .sticker--auyama { background: var(--auyama); color: var(--ink); }
 .sticker--verde { background: var(--verde); color: var(--cal); }
 
@@ -407,7 +413,7 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: 0.2
 @keyframes spin { to { transform: rotate(360deg); } }
 .collage-quote {
   position: absolute; right: 0; bottom: 0; margin: 0;
-  font-family: var(--display); font-size: clamp(1.7rem, 3.4vw, 2.6rem); line-height: 1; color: var(--mango);
+  font-family: var(--display); font-size: clamp(1.7rem, 3.4vw, 2.6rem); line-height: 1; color: var(--terracota);
   transform: rotate(-5deg);
 }
 
@@ -415,7 +421,7 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: 0.2
 .preview .room-head h2 { color: var(--cal); }
 .dishes { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap); }
 .dish--photo { min-height: 320px; }
-.dish--color { min-height: 210px; }
+.dish--color { min-height: 230px; }
 @media (min-width: 700px) {
   .dish--photo, .dish--color { min-height: 0; }
   .dishes { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: clamp(250px, 32vw, 320px); }
@@ -445,12 +451,13 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: 0.2
   transition: transform 0.4s var(--ease);
 }
 .dish:hover .dish-price { transform: rotate(-3deg) scale(1.08); }
-.dish--color { padding: clamp(18px, 2.4vw, 26px); justify-content: flex-end; }
+.dish--color { --pad: clamp(18px, 2.4vw, 26px); padding: var(--pad); justify-content: flex-start; }
 .dish--color::before {
-  content: ""; position: absolute; top: 0; left: 0; width: 42%; max-width: 150px; aspect-ratio: 1;
-  background: var(--flor-verde) center / 100% 100%; border-bottom-right-radius: var(--r);
+  content: ""; flex: 1 1 0; min-height: 72px; max-height: 140px;
+  margin: calc(var(--pad) * -1) 0 14px calc(var(--pad) * -1);
+  background: var(--flor-verde) left top / auto 100% no-repeat;
 }
-.dish--color .dish-plate { margin: 0; padding: 0; background: none; max-width: 100%; }
+.dish--color .dish-plate { margin: 0; padding: 0; background: none; max-width: 100%; flex: 0 0 auto; }
 .dish--auyama { background: var(--auyama); }
 .dish--auyama .dish-plate, .dish--auyama .dish-details { color: var(--ink); }
 .dish--terracota { background: var(--terracota-deep); }
@@ -476,20 +483,16 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: 0.2
 .moods { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2rem; }
 .mood {
   display: inline-flex; align-items: center; gap: 0.55rem; min-height: 54px; padding: 0.7rem 1.15rem;
-  border: 0; border-radius: 10px; font-weight: 700; font-size: 1rem; cursor: pointer;
-  box-shadow: 0 10px 18px -12px rgba(58, 36, 8, 0.6);
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  border: 1.5px solid rgba(246, 239, 226, 0.32); border-radius: 10px; background: transparent; color: var(--cal);
+  font-weight: 700; font-size: 1rem; cursor: pointer;
+  transition: transform 0.35s var(--ease), background-color 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
 }
+.mood:hover { border-color: var(--cal); }
 .mood .icon { width: 1.35em; height: 1.35em; }
 .mood:hover { transform: translateY(-2px) rotate(-1.5deg); }
-.mood[aria-pressed="true"] { box-shadow: 0 0 0 3px var(--mango), 0 0 0 6px var(--ink); transform: rotate(-1.5deg); }
-.mood--leicht { background: var(--cal); color: var(--ink); }
-.mood--satt { background: var(--auyama); color: var(--ink); }
-.mood--veggie { background: var(--tropico); color: #fff; }
-.mood--trinken { background: var(--terracota-deep); color: var(--cal); }
-.mood--surprise { background: var(--verde); color: var(--cal); }
+.mood[aria-pressed="true"] { background: var(--mango); border-color: var(--mango); color: var(--ink); transform: rotate(-1.5deg); }
 
-.ticket-wrap { filter: drop-shadow(0 26px 34px rgba(58, 36, 8, 0.45)); max-width: 480px; width: 100%; justify-self: center; }
+.ticket-wrap { filter: drop-shadow(0 26px 34px rgba(0, 0, 0, 0.45)); max-width: 480px; width: 100%; justify-self: center; }
 .ticket {
   --z: 9px;
   position: relative; min-height: 340px; padding: 2.4rem 1.8rem 4.6rem;
