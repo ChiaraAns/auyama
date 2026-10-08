@@ -224,3 +224,7 @@ Zeilen mit `class="placeholder-tag"` löschen.
   per Doppelklick auf `index.html`. Stattdessen im Projektordner `python3 -m http.server`
   ausführen und <http://localhost:8000> öffnen.
 - Dateien: `index.html`, `css/style.css`, `js/main.js`, Daten-Dateien im Hauptverzeichnis.
+- `auyama-vorschau.html` ist eine **eigenständige Vorschau** (alles in einer Datei, öffnet per
+  Doppelklick, auch offline – z. B. zum Verschicken per E-Mail). Sie ist ein **Schnappschuss
+  vom 08.10.2026** und übernimmt spätere Änderungen an den JSON-Dateien **nicht**. Für die echte
+  Website wird sie nicht gebraucht und kann gelöscht werden.
