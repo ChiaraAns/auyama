@@ -51,8 +51,6 @@ rounded:
   sticker: "8px"
   panel: "8px"
   mood: "10px"
-  panel-lg: "20px"
-  sheet: "clamp(28px, 5vw, 64px)"
   price-tag: "999px"
   badge: "50%"
 spacing:
@@ -85,15 +83,11 @@ components:
     backgroundColor: "{colors.mango}"
     textColor: "{colors.ink}"
     rounded: "{rounded.tile}"
-  choice-chip:
-    backgroundColor: "{colors.mango}"
+  mood-button:
+    backgroundColor: "{colors.auyama}"
     textColor: "{colors.ink}"
-    rounded: "{rounded.price-tag}"
-    height: "46px"
-  craving-panel:
-    backgroundColor: "{colors.verde-2}"
-    textColor: "{colors.cal}"
-    rounded: "{rounded.panel-lg}"
+    rounded: "{rounded.mood}"
+    height: "54px"
   ticket:
     backgroundColor: "{colors.cal}"
     textColor: "{colors.ink}"
@@ -118,14 +112,14 @@ components:
 
 **Creative North Star: "Mosaico"**
 
-The site is a Venezuelan cement tile floor (baldosa hidráulica) seen from above, the floor under the table in a Caracas casa. Every working part of the first viewport is a tile: the headline slab, the photo, the live status, the monthly menu link, the greeting. Below the floor the house comes alive with playful, hand-placed things that belong on a Latin American table: a slowly moving ribbon of words, giant type with photos set right into the words, round stamps, stickers, price tags and a paper order slip (comanda). Rooms below the hero lie on top of each other like sheets with softly rounded top edges, so colour changes never cut hard.
+The site is a Venezuelan cement tile floor (baldosa hidráulica) seen from above, the floor under the table in a Caracas casa. Every working part of the first viewport is a tile: the headline slab, the photo, the live status, the monthly menu link, the greeting. Below the floor the house comes alive with playful, hand-placed things that belong on a Latin American table: a ribbon of words that moves as you scroll, photo prints with cal borders, round stamps, stickers, price tags and a paper order slip (comanda).
 
 The pigments come from the logo: deep green, pumpkin and lime white, with mango, tropical green and terracotta as rare accents. Type pairs one sharp, high contrast display serif with a warm grotesk. The copy is short, warm and addresses guests with "du".
 
 **Key Characteristics:**
 - Square tiles with 6px corners and 8px grout gaps
 - Authored SVG tile ornaments (corner quarter circles, four petal centre, mango dot)
-- Rooms stacked as sheets with rounded top edges (no hard colour cuts); cenefa bands only as accents (menu page, legal pages, category headings)
+- Cenefa bands as section dividers, never waves or plain rules
 - Committed colour fields: whole rooms in verde or auyama, not accents on a neutral page
 - Playful but placed: stickers, prints and price tags tilt by 2 to 6 degrees, never more
 - One orchestrated entrance (tiles settle into the floor), one signature interaction (the order slip picks a dish)
@@ -143,8 +137,8 @@ Pigments of poured cement tiles, pinned by the logo.
 - **Auyama Ink** (#94500f): prices, accents and display lines on cal (5.4:1).
 
 ### Tertiary
-- **Mango** (#f2b53a): greeting tile, active choice chips, price tags, stickers, marker highlight, focus ring, accents on verde, selection. Never a whole room on the home page.
-- **Terracota Deep** (#9a3c24): colour dish cards and one sticker; cal text on it (6.0:1). Not used as a room background on the home page.
+- **Mango** (#f2b53a): greeting tile, the "¿Qué comemos hoy?" room, price tags, stickers, focus ring, accents on verde, selection. On terracota only for large display text (3.8:1).
+- **Terracota Deep** (#9a3c24): the "¡Hola, Freising!" room and colour dish cards; cal text on it (6.0:1).
 - **Tropico** (#2a7448): vegan and vegetarian badges, active filter.
 - **Terracota** (#a8442a): "Heute" tag, closed status dot, map pin.
 
@@ -154,7 +148,7 @@ Pigments of poured cement tiles, pinned by the logo.
 - **Ink** (#0b220e) and **Ink Soft** (#3d5443): text on cal.
 
 ### Named Rules
-**The Pigment Rule.** Colour commits at room scale: a section is verde, grout or cal as a whole field. Bright pigments (auyama, mango, terracota) stay objects on those fields.
+**The Pigment Rule.** Colour commits at room scale: a section is verde, auyama or cal as a whole field. Accents stay accents.
 
 **The Contrast Rule.** Cal text on verde and terracota deep, ink on auyama and mango. Never cal on auyama.
 
@@ -191,13 +185,11 @@ Tiles and buttons: 6px corners. Panels and stickers: 8px. Mood buttons: 10px. Pr
 
 - **Tile:** square, 6px corners, one job each (headline, photo, status, link, greeting, ornament).
 - **Cenefa:** 32px (or 16px thin) repeating band of the flor tile between rooms.
-- **Sheet:** a room with rounded top corners laid over the previous one (negative top margin, soft upward shadow).
-- **Ribbon:** auyama band tilted −1.4°, Gloock words separated by small flor tiles; drifts slowly (28px/s), a little faster while scrolling, pauses on hover, offscreen and via its pause button; static under reduced motion.
-- **Typo collage:** display type at up to 9.4rem with photos as pill shapes and a flor tile set inline between the words, a mango wave under the key word and a marker highlight on the key phrase.
+- **Ribbon:** auyama band tilted −1.4°, Gloock words separated by small flor tiles; moves with the scroll position, static under reduced motion.
 - **Sticker:** short fact on mango, cal, auyama or verde, 8px corners, tilted ±1 to 3°.
-- **Stamp:** a round mango stamp with circular text and a flor centre, slowly turning.
+- **Print and stamp:** photos in 10px cal frames tilted 3 to 5°; a round mango stamp with circular text and a flor centre, slowly turning.
 - **Dish card:** photo card with a cal name plate and a tilted mango price tag, or a colour card (auyama or terracota deep) with a flor corner ornament.
-- **Comanda widget:** a verde-2 panel with choice chips (hunger, meat), a drink switch, and a cal order slip with scalloped edges: number, dish and drink lines, total in Gloock, live opening status, "Nochmal würfeln" with a rolling dice, and a terracota stamp "Tu antojo de hoy" sticking out of the corner.
+- **Mood button and order slip:** five coloured mood buttons; the cal order slip ("comanda") shows the picked dish, category, diet, a big Gloock price, and a tilted terracota stamp "Tu antojo de hoy".
 - **Buttons:** auyama primary, verde secondary, line or outline variants; 50px tall.
 - **Event:** verde-2 panel with an auyama date tile (weekday, day, month) and an "In den Kalender" .ics button.
 

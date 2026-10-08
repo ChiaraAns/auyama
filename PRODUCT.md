@@ -33,7 +33,7 @@ Venezuelan-Caribbean cooking and a deli ("Feinkost") in the middle of Freising's
 
 ## Capabilities and Constraints
 
-Live open/closed status, today highlighted in the hours table, sticky mobile action bar (call, route, menu), monthly menu preview on the home page (highlight dishes, category prices) with a separate full menu page (category jump links, vegetarian/vegan filter), "¿Qué comemos hoy?" meal builder (hunger, meat/veggie/vegan, optional drink) that composes a dish plus drink from the monthly menu on an order slip with total price and live opening status, events with automatic hiding of past dates and .ics download, DE/EN language switch, click-to-load Google Map (GDPR), local SEO with schema.org Restaurant JSON-LD.
+Live open/closed status, today highlighted in the hours table, sticky mobile action bar (call, route, menu), monthly menu preview on the home page (highlight dishes, category prices) with a separate full menu page (category jump links, vegetarian/vegan filter), "¿Qué comemos hoy?" dish picker by mood (light, filling, meat free, drinks, surprise) drawn from the monthly menu, events with automatic hiding of past dates and .ics download, DE/EN language switch, click-to-load Google Map (GDPR), local SEO with schema.org Restaurant JSON-LD.
 
 Removed by user request: the dish glossary tiles ("¿Qué es eso?").
 

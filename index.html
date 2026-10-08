@@ -80,8 +80,6 @@
     <symbol id="i-bowl" viewBox="0 0 24 24"><path d="M2.5 11h19a9.5 9.5 0 0 1-19 0zm4.5-2.2C7 6.5 8.6 5 10.6 5c.9-1.6 3.6-2 5 0 1.8 0 3.4 1.4 3.4 3.8z"/></symbol>
     <symbol id="i-cup" viewBox="0 0 24 24"><path d="M5 3h14l-1.6 17.2A2 2 0 0 1 15.4 22H8.6a2 2 0 0 1-2-1.8zm2.2 2 .5 5h8.6l.5-5zM14 1l3 0-1.5 4h-1.6z"/></symbol>
     <symbol id="i-dice" viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm3 3.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-4 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-4 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></symbol>
-    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zm6.5 0H17v14h-3.5z"/></symbol>
-    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
   </svg>
 
@@ -158,34 +156,37 @@
       </div>
     </section>
 
-    <!-- Laufband: bewegt sich langsam, Pause-Knopf rechts -->
-    <div class="ribbon-zone">
-      <div class="ribbon" aria-hidden="true"><div class="ribbon-track" data-marquee></div></div>
-      <button type="button" class="ribbon-pause" data-ribbon-pause aria-pressed="false">
-        <svg class="icon icon-pause" aria-hidden="true"><use href="#i-pause"/></svg>
-        <svg class="icon icon-play" aria-hidden="true"><use href="#i-play"/></svg>
-        <span class="visually-hidden" data-i18n="ribbon.pause">Laufband anhalten</span>
-      </button>
+    <!-- Laufband -->
+    <div class="ribbon-zone" aria-hidden="true">
+      <div class="ribbon"><div class="ribbon-track" data-marquee></div></div>
     </div>
 
-    <!-- Über uns: Typo-Collage -->
-    <section class="room hola" id="ueber-uns" aria-labelledby="about-title">
-      <div class="wrap">
-        <h2 id="about-title" class="hola-title">
-          <span lang="es">¡Hola,</span>
-          <span class="pic pic--round" aria-hidden="true"><img src="assets/salat-mango-avocado.jpg" alt="" width="828" height="991" loading="lazy" decoding="async"></span>
-          <span class="squiggle" lang="es">Freising!</span>
-        </h2>
-        <p class="hola-statement">
-          <span data-i18n="about.s_a">Auyama heißt Kürbis.</span>
-          <span class="pic pic--tile" aria-hidden="true"></span>
-          <span data-i18n="about.s_b">Bei uns heißt es:</span>
-          <span class="keep"><mark class="hl" data-i18n="about.s_c">Willkommen zu Hause.</mark>
-          <span class="pic pic--pill" aria-hidden="true"><img src="assets/burrito-salsa.jpg" alt="" width="828" height="1014" loading="lazy" decoding="async"></span></span>
-        </p>
+    <!-- Über uns -->
+    <section class="room room--terracota about" id="ueber-uns" aria-labelledby="about-title">
+      <div class="wrap about-grid">
+        <div class="about-text">
+          <h2 id="about-title" lang="es" data-i18n-html="about.title">¡Hola, <span class="squiggle">Freising!</span></h2>
+          <p class="about-lead" data-i18n="about.lead">Auyama heißt Kürbis. Bei uns heißt es: Willkommen zu Hause.</p>
+          <p data-i18n="about.p2">Im alten Entleutner-Haus in der Oberen Hauptstraße kochen wir venezolanisch und karibisch, mit regionalen Zutaten. Jeden Monat gibt es eine neue Karte.</p>
+          <p data-i18n="about.p3">Im Laden warten erlesene Weine und Hausgemachtes zum Mitnehmen: Marmeladen, Chutneys, Pestos und Saucen.</p>
+          <ul class="stickers" role="list">
+            <li class="sticker sticker--mango" data-i18n="about.s1">Jeden Monat neue Karte</li>
+            <li class="sticker sticker--cal" data-i18n="about.s2">Regionale Zutaten</li>
+            <li class="sticker sticker--auyama" data-i18n="about.s3">Weine &amp; Eingemachtes</li>
+            <li class="sticker sticker--verde" data-i18n="about.s4">Salsa &amp; Kino</li>
+          </ul>
+        </div>
 
-        <div class="hola-foot">
-          <svg class="stamp hola-stamp" viewBox="0 0 200 200" aria-hidden="true">
+        <div class="collage">
+          <figure class="snap snap--a">
+            <img src="assets/salat-mango-avocado.jpg" width="828" height="991" loading="lazy" decoding="async"
+                 alt="Bunter Salat mit Mango, Avocado und Cashewkernen, im begrünten Innenhof in die Kamera gehalten" data-i18n-attr="alt:about.img1">
+          </figure>
+          <figure class="snap snap--b">
+            <img src="assets/burrito-salsa.jpg" width="828" height="1014" loading="lazy" decoding="async"
+                 alt="Angeschnittener Burrito mit Bohnen, dazu Salsa und Salat" data-i18n-attr="alt:about.img2">
+          </figure>
+          <svg class="stamp" viewBox="0 0 200 200" aria-hidden="true">
             <defs><path id="stamp-circle" d="M100 100m-74 0a74 74 0 1 1 148 0a74 74 0 1 1-148 0"/></defs>
             <circle cx="100" cy="100" r="98" class="stamp-bg"/>
             <text class="stamp-text"><textPath href="#stamp-circle" textLength="460" lengthAdjust="spacing" data-stamp-text>Hecho en Freising · con mucho amor · </textPath></text>
@@ -199,25 +200,13 @@
               </g>
             </g>
           </svg>
-          <div class="hola-copy">
-            <p data-i18n="about.p2">Im alten Entleutner-Haus in der Oberen Hauptstraße kochen wir venezolanisch und karibisch, mit regionalen Zutaten. Jeden Monat gibt es eine neue Karte.</p>
-            <p data-i18n="about.p3">Im Laden warten erlesene Weine und Hausgemachtes zum Mitnehmen: Marmeladen, Chutneys, Pestos und Saucen.</p>
-          </div>
-          <div class="hola-tags">
-            <ul class="stickers" role="list">
-              <li class="sticker sticker--mango" data-i18n="about.s1">Jeden Monat neue Karte</li>
-              <li class="sticker sticker--verde" data-i18n="about.s2">Regionale Zutaten</li>
-              <li class="sticker sticker--auyama" data-i18n="about.s3">Weine &amp; Eingemachtes</li>
-              <li class="sticker sticker--terracota" data-i18n="about.s4">Salsa &amp; Kino</li>
-            </ul>
-            <p class="hola-quote" lang="es" data-i18n="about.quote">Mi casa es tu casa.</p>
-          </div>
+          <p class="collage-quote" lang="es" data-i18n="about.quote">Mi casa es tu casa.</p>
         </div>
       </div>
     </section>
 
-    <!-- Monatskarte: Vorschau + ¿Qué comemos hoy? -->
-    <section class="room room--verde sheet preview" id="karte" aria-labelledby="menu-title">
+    <!-- Monatskarte: Vorschau -->
+    <section class="room room--verde preview" id="karte" aria-labelledby="menu-title">
       <div class="wrap">
         <header class="room-head">
           <h2 id="menu-title"><span data-i18n="menu.title">Monatskarte</span> <span class="accent-mango" data-menu-month>Oktober 2026</span></h2>
@@ -232,70 +221,55 @@
           <span data-i18n="preview.cta">Ganze Karte ansehen</span>
           <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
         </a>
+      </div>
+    </section>
 
-        <div class="craving" id="was-essen" aria-labelledby="craving-title">
-          <div class="craving-controls">
-            <h2 id="craving-title" lang="es" data-i18n="craving.title">¿Qué comemos hoy?</h2>
-            <p class="craving-lead" data-i18n="craving.lead">Sag uns, wie hungrig du bist. Wir stellen dir dein Essen zusammen.</p>
-
-            <fieldset class="choice">
-              <legend data-i18n="craving.hungerLabel">Hunger</legend>
-              <div class="seg">
-                <button type="button" data-hunger="leicht" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg><span data-i18n="craving.hungerSmall">Kleiner Hunger</span></button>
-                <button type="button" data-hunger="satt" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-bowl"/></svg><span data-i18n="craving.hungerBig">Großer Hunger</span></button>
-                <button type="button" data-hunger="egal" aria-pressed="true"><span data-i18n="craving.any">Egal</span></button>
-              </div>
-            </fieldset>
-
-            <fieldset class="choice">
-              <legend data-i18n="craving.meatLabel">Fleisch</legend>
-              <div class="seg">
-                <button type="button" data-meat="ja" aria-pressed="true"><span data-i18n="craving.meatYes">Gern</span></button>
-                <button type="button" data-meat="veggie" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg><span data-i18n="craving.meatNo">Ohne Fleisch</span></button>
-                <button type="button" data-meat="vegan" aria-pressed="false"><span data-i18n="craving.meatVegan">Vegan</span></button>
-              </div>
-            </fieldset>
-
-            <label class="switch">
-              <input type="checkbox" data-drink checked>
-              <span class="switch-track" aria-hidden="true"><span class="switch-knob"></span></span>
-              <svg class="icon" aria-hidden="true"><use href="#i-cup"/></svg>
-              <span data-i18n="craving.drink">Mit Getränk</span>
-            </label>
+    <!-- ¿Qué comemos hoy? -->
+    <section class="room room--mango craving" id="was-essen" aria-labelledby="craving-title">
+      <div class="wrap craving-grid">
+        <div class="craving-text">
+          <h2 id="craving-title" lang="es" data-i18n="craving.title">¿Qué comemos hoy?</h2>
+          <p class="room-lead" data-i18n="craving.lead">Noch unentschlossen? Sag uns, worauf du Lust hast.</p>
+          <div class="moods" role="group" aria-label="Worauf hast du Lust?" data-i18n-attr="aria-label:craving.moodsLabel">
+            <button type="button" class="mood mood--leicht" data-mood="leicht" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg><span data-i18n="craving.leicht">Leicht &amp; frisch</span></button>
+            <button type="button" class="mood mood--satt" data-mood="satt" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-bowl"/></svg><span data-i18n="craving.satt">Richtig satt</span></button>
+            <button type="button" class="mood mood--veggie" data-mood="veggie" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-leaf"/></svg><span data-i18n="craving.veggie">Ohne Fleisch</span></button>
+            <button type="button" class="mood mood--trinken" data-mood="trinken" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-cup"/></svg><span data-i18n="craving.trinken">Was zum Trinken</span></button>
+            <button type="button" class="mood mood--surprise" data-mood="surprise" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-dice"/></svg><span data-i18n="craving.surprise">Überrasch mich</span></button>
           </div>
+        </div>
 
-          <div class="slip-wrap">
-            <article class="slip" data-slip>
-              <header class="slip-head">
-                <span class="slip-title" lang="es" data-i18n="craving.slipTitle">Comanda</span>
-                <span class="slip-no" data-slip-no>Nº 042</span>
-              </header>
-              <div data-slip-body>
-                <p class="slip-none" data-slip-none hidden data-i18n="craving.none">Dafür haben wir diesen Monat nichts. Probier eine andere Kombination.</p>
-                <ul class="slip-lines" role="list" data-slip-lines></ul>
-                <p class="slip-total"><span data-i18n="craving.total">Zusammen</span> <strong data-slip-total></strong></p>
-              </div>
-              <p class="slip-status" data-slip-status><span class="status-dot" aria-hidden="true"></span><span data-slip-status-text></span></p>
-              <div class="slip-actions">
-                <button type="button" class="btn btn--verde btn--small" data-slip-again>
-                  <svg class="icon dice" aria-hidden="true"><use href="#i-dice"/></svg>
-                  <span data-i18n="craving.again">Nochmal würfeln</span>
+        <div class="ticket-wrap">
+          <article class="ticket" data-ticket aria-live="polite">
+            <div class="ticket-empty" data-ticket-empty>
+              <svg class="ticket-empty-icon" aria-hidden="true"><use href="#i-bowl"/></svg>
+              <p class="ticket-dish" data-i18n="craving.emptyTitle">Tipp auf deine Laune.</p>
+              <p class="ticket-details" data-i18n="craving.emptyText">Wir suchen dir was Leckeres aus der Monatskarte aus.</p>
+            </div>
+            <div class="ticket-result" data-ticket-result hidden>
+              <h3 class="ticket-dish" data-ticket-dish></h3>
+              <p class="ticket-details" data-ticket-details></p>
+              <p class="ticket-cat" data-ticket-cat></p>
+              <p class="ticket-price" data-ticket-price></p>
+              <div class="ticket-actions">
+                <button type="button" class="btn btn--verde btn--small" data-ticket-again>
+                  <svg class="icon" aria-hidden="true"><use href="#i-dice"/></svg>
+                  <span data-i18n="craving.again">Noch eine Idee</span>
                 </button>
                 <a class="btn btn--outline btn--small" href="tel:+491702321409" data-tel>
                   <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
                   <span data-i18n="craving.call">Anrufen</span>
                 </a>
               </div>
-            </article>
-            <p class="slip-stamp" lang="es" aria-hidden="true" data-i18n="craving.stamp">Tu antojo de hoy</p>
-            <p class="visually-hidden" aria-live="polite" data-slip-announce></p>
-          </div>
+            </div>
+            <p class="ticket-stamp" lang="es" data-i18n="craving.stamp">Tu antojo de hoy</p>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- Events -->
-    <section class="room room--grout sheet events" id="events" aria-labelledby="events-title">
+    <section class="room room--verde events" id="events" aria-labelledby="events-title">
       <div class="wrap">
         <header class="room-head">
           <h2 id="events-title" data-i18n="events.title">Salsa Nights &amp; Filmabende</h2>
@@ -313,8 +287,10 @@
       </div>
     </section>
 
+    <div class="cenefa" aria-hidden="true"></div>
+
     <!-- Galerie (Fotos aus dem Entwurf: vor dem Livegang durch eigene ersetzen, siehe README) -->
-    <section class="room room--cal sheet gallery-room" id="galerie" aria-labelledby="gallery-title">
+    <section class="room room--cal gallery-room" id="galerie" aria-labelledby="gallery-title">
       <div class="wrap">
         <header class="room-head">
           <h2 id="gallery-title" data-i18n="gallery.title">Aus unserer Küche</h2>
@@ -351,8 +327,10 @@
       </div>
     </section>
 
+    <div class="cenefa cenefa--thin" aria-hidden="true"></div>
+
     <!-- Öffnungszeiten & Anfahrt -->
-    <section class="room room--cal2 sheet visit" id="anfahrt" aria-labelledby="visit-title">
+    <section class="room room--cal visit" id="anfahrt" aria-labelledby="visit-title">
       <div class="wrap">
         <header class="room-head">
           <h2 id="visit-title" data-i18n="visit.title">Öffnungszeiten &amp; Anfahrt</h2>
@@ -411,7 +389,8 @@
     </section>
   </main>
 
-  <footer class="site-footer sheet">
+  <footer class="site-footer">
+    <div class="cenefa cenefa--verde" aria-hidden="true"></div>
     <div class="wrap footer-grid">
       <div class="footer-brand">
         <img class="footer-badge" src="assets/logo.jpg" width="112" height="112" loading="lazy" alt="Logo: Auyama Feinkost">

@@ -15,8 +15,7 @@
   var SCHEMA_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   var LANG_KEY = 'auyama-lang';
 
-  var state = { lang: 'de', texts: null, restaurant: null, menu: null, events: null, filter: 'alle',
-    crav: { hunger: 'egal', meat: 'ja', drink: true, dish: null, drinkPick: null, no: 42 } };
+  var state = { lang: 'de', texts: null, restaurant: null, menu: null, events: null, filter: 'alle', mood: null, pick: null };
 
   /* ---------- Hilfsfunktionen ---------- */
 
@@ -416,165 +415,94 @@
     }
   }
 
-  /* ---------- ¿Qué comemos hoy? Die Comanda ---------- */
+  /* ---------- ¿Qué comemos hoy? ---------- */
 
-  function cravingPool(kind) {
-    var c = state.crav;
+  function moodPool(mood) {
     var pool = [];
     ((state.menu && state.menu.kategorien) || []).forEach(function (cat) {
       var st = cat.stimmung || [];
-      var isDrink = st.indexOf('trinken') !== -1;
       (cat.gerichte || []).forEach(function (g) {
-        if (kind === 'drink') { if (isDrink) pool.push({ g: g, cat: cat }); return; }
-        if (isDrink) return;
-        if (c.hunger !== 'egal' && st.indexOf(c.hunger) === -1) return;
-        if (c.meat === 'veggie' && g.label !== 'vegetarisch' && g.label !== 'vegan') return;
-        if (c.meat === 'vegan' && g.label !== 'vegan') return;
-        pool.push({ g: g, cat: cat });
+        var drink = st.indexOf('trinken') !== -1;
+        var ok = false;
+        if (mood === 'trinken') ok = drink;
+        else if (mood === 'veggie') ok = !drink && (g.label === 'vegan' || g.label === 'vegetarisch');
+        else if (mood === 'surprise') ok = !drink;
+        else ok = st.indexOf(mood) !== -1;
+        if (ok) pool.push({ g: g, cat: cat });
       });
     });
     return pool;
   }
 
-  function pickFrom(pool, prev) {
+  function pickDish(mood) {
+    var pool = moodPool(mood);
     if (!pool.length) return null;
-    var options = pool.length > 1 ? pool.filter(function (p) { return !prev || p.g !== prev.g; }) : pool;
+    var prev = state.pick && state.pick.g;
+    var options = pool.length > 1 ? pool.filter(function (p) { return p.g !== prev; }) : pool;
     return options[Math.floor(Math.random() * options.length)];
   }
 
-  /** Neues Essen (und Getränk) würfeln */
-  function rollCraving() {
-    var c = state.crav;
-    c.dish = pickFrom(cravingPool('food'), c.dish);
-    c.drinkPick = c.drink ? pickFrom(cravingPool('drink'), c.drinkPick) : null;
-    c.no = 1 + Math.floor(Math.random() * 199);
-  }
-
-  function slipLine(p) {
+  function renderTicket(animate) {
+    var ticket = $('[data-ticket]');
+    if (!ticket) return;
+    var p = state.pick;
+    $('[data-ticket-empty]').hidden = !!p;
+    $('[data-ticket-result]').hidden = !p;
+    $$('[data-mood]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-mood') === state.mood)); });
+    if (!p) return;
     var g = p.g;
     var label = g.label === 'vegan' || g.label === 'vegetarisch' ? g.label : '';
-    var meta = el('span', { className: 'slip-meta' }, [[loc(p.cat.name), g.menge, loc(g.details)].filter(Boolean).join(' · ')]);
-    if (label) meta.appendChild(el('span', { className: 'diet diet--' + label, html: icon('i-leaf', '') + '<span>' + t('menu.' + label) + '</span>' }));
-    return el('li', { className: 'slip-line' }, [
-      el('span', { className: 'slip-name', text: loc(g.name) }),
-      el('span', { className: 'slip-price', text: formatPrice(g.preis) }),
-      meta
-    ]);
-  }
-
-  function renderSlip(animate) {
-    var slip = $('[data-slip]');
-    if (!slip || !state.menu) return;
-    var c = state.crav;
-    if (!c.dish && !c.rolled) { rollCraving(); c.rolled = true; }
-
-    $$('[data-hunger]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-hunger') === c.hunger)); });
-    $$('[data-meat]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-meat') === c.meat)); });
-    var drinkBox = $('[data-drink]');
-    if (drinkBox) drinkBox.checked = c.drink;
-
-    var lines = $('[data-slip-lines]');
-    lines.innerHTML = '';
-    $('[data-slip-none]').hidden = !!c.dish;
-    $('[data-slip-no]').textContent = 'Nº ' + ('00' + c.no).slice(-3);
-    var total = 0;
-    [c.dish, c.drinkPick].forEach(function (p) {
-      if (!p) return;
-      lines.appendChild(slipLine(p));
-      total += priceValue(p.g.preis) || 0;
-    });
-    var totalWrap = $('.slip-total', slip);
-    totalWrap.hidden = !c.dish;
-    $('[data-slip-total]').textContent = formatPrice(total);
-
-    if (state.restaurant && state.texts) {
-      var st = computeStatus();
-      var status = $('[data-slip-status]');
-      status.setAttribute('data-state', st.state);
-      $('[data-slip-status-text]').textContent = st.title + ' · ' + st.detail;
-    }
-
-    var live = $('[data-slip-announce]');
-    if (live && animate && c.dish) {
-      var names = [c.dish, c.drinkPick].filter(Boolean).map(function (p) { return loc(p.g.name); }).join(' + ');
-      live.textContent = t('craving.announce', { gericht: names, preis: formatPrice(total) });
-    }
+    $('[data-ticket-dish]').textContent = loc(g.name);
+    var details = [g.menge, loc(g.details)].filter(Boolean).join(' · ');
+    var det = $('[data-ticket-details]');
+    det.textContent = details;
+    det.hidden = !details;
+    var cat = $('[data-ticket-cat]');
+    cat.innerHTML = '';
+    cat.appendChild(el('span', { text: loc(p.cat.name) }));
+    if (label) cat.appendChild(el('span', { className: 'diet diet--' + label, html: icon('i-leaf', '') + '<span>' + t('menu.' + label) + '</span>' }));
+    $('[data-ticket-price]').textContent = formatPrice(g.preis);
     if (animate && !prefersReducedMotion()) {
-      slip.classList.remove('is-new');
-      void slip.offsetWidth;
-      slip.classList.add('is-new');
+      ticket.classList.remove('is-new');
+      void ticket.offsetWidth;
+      ticket.classList.add('is-new');
     }
   }
 
   function setupCraving() {
-    if (!$('[data-slip]')) return;
-    var c = state.crav;
-    var update = function () { rollCraving(); renderSlip(true); };
-    $$('[data-hunger]').forEach(function (b) {
-      b.addEventListener('click', function () { c.hunger = b.getAttribute('data-hunger'); update(); });
+    if (!$('[data-ticket]')) return;
+    $$('[data-mood]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        state.mood = b.getAttribute('data-mood');
+        state.pick = pickDish(state.mood);
+        renderTicket(true);
+      });
     });
-    $$('[data-meat]').forEach(function (b) {
-      b.addEventListener('click', function () { c.meat = b.getAttribute('data-meat'); update(); });
-    });
-    var drinkBox = $('[data-drink]');
-    if (drinkBox) drinkBox.addEventListener('change', function () {
-      c.drink = drinkBox.checked;
-      c.drinkPick = c.drink ? pickFrom(cravingPool('drink'), null) : null;
-      renderSlip(true);
-    });
-    var again = $('[data-slip-again]');
+    var again = $('[data-ticket-again]');
     if (again) again.addEventListener('click', function () {
-      var dice = $('.dice', again);
-      if (dice && !prefersReducedMotion()) { dice.classList.remove('is-rolling'); void dice.getBoundingClientRect(); dice.classList.add('is-rolling'); }
-      update();
+      if (!state.mood) return;
+      state.pick = pickDish(state.mood);
+      renderTicket(true);
     });
   }
 
   /* ---------- Laufband & Stempel ---------- */
 
-  /**
-   * Das Laufband wandert langsam von selbst und beim Scrollen etwas schneller.
-   * Pause-Knopf, Anhalten beim Darüberfahren, ausgeblendet außerhalb des Bildschirms,
-   * bei „Bewegung reduzieren“ steht es still.
-   */
+  /** Das Laufband bewegt sich mit dem Scrollen (kein Endlos-Loop, bei reduzierter Bewegung statisch) */
   function setupRibbon() {
     var track = $('[data-marquee]');
-    var btn = $('[data-ribbon-pause]');
     if (!track || prefersReducedMotion()) return;
-    var x = 0, last = null, lastScroll = window.scrollY, boost = 0, paused = false, hover = false, visible = true;
-    var SPEED = 28; // Pixel pro Sekunde
-    function frame(ts) {
-      if (last === null) last = ts;
-      var dt = Math.min((ts - last) / 1000, 0.1);
-      last = ts;
-      var sy = window.scrollY;
-      boost = Math.min(boost + Math.abs(sy - lastScroll) * 0.03, 6);
-      lastScroll = sy;
+    var ticking = false;
+    function update() {
+      ticking = false;
       var half = track.scrollWidth / 2;
-      if (!paused && !hover && visible && half) {
-        x -= SPEED * dt + boost;
-        if (x <= -half) x += half;
-        track.style.transform = 'translate3d(' + x.toFixed(2) + 'px,0,0)';
-      }
-      boost *= 0.9;
-      window.requestAnimationFrame(frame);
+      var x = half ? -((window.scrollY * 0.45) % half) : 0;
+      track.style.transform = 'translateX(' + x + 'px)';
     }
-    window.requestAnimationFrame(frame);
-    var ribbon = track.parentNode;
-    ribbon.addEventListener('mouseenter', function () { hover = true; });
-    ribbon.addEventListener('mouseleave', function () { hover = false; });
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(ribbon);
-    }
-    if (btn) {
-      var label = $('.visually-hidden', btn);
-      var sync = function () {
-        btn.setAttribute('aria-pressed', String(paused));
-        if (label) label.textContent = t(paused ? 'ribbon.play' : 'ribbon.pause') || label.textContent;
-      };
-      btn.addEventListener('click', function () { paused = !paused; sync(); });
-      sync();
-    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
   }
 
   function renderMarquee() {
@@ -795,7 +723,7 @@
     renderStatus();
     renderHours();
     renderMarquee();
-    if (state.menu) { renderMonth(); renderMenu(); renderPreview(); renderSlip(false); }
+    if (state.menu) { renderMonth(); renderMenu(); renderPreview(); renderTicket(false); }
     renderEvents();
   }
 
@@ -912,7 +840,7 @@
         var target = document.getElementById(location.hash.slice(1));
         if (target) target.scrollIntoView();
       }
-      setInterval(function () { renderStatus(); renderHours(); renderSlip(false); }, 60 * 1000);
+      setInterval(function () { renderStatus(); renderHours(); }, 60 * 1000);
     });
   }
 
