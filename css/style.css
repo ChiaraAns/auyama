@@ -351,7 +351,16 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: 0.2
 .accent-mango { color: var(--mango); }
 
 /* ---------- Laufband ---------- */
-.ribbon-zone { overflow: hidden; background: linear-gradient(var(--grout) 50%, var(--cal) 50%); padding-block: 14px; }
+.ribbon-zone { position: relative; overflow: hidden; background: linear-gradient(var(--grout) 50%, var(--cal) 50%); padding-block: 14px; }
+.ribbon-pause {
+  position: absolute; z-index: 3; right: max(10px, calc(var(--gutter) - 8px)); top: 50%; transform: translateY(-50%);
+  width: 38px; height: 38px; display: grid; place-items: center;
+  border: 2px solid var(--auyama); border-radius: 50%; background: var(--ink); color: var(--cal); cursor: pointer;
+}
+.ribbon-pause .icon { width: 16px; height: 16px; }
+.ribbon-pause .icon-play, .ribbon-pause[aria-pressed="true"] .icon-pause { display: none; }
+.ribbon-pause[aria-pressed="true"] .icon-play { display: block; }
+@media (prefers-reduced-motion: reduce) { .ribbon-pause { display: none; } }
 .ribbon {
   position: relative; z-index: 2; width: 104%; margin-left: -2%;
   background: var(--auyama); color: var(--ink);
