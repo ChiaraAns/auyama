@@ -1,0 +1,27 @@
+{
+  "_hinweis": "Stammdaten des Restaurants. Öffnungszeiten im Format \"12:00-16:00\" eintragen, mehrere Zeiten pro Tag mit Komma trennen, z. B. [\"12:00-14:30\", \"17:30-21:00\"]. Geschlossene Tage: []. Mehr dazu in der README.md.",
+
+  "telefon": "0170 2321409",
+  "telefonLink": "+491702321409",
+  "instagram": "auyama_freising",
+  "adresse": {
+    "strasse": "Obere Hauptstr. 41",
+    "plz": "85354",
+    "ort": "Freising"
+  },
+
+  "oeffnungszeiten": {
+    "montag": [],
+    "dienstag": ["12:00-16:00"],
+    "mittwoch": ["12:00-16:00"],
+    "donnerstag": ["12:00-16:00"],
+    "freitag": ["12:00-21:00"],
+    "samstag": ["12:00-21:00"],
+    "sonntag": []
+  },
+
+  "sonderhinweis": {
+    "de": "",
+    "en": ""
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "_hinweis": "Monatskarte. Jeden Monat Monat/Jahr und die Gerichte austauschen. Preise mit Komma schreiben (\"14,80\"). \"en\" ist optional. \"label\": \"vegan\", \"vegetarisch\" oder weglassen. \"highlight\": true zeigt ein Gericht in der Vorschau auf der Startseite (am besten 3 bis 5 Gerichte, optional mit \"bild\"). \"stimmung\" pro Kategorie steuert „¿Qué comemos hoy?“: \"leicht\", \"satt\" oder \"trinken\". Mehr dazu in der README.md.",
+
+  "monat": {"de": "Oktober", "en": "October"},
+  "jahr": "2026",
+
+  "kategorien": [
+    {
+      "id": "suppen",
+      "name": {"de": "Suppen", "en": "Soups"},
+      "stimmung": ["leicht"],
+      "gerichte": [
+        {"name": {"de": "Karibische Kürbissuppe", "en": "Caribbean pumpkin soup"}, "details": {"de": "mit Kokoschips", "en": "with coconut chips"}, "preis": "7,80"},
+        {"name": {"de": "Tomaten-Orangencremesuppe", "en": "Cream of tomato & orange soup"}, "preis": "7,80"},
+        {"name": {"de": "Kürbiscremesuppe", "en": "Cream of pumpkin soup"}, "preis": "7,80"},
+        {"name": {"de": "Karibische Hühnersuppe", "en": "Caribbean chicken soup"}, "preis": "9,50"},
+        {"name": {"de": "Kartoffel-Lauchsuppe", "en": "Potato & leek soup"}, "preis": "6,90"}
+      ]
+    },
+    {
+      "id": "bowls",
+      "name": {"de": "Bowls & Salate", "en": "Bowls & Salads"},
+      "stimmung": ["leicht"],
+      "bild": "assets/pokebowls.jpg",
+      "bildAlt": {"de": "Zwei karibische Pokebowls mit Reis, schwarzen Bohnen, Avocado, Cashewkernen und essbaren Blüten", "en": "Two Caribbean poke bowls with rice, black beans, avocado, cashews and edible flowers"},
+      "gerichte": [
+        {"name": {"de": "Karibische Pokebowl", "en": "Caribbean poke bowl"}, "details": {"de": "mit Reis, Bohnen, Avocado, Cashewkernen und Kochbanane", "en": "with rice, beans, avocado, cashews and plantain"}, "preis": "14,80", "label": "vegan", "highlight": true, "bild": "assets/pokebowls.jpg", "bildAlt": {"de": "Zwei bunte Pokebowls mit Avocado, Cashewkernen und Blüten", "en": "Two colourful poke bowls with avocado, cashews and flowers"}},
+        {"name": {"de": "Karibische Pokebowl mit Huhn", "en": "Caribbean poke bowl with chicken"}, "details": {"de": "mit Reis, Bohnen, Avocado, Cashewkernen, Kochbanane und Huhn", "en": "with rice, beans, avocado, cashews, plantain and chicken"}, "preis": "16,80"},
+        {"name": {"de": "Bunter Salat", "en": "Colourful salad"}, "details": {"de": "mit Mango, Ananas und Avocado", "en": "with mango, pineapple and avocado"}, "preis": "14,80", "label": "vegan", "highlight": true, "bild": "assets/salat-mango-avocado.jpg", "bildAlt": {"de": "Bunter Salat mit Mango und Avocado im Innenhof", "en": "Colourful salad with mango and avocado in the courtyard"}}
+      ]
+    },
+    {
+      "id": "burritos",
+      "name": {"de": "Burritos", "en": "Burritos"},
+      "stimmung": ["satt"],
+      "bild": "assets/burrito-guacamole.jpg",
+      "bildAlt": {"de": "Burrito mit Pulled Beef, dazu Guacamole, Dip und bunter Salat auf einem grünen Teller", "en": "Pulled beef burrito with guacamole, dip and a colourful salad on a green plate"},
+      "gerichte": [
+        {"name": {"de": "Burrito mit Pulled Beef", "en": "Pulled beef burrito"}, "details": {"de": "Bohnen, Feta, Guacamole, Salat und Dips", "en": "beans, feta, guacamole, salad and dips"}, "preis": "16,80", "highlight": true, "bild": "assets/burrito-guacamole.jpg", "bildFokus": "40% 78%", "bildAlt": {"de": "Burrito mit Pulled Beef, Guacamole und Salat", "en": "Pulled beef burrito with guacamole and salad"}},
+        {"name": {"de": "Burrito mit Bohnen", "en": "Bean burrito"}, "details": {"de": "Feta, Guacamole, Salat und Dips", "en": "feta, guacamole, salad and dips"}, "preis": "14,80", "label": "vegetarisch"}
+      ]
+    },
+    {
+      "id": "arepas",
+      "name": {"de": "Arepas", "en": "Arepas"},
+      "stimmung": ["satt"],
+      "gerichte": [
+        {"name": {"de": "Arepa „Reina Pepiada“", "en": "Arepa “Reina Pepiada”"}, "details": {"de": "mit Pulled Chicken, Dips und Salat", "en": "with pulled chicken, dips and salad"}, "preis": "14,80", "highlight": true},
+        {"name": {"de": "Arepa mit Carne Mechada", "en": "Arepa with carne mechada"}, "details": {"de": "Kochbananen, Bohnen, Dips und Salat", "en": "plantain, beans, dips and salad"}, "preis": "15,80"},
+        {"name": {"de": "Arepa mit Bohnen, Käse und Avocado", "en": "Arepa with beans, cheese and avocado"}, "details": {"de": "Dips und Salat", "en": "dips and salad"}, "preis": "12,80", "label": "vegetarisch"},
+        {"name": {"de": "Arepa vegan", "en": "Vegan arepa"}, "details": {"de": "gefüllt mit Linsen und Mango, Dips und Salat", "en": "filled with lentils and mango, dips and salad"}, "preis": "12,80", "label": "vegan"}
+      ]
+    },
+    {
+      "id": "currys",
+      "name": {"de": "Currys & Klassiker", "en": "Curries & Classics"},
+      "stimmung": ["satt"],
+      "gerichte": [
+        {"name": {"de": "Karibisches Gemüsecurry", "en": "Caribbean vegetable curry"}, "details": {"de": "mit Kurkumareis", "en": "with turmeric rice"}, "preis": "14,80", "label": "vegetarisch"},
+        {"name": {"de": "Karibisches Hähnchencurry", "en": "Caribbean chicken curry"}, "details": {"de": "mit Gemüse und Kurkumareis", "en": "with vegetables and turmeric rice"}, "preis": "16,80"},
+        {"name": {"de": "Pabellón Criollo", "en": "Pabellón Criollo"}, "details": {"de": "mit Carne Mechada, Reis, schwarzen Bohnen und gebratener Kochbanane", "en": "with carne mechada, rice, black beans and fried plantain"}, "preis": "19,80", "highlight": true}
+      ]
+    },
+    {
+      "id": "getraenke",
+      "name": {"de": "Getränke", "en": "Drinks"},
+      "stimmung": ["trinken"],
+      "gerichte": [
+        {"name": {"de": "Hausgemachte Limonade", "en": "Homemade lemonade"}, "details": {"de": "Ingwer-Zitrone, fermentierte Ananas oder Tamarinde", "en": "ginger-lemon, fermented pineapple or tamarind"}, "menge": "0,4 l", "preis": "5,50"},
+        {"name": {"de": "Kurkuma-Orangenschorle", "en": "Turmeric orange spritzer"}, "menge": "0,4 l", "preis": "5,00"},
+        {"name": {"de": "Streuobstwiesen-Apfelschorle", "en": "Orchard apple spritzer"}, "menge": "0,4 l", "preis": "4,80"},
+        {"name": {"de": "Johannisbeerschorle", "en": "Currant spritzer"}, "menge": "0,4 l", "preis": "4,80"},
+        {"name": {"de": "Guavenschorle", "en": "Guava spritzer"}, "menge": "0,4 l", "preis": "5,00"},
+        {"name": {"de": "Maracujaschorle", "en": "Passion fruit spritzer"}, "menge": "0,4 l", "preis": "5,00"},
+        {"name": {"de": "Passionsfrucht-Melonen-Smoothie", "en": "Passion fruit & melon smoothie"}, "menge": "0,4 l", "preis": "6,60"},
+        {"name": {"de": "Basilikum-Ananas-Smoothie", "en": "Basil & pineapple smoothie"}, "menge": "0,4 l", "preis": "6,60"},
+        {"name": {"de": "Plose Mineralwasser", "en": "Plose mineral water"}, "menge": "0,5 l", "preis": "3,90"}
+      ]
+    }
+  ],
+
+  "fussnote": {
+      "de": "Über Allergene und Zusatzstoffe informieren wir Sie gerne an der Theke.",
+      "en": "Please ask at the counter for information on allergens and additives."
+  }
+}

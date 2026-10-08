@@ -1,0 +1,359 @@
+{
+  "_hinweis": "Alle Texte der Website auf Deutsch (de) und Englisch (en). Nur den Text zwischen den Anführungszeichen ändern. Platzhalter in geschweiften Klammern wie {zeit} nicht löschen. Mehr dazu in der README.md.",
+  "de": {
+    "meta": {
+      "title": "Auyama Freising · Venezolanische und karibische Küche in der Altstadt",
+      "description": "Venezolanische und karibische Küche mitten in der Freisinger Altstadt. Arepas, Bowls und Currys, jeden Monat eine neue Karte. Dazu Salsa Nights und Filmabende. Obere Hauptstr. 41, Freising."
+    },
+    "skip": "Zum Inhalt springen",
+    "brand": {
+      "alt": "Auyama Feinkost, zum Seitenanfang"
+    },
+    "nav": {
+      "label": "Hauptnavigation",
+      "about": "Über uns",
+      "menu": "Speisekarte",
+      "events": "Events",
+      "gallery": "Galerie",
+      "visit": "Anfahrt",
+      "toggle": "Menü öffnen",
+      "close": "Menü schließen",
+      "craving": "Was essen?",
+      "home": "Start",
+      "fullMenu": "Ganze Karte"
+    },
+    "hero": {
+      "title": "Venezuela auf dem Teller. <em>Mitten in Freising.</em>",
+      "lead": "Arepas, Bowls und Currys, mit viel Liebe gekocht. Jeden Monat eine neue Karte.",
+      "imgAlt": "Zwei bunte Bowls mit Reis, schwarzen Bohnen, Avocado, Cashewkernen und Blüten, von oben fotografiert, daneben Limonade und Blumen",
+      "menuKicker": "Jetzt neu auf der Karte",
+      "menuTitle": "Monatskarte {monat}",
+      "welcome": "¡Bienvenidos!"
+    },
+    "cta": {
+      "call": "Anrufen",
+      "route": "Route",
+      "menu": "Speisekarte"
+    },
+    "status": {
+      "openTitle": "Geöffnet",
+      "openDetail": "heute bis {zeit} Uhr",
+      "soonTitle": "Gleich ist Schluss",
+      "soonDetail": "geöffnet bis {zeit} Uhr",
+      "closedTitle": "Geschlossen",
+      "opensToday": "Wir öffnen heute um {zeit} Uhr",
+      "opensTomorrow": "Wir öffnen morgen um {zeit} Uhr",
+      "opensOn": "Wir öffnen am {tag} um {zeit} Uhr",
+      "closedLong": "Wir sind gerade nicht da"
+    },
+    "days": [
+      "Montag",
+      "Dienstag",
+      "Mittwoch",
+      "Donnerstag",
+      "Freitag",
+      "Samstag",
+      "Sonntag"
+    ],
+    "about": {
+      "title": "¡Hola, <span class=\"squiggle\">Freising!</span>",
+      "lead": "Auyama heißt Kürbis. Bei uns heißt es: Willkommen zu Hause.",
+      "p2": "Im alten Entleutner-Haus in der Oberen Hauptstraße kochen wir venezolanisch und karibisch, mit regionalen Zutaten. Jeden Monat gibt es eine neue Karte.",
+      "p3": "Im Laden warten erlesene Weine und Hausgemachtes zum Mitnehmen: Marmeladen, Chutneys, Pestos und Saucen.",
+      "quote": "Mi casa es tu casa.",
+      "s1": "Jeden Monat neue Karte",
+      "s2": "Regionale Zutaten",
+      "s3": "Weine & Eingemachtes",
+      "s4": "Salsa & Kino",
+      "stamp": "Hecho en Freising · con mucho amor · ",
+      "img1": "Bunter Salat mit Mango, Avocado und Cashewkernen, im begrünten Innenhof in die Kamera gehalten",
+      "img2": "Angeschnittener Burrito mit Bohnen, dazu Salsa und Salat"
+    },
+    "menu": {
+      "title": "Monatskarte",
+      "lead": "Jeden Monat neu. Das kochen wir gerade für dich.",
+      "tabsLabel": "Kategorien der Speisekarte",
+      "filterLabel": "Speisekarte filtern",
+      "filterAll": "Alle",
+      "filterVeg": "Vegetarisch",
+      "filterVegan": "Vegan",
+      "loading": "Die Karte wird geladen …",
+      "error": "Die Karte lädt gerade nicht. Ruf uns gern an: {telefon}",
+      "vegan": "vegan",
+      "vegetarisch": "vegetarisch",
+      "countAll": "Alle Gerichte werden angezeigt.",
+      "countFiltered": "{anzahl} passende Gerichte werden angezeigt.",
+      "closing": "¡Buen provecho!"
+    },
+    "events": {
+      "title": "Salsa Nights & Filmabende",
+      "lead": "Bei uns wird nicht nur gegessen. Mal legt ein DJ Salsa auf, mal wird das Restaurant zum Kino.",
+      "addToCalendar": "In den Kalender",
+      "time": "{zeit} Uhr",
+      "timeRange": "{beginn} bis {ende} Uhr",
+      "salsa": "Salsa Night",
+      "film": "Filmabend",
+      "other": "Event",
+      "more": "Alle Termine auf Instagram",
+      "empty": "Die nächsten Termine stehen bald fest. Schau solange auf Instagram vorbei."
+    },
+    "gallery": {
+      "title": "Aus unserer Küche",
+      "a1": "Zwei Bowls mit Avocado, Cashewkernen und Kapuzinerkresse, daneben ein Blumenstrauß",
+      "a2": "Burrito mit Pulled Beef, Guacamole und Salat auf einem grünen Tisch",
+      "a3": "Salat mit Mango, Avocado und Cashewkernen im Innenhof",
+      "a4": "Angeschnittener Burrito mit Bohnen, dazu Salsa und Salat",
+      "insta": "Mehr auf Instagram"
+    },
+    "visit": {
+      "title": "Öffnungszeiten & Anfahrt",
+      "hoursCaption": "Öffnungszeiten",
+      "closed": "geschlossen",
+      "today": "Heute",
+      "welcome": "¡Te esperamos!",
+      "oldtown": "Mitten in der Freisinger Altstadt."
+    },
+    "map": {
+      "title": "Karte anzeigen",
+      "text": "Beim Laden werden Daten an Google übertragen.",
+      "load": "Google Maps laden",
+      "iframeTitle": "Karte: Auyama, Obere Hauptstr. 41, Freising"
+    },
+    "footer": {
+      "bye": "¡Hasta pronto!",
+      "contact": "Kontakt",
+      "hours": "Geöffnet",
+      "legal": "Rechtliches",
+      "imprint": "Impressum",
+      "privacy": "Datenschutz"
+    },
+    "bar": {
+      "label": "Schnellzugriff",
+      "route": "Route",
+      "menu": "Karte",
+      "home": "Start"
+    },
+    "lightbox": {
+      "label": "Bild in groß",
+      "close": "Schließen"
+    },
+    "marquee": [
+      "¡Bienvenidos!",
+      "Arepas",
+      "Bowls",
+      "Currys",
+      "Hausgemachte Limonaden",
+      "Salsa Nights",
+      "Filmabende",
+      "Hecho en Freising"
+    ],
+    "preview": {
+      "lead": "Ein kleiner Vorgeschmack. Jeden Monat kochen wir neu für dich.",
+      "cta": "Ganze Karte ansehen",
+      "from": "ab {preis}",
+      "categoriesLabel": "Alle Kategorien der Monatskarte"
+    },
+    "craving": {
+      "title": "¿Qué comemos hoy?",
+      "lead": "Noch unentschlossen? Sag uns, worauf du Lust hast.",
+      "moodsLabel": "Worauf hast du Lust?",
+      "leicht": "Leicht & frisch",
+      "satt": "Richtig satt",
+      "veggie": "Ohne Fleisch",
+      "trinken": "Was zum Trinken",
+      "surprise": "Überrasch mich",
+      "emptyTitle": "Tipp auf deine Laune.",
+      "emptyText": "Wir suchen dir was Leckeres aus der Monatskarte aus.",
+      "stamp": "Tu antojo de hoy",
+      "again": "Noch eine Idee",
+      "call": "Anrufen",
+      "toMenu": "Zur ganzen Karte",
+      "announce": "Unser Vorschlag: {gericht}, {preis}"
+    },
+    "fullmenu": {
+      "metaTitle": "Speisekarte {monat} · Auyama Freising",
+      "metaDescription": "Die Monatskarte von Auyama in Freising: venezolanische und karibische Küche, Arepas, Bowls, Burritos, Currys und hausgemachte Limonaden.",
+      "back": "Zurück zur Startseite",
+      "hungryTitle": "Hunger bekommen?",
+      "hungryText": "Ruf an oder komm einfach vorbei. Wir freuen uns auf dich."
+    }
+  },
+  "en": {
+    "meta": {
+      "title": "Auyama Freising · Venezuelan and Caribbean food in the old town",
+      "description": "Venezuelan and Caribbean cooking in the heart of Freising's old town. Arepas, bowls and curries with a new menu every month. Plus salsa nights and film nights. Obere Hauptstr. 41, Freising."
+    },
+    "skip": "Skip to content",
+    "brand": {
+      "alt": "Auyama Feinkost, back to top"
+    },
+    "nav": {
+      "label": "Main navigation",
+      "about": "About",
+      "menu": "Menu",
+      "events": "Events",
+      "gallery": "Gallery",
+      "visit": "Visit",
+      "toggle": "Open menu",
+      "close": "Close menu",
+      "craving": "What to eat?",
+      "home": "Home",
+      "fullMenu": "Full menu"
+    },
+    "hero": {
+      "title": "Venezuela on a plate. <em>Right in Freising.</em>",
+      "lead": "Arepas, bowls and curries, cooked with love. A new menu every month.",
+      "imgAlt": "Two colourful bowls with rice, black beans, avocado, cashews and flowers, shot from above, next to a lemonade and flowers",
+      "menuKicker": "New on the menu now",
+      "menuTitle": "{monat} menu",
+      "welcome": "¡Bienvenidos!"
+    },
+    "cta": {
+      "call": "Call",
+      "route": "Directions",
+      "menu": "Menu"
+    },
+    "status": {
+      "openTitle": "Open",
+      "openDetail": "today until {zeit}",
+      "soonTitle": "Closing soon",
+      "soonDetail": "open until {zeit}",
+      "closedTitle": "Closed",
+      "opensToday": "We open today at {zeit}",
+      "opensTomorrow": "We open tomorrow at {zeit}",
+      "opensOn": "We open on {tag} at {zeit}",
+      "closedLong": "We're away right now"
+    },
+    "days": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday"
+    ],
+    "about": {
+      "title": "¡Hola, <span class=\"squiggle\">Freising!</span>",
+      "lead": "Auyama means pumpkin. Here it means: welcome home.",
+      "p2": "In the old Entleutner house on Obere Hauptstraße we cook Venezuelan and Caribbean food with regional ingredients. There is a new menu every month.",
+      "p3": "Our shop has fine wines and homemade treats to take away: jams, chutneys, pestos and sauces.",
+      "quote": "Mi casa es tu casa.",
+      "s1": "New menu every month",
+      "s2": "Regional ingredients",
+      "s3": "Wines & preserves",
+      "s4": "Salsa & cinema",
+      "stamp": "Hecho en Freising · con mucho amor · ",
+      "img1": "Colourful salad with mango, avocado and cashews, held up in the leafy courtyard",
+      "img2": "Burrito with beans cut open, with salsa and salad"
+    },
+    "menu": {
+      "title": "Menu",
+      "lead": "New every month. Here's what we're cooking for you right now.",
+      "tabsLabel": "Menu categories",
+      "filterLabel": "Filter the menu",
+      "filterAll": "All",
+      "filterVeg": "Vegetarian",
+      "filterVegan": "Vegan",
+      "loading": "Loading the menu …",
+      "error": "The menu isn't loading right now. Give us a call: {telefon}",
+      "vegan": "vegan",
+      "vegetarisch": "vegetarian",
+      "countAll": "Showing all dishes.",
+      "countFiltered": "Showing {anzahl} matching dishes.",
+      "closing": "¡Buen provecho!"
+    },
+    "events": {
+      "title": "Salsa nights & film nights",
+      "lead": "It's not just about the food here. Some nights a DJ plays salsa, some nights the restaurant becomes a cinema.",
+      "addToCalendar": "Add to calendar",
+      "time": "{zeit}",
+      "timeRange": "{beginn} to {ende}",
+      "salsa": "Salsa night",
+      "film": "Film night",
+      "other": "Event",
+      "more": "All dates on Instagram",
+      "empty": "The next dates are coming soon. Check Instagram in the meantime."
+    },
+    "gallery": {
+      "title": "From our kitchen",
+      "a1": "Two bowls with avocado, cashews and nasturtium flowers, next to a bunch of flowers",
+      "a2": "Pulled beef burrito with guacamole and salad on a green table",
+      "a3": "Salad with mango, avocado and cashews in the courtyard",
+      "a4": "Burrito with beans cut open, with salsa and salad",
+      "insta": "More on Instagram"
+    },
+    "visit": {
+      "title": "Opening hours & directions",
+      "hoursCaption": "Opening hours",
+      "closed": "closed",
+      "today": "Today",
+      "welcome": "¡Te esperamos!",
+      "oldtown": "In the heart of Freising's old town."
+    },
+    "map": {
+      "title": "Show map",
+      "text": "Loading the map sends data to Google.",
+      "load": "Load Google Maps",
+      "iframeTitle": "Map: Auyama, Obere Hauptstr. 41, Freising"
+    },
+    "footer": {
+      "bye": "¡Hasta pronto!",
+      "contact": "Contact",
+      "hours": "Open",
+      "legal": "Legal",
+      "imprint": "Legal notice",
+      "privacy": "Privacy"
+    },
+    "bar": {
+      "label": "Quick access",
+      "route": "Directions",
+      "menu": "Menu",
+      "home": "Home"
+    },
+    "lightbox": {
+      "label": "Full size image",
+      "close": "Close"
+    },
+    "marquee": [
+      "¡Bienvenidos!",
+      "Arepas",
+      "Bowls",
+      "Curries",
+      "Homemade lemonades",
+      "Salsa nights",
+      "Film nights",
+      "Hecho en Freising"
+    ],
+    "preview": {
+      "lead": "A little taste of what is cooking. New every month, just for you.",
+      "cta": "See the full menu",
+      "from": "from {preis}",
+      "categoriesLabel": "All categories on the monthly menu"
+    },
+    "craving": {
+      "title": "¿Qué comemos hoy?",
+      "lead": "Can't decide? Tell us what you're in the mood for.",
+      "moodsLabel": "What are you in the mood for?",
+      "leicht": "Light & fresh",
+      "satt": "Properly full",
+      "veggie": "No meat",
+      "trinken": "Something to drink",
+      "surprise": "Surprise me",
+      "emptyTitle": "Tap your mood.",
+      "emptyText": "We'll pick something tasty from this month's menu for you.",
+      "stamp": "Tu antojo de hoy",
+      "again": "Another idea",
+      "call": "Call",
+      "toMenu": "Full menu",
+      "announce": "Our pick: {gericht}, {preis}"
+    },
+    "fullmenu": {
+      "metaTitle": "Menu {monat} · Auyama Freising",
+      "metaDescription": "The monthly menu at Auyama in Freising: Venezuelan and Caribbean cooking, arepas, bowls, burritos, curries and homemade lemonades.",
+      "back": "Back to the homepage",
+      "hungryTitle": "Feeling hungry?",
+      "hungryText": "Give us a call or just drop by. We look forward to seeing you."
+    }
+  }
+}

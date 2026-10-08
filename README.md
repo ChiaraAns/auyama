@@ -215,6 +215,22 @@ Die Website spricht Gäste mit **„du“** an. Wer lieber „Sie“ möchte, ä
 
 ---
 
+## Gespeicherte Versionen
+
+Jede abgenommene Version bleibt unter einem eigenen Link erhalten:
+
+| Version | Link |
+|---|---|
+| Version 1 (08.10.2026) | https://chiaraans.github.io/auyama/versionen/v1/ |
+
+Neue Gestaltungswünsche werden in einem neuen Ordner (`versionen/v2/`, `v3/` …) umgesetzt und
+bekommen einen eigenen Link. Die Hauptadresse https://chiaraans.github.io/auyama/ ändert sich
+erst, wenn eine neue Version ausdrücklich zur Hauptversion gemacht wird.
+
+> Hinweis: Speisekarte, Termine und Öffnungszeiten pflegt der Inhaber in den Dateien im
+> Hauptverzeichnis. Die gespeicherten Versionen haben eigene Kopien dieser Dateien und bleiben
+> auf dem Stand ihres Speicherdatums.
+
 ## Vor dem Livegang: Checkliste
 
 - [ ] Name des Inhabers in `impressum.html` eintragen, Impressum und Datenschutz rechtlich prüfen lassen
