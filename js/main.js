@@ -489,31 +489,25 @@
   /* ---------- Laufband & Stempel ---------- */
 
   /**
-   * Das Laufband wandert langsam und fließend von selbst (Handy, iPad, Desktop),
-   * beim Scrollen kurz etwas schneller. Pause-Knopf, Anhalten beim Darüberfahren,
-   * angehalten außerhalb des Bildschirms; bei „Bewegung reduzieren“ steht es still.
+   * Das Laufband wandert gleichmäßig langsam von selbst (Handy, iPad, Desktop),
+   * immer im selben Tempo, auch beim Scrollen. Es hält an, solange die Maus darauf liegt
+   * oder es nicht im Bild ist; bei „Bewegung reduzieren“ steht es still.
    */
   function setupRibbon() {
     var track = $('[data-marquee]');
-    var btn = $('[data-ribbon-pause]');
     if (!track || prefersReducedMotion()) return;
-    var x = 0, last = null, lastScroll = window.scrollY, boost = 0;
-    var paused = false, hover = false, visible = true;
+    var x = 0, last = null, hover = false, visible = true;
     var SPEED = 30; // Pixel pro Sekunde
     function frame(ts) {
       if (last === null) last = ts;
       var dt = Math.min((ts - last) / 1000, 0.1);
       last = ts;
-      var sy = window.scrollY;
-      boost = Math.min(boost + Math.abs(sy - lastScroll) * 0.03, 6);
-      lastScroll = sy;
       var half = track.scrollWidth / 2;
-      if (!paused && !hover && visible && half) {
-        x -= SPEED * dt + boost;
+      if (!hover && visible && half) {
+        x -= SPEED * dt;
         if (x <= -half) x += half;
         track.style.transform = 'translate3d(' + x.toFixed(2) + 'px,0,0)';
       }
-      boost *= 0.9;
       window.requestAnimationFrame(frame);
     }
     window.requestAnimationFrame(frame);
@@ -523,22 +517,6 @@
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(ribbon);
     }
-    if (btn) {
-      btn.addEventListener('click', function () {
-        paused = !paused;
-        btn.setAttribute('aria-pressed', String(paused));
-        updateRibbonLabel();
-      });
-    }
-  }
-
-  /** Beschriftung des Pause-Knopfs passend zu Zustand und Sprache */
-  function updateRibbonLabel() {
-    var btn = $('[data-ribbon-pause]');
-    var label = btn && $('[data-ribbon-label]', btn);
-    if (!label) return;
-    var v = t(btn.getAttribute('aria-pressed') === 'true' ? 'ribbon.play' : 'ribbon.pause');
-    if (v) label.textContent = v;
   }
 
   function renderMarquee() {
@@ -745,7 +723,6 @@
     if (desc && t('meta.description')) desc.setAttribute('content', t('meta.description'));
     $$('[data-lang]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-lang') === state.lang)); });
     updateNavToggleLabel();
-    updateRibbonLabel();
   }
 
   function setLang(lang, persist) {

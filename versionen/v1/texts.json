@@ -176,10 +176,6 @@
       "back": "Zurück zur Startseite",
       "hungryTitle": "Hunger bekommen?",
       "hungryText": "Ruf an oder komm einfach vorbei. Wir freuen uns auf dich."
-    },
-    "ribbon": {
-      "pause": "Laufband anhalten",
-      "play": "Laufband starten"
     }
   },
   "en": {
@@ -358,10 +354,6 @@
       "back": "Back to the homepage",
       "hungryTitle": "Feeling hungry?",
       "hungryText": "Give us a call or just drop by. We look forward to seeing you."
-    },
-    "ribbon": {
-      "pause": "Pause the ribbon",
-      "play": "Play the ribbon"
     }
   }
 }

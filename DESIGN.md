@@ -185,7 +185,7 @@ Tiles and buttons: 6px corners. Panels and stickers: 8px. Mood buttons: 10px. Pr
 
 - **Tile:** square, 6px corners, one job each (headline, photo, status, link, greeting, ornament).
 - **Cenefa:** 32px (or 16px thin) repeating band of the flor tile between rooms.
-- **Ribbon:** auyama band tilted −1.4°, Gloock words separated by small flor tiles; moves with the scroll position, static under reduced motion.
+- **Ribbon:** auyama band tilted −1.4°, Gloock words separated by small flor tiles; drifts slowly at a constant 30px/s on every device (scrolling does not change the speed), stops on hover and offscreen, static under reduced motion.
 - **Sticker:** short fact on mango, cal, auyama or verde, 8px corners, tilted ±1 to 3°.
 - **Print and stamp:** photos in 10px cal frames tilted 3 to 5°; a round mango stamp with circular text and a flor centre, slowly turning.
 - **Dish card:** photo card with a cal name plate and a tilted mango price tag, or a colour card (auyama or terracota deep) with a flor corner ornament.

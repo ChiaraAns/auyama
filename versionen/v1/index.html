@@ -82,8 +82,6 @@
     <symbol id="i-bowl" viewBox="0 0 24 24"><path d="M2.5 11h19a9.5 9.5 0 0 1-19 0zm4.5-2.2C7 6.5 8.6 5 10.6 5c.9-1.6 3.6-2 5 0 1.8 0 3.4 1.4 3.4 3.8z"/></symbol>
     <symbol id="i-cup" viewBox="0 0 24 24"><path d="M5 3h14l-1.6 17.2A2 2 0 0 1 15.4 22H8.6a2 2 0 0 1-2-1.8zm2.2 2 .5 5h8.6l.5-5zM14 1l3 0-1.5 4h-1.6z"/></symbol>
     <symbol id="i-dice" viewBox="0 0 24 24"><path d="M5 3h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zm3 3.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-4 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-4 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm8 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/></symbol>
-    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zm6.5 0H17v14h-3.5z"/></symbol>
-    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></symbol>
     <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
   </svg>
 
@@ -161,13 +159,8 @@
     </section>
 
     <!-- Laufband -->
-    <div class="ribbon-zone">
-      <div class="ribbon" aria-hidden="true"><div class="ribbon-track" data-marquee></div></div>
-      <button type="button" class="ribbon-pause" data-ribbon-pause aria-pressed="false">
-        <svg class="icon icon-pause" aria-hidden="true"><use href="#i-pause"/></svg>
-        <svg class="icon icon-play" aria-hidden="true"><use href="#i-play"/></svg>
-        <span class="visually-hidden" data-ribbon-label>Laufband anhalten</span>
-      </button>
+    <div class="ribbon-zone" aria-hidden="true">
+      <div class="ribbon"><div class="ribbon-track" data-marquee></div></div>
     </div>
 
     <!-- Über uns -->

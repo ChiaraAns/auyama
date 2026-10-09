@@ -9,8 +9,9 @@ Die Nutzerin möchte jede abgenommene Version unter einem festen Link behalten.
 - Ordner unter `versionen/` werden **nie verändert**, außer die Nutzerin verlangt ausdrücklich eine
   Änderung an genau dieser Version.
 - Nachträgliche Änderungen an Version 1 auf ausdrücklichen Wunsch: Laufband über „¡Hola,
-  Freising!“ läuft langsam von selbst auf allen Geräten, mit Pause-Knopf (08.10.2026). Hauptadresse
-  und `versionen/v1/` sind dabei identisch geblieben.
+  Freising!“ läuft auf allen Geräten gleichmäßig langsam von selbst, immer im selben Tempo (auch beim
+  Scrollen), ohne Pause-Knopf (08./09.10.2026). Hauptadresse und `versionen/v1/` sind dabei identisch
+  geblieben.
 - Die Hauptadresse https://chiaraans.github.io/auyama/ (Dateien im Hauptverzeichnis) bleibt
   ebenfalls auf Version 1 stehen, solange die Nutzerin nicht ausdrücklich sagt, dass eine neue
   Version die Hauptversion werden soll.
