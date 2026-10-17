@@ -49,7 +49,8 @@ Removed by user request in Version 1: the "Feinkost & Catering" section and the 
 ## Evidence on Hand
 
 - Real menu with prices (`menu.json`, from info.md). No ratings, reviews, awards or press exist; never invent any.
-- Photos in `assets/` are pitch placeholders, partly guest photos from Google; the owner should replace them before going live.
+- Photos: from Version 3 only the owner's own photos (guest photos from Google removed; the salad bowl with avocado and sprouts is kept at the user's request). People shown on the photos have consented (confirmed by the user).
+- Operator: Joaquin von Dehn (Auyama Feinkost). Opening hours as on the site are correct (confirmed by the user). The owner wants to host the site himself (own provider, likely www.auyama.de).
 - Salsa nights have no confirmed dates; never invent dates. Confirmed by the user: show only real, current dated events (from `events.json`), no dateless format cards.
 - Feinkost: mention in the About text with the facts above (wines, preserves, homemade, regional ingredients); no separate section.
 - Email: auyama@gmx.de (supplied by the user, Oct 2026).

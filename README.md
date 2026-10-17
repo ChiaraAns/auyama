@@ -132,7 +132,8 @@ Ein Termin sieht so aus:
 
 | Feld | Bedeutung |
 |---|---|
-| `typ` | `"salsa"` (Noten-Symbol) oder `"film"` (Film-Symbol), sonst Stern |
+| `typ` | `"salsa"` (Noten-Symbol) oder `"film"` (Film-Symbol), sonst Stern. Ab Version 2 außerdem `"brunch"` (Becher) und `"musik"` (Live-Musik) |
+| `bild` | Ab Version 2, optional: Flyer als JPG in `assets/`, z. B. `"assets/flyer-brunch.jpg"`. Erscheint klein neben dem Termin und groß per Klick |
 | `datum` | **Jahr-Monat-Tag**, z. B. `"2026-11-14"` für den 14. November 2026 |
 | `beginn` / `ende` | Uhrzeit, z. B. `"19:00"`. `ende` ist optional |
 | `titel`, `beschreibung` | Text auf Deutsch und (optional) Englisch |
@@ -223,6 +224,7 @@ Jede abgenommene Version bleibt unter einem eigenen Link erhalten:
 |---|---|
 | Version 1 (08.10.2026) | https://chiaraans.github.io/auyama/versionen/v1/ |
 | Version 2 (17.10.2026): neue Fotos, Brunch, Rückblick mit Flyern, Catering & Foodtruck, E-Mail | https://chiaraans.github.io/auyama/versionen/v2/ |
+| Version 3 (17.10.2026): „Venezuelas Küche“, Galerie nur mit eigenen Fotos, Impressum mit Inhaber | https://chiaraans.github.io/auyama/versionen/v3/ |
 
 Neue Gestaltungswünsche werden in einem neuen Ordner (`versionen/v2/`, `v3/` …) umgesetzt und
 bekommen einen eigenen Link. Die Hauptadresse https://chiaraans.github.io/auyama/ ändert sich
@@ -234,12 +236,39 @@ erst, wenn eine neue Version ausdrücklich zur Hauptversion gemacht wird.
 
 ## Vor dem Livegang: Checkliste
 
-- [ ] Name des Inhabers in `impressum.html` eintragen, Impressum und Datenschutz rechtlich prüfen lassen
-- [ ] Aktuelle Termine (Salsa Nights, Filmabende) in `events.json` eintragen
+- [x] Name des Inhabers im Impressum (ab Version 3: Joaquin von Dehn)
+- [ ] Falls vorhanden: Umsatzsteuer-ID im Impressum ergänzen, Impressum und Datenschutz rechtlich prüfen lassen
+- [ ] Aktuelle Termine in `events.json` eintragen
 - [ ] vegan/vegetarisch-Labels in `menu.json` bestätigen
-- [ ] Eigene Fotos statt Gästefotos
+- [x] Eigene Fotos statt Gästefotos (ab Version 3)
+- [ ] Gewählte Version zur Hauptversion machen und beim eigenen Anbieter hochladen (siehe unten)
 - [ ] Bei eigener Domain: Adressen `https://chiaraans.github.io/auyama/` in `index.html` (Open Graph, JSON-LD) anpassen
 - [ ] Link zur Website im Google-Unternehmensprofil und in der Instagram-Bio eintragen
+
+## Die Website selbst hosten (eigener Anbieter, eigene Domain)
+
+Die Website besteht nur aus Dateien (HTML, CSS, JavaScript, JSON, Bilder). Sie braucht keine
+Datenbank, kein PHP und kein WordPress. Darum läuft sie bei **jedem** Webhoster, auch im
+kleinsten Paket.
+
+**So zieht sie um:**
+
+1. **Domain klären:** Bei welchem Anbieter ist `auyama.de` registriert (z. B. IONOS, Strato,
+   All-Inkl, Netcup)? Dort gibt es meist auch Webspace dazu.
+2. **Webspace buchen**, falls noch keiner da ist. Das kleinste Paket reicht.
+3. **Dateien hochladen:** Den Inhalt des Ordners der gewählten Version (z. B. alles in
+   `versionen/v3/`) über den Datei-Manager des Anbieters oder per FTP (z. B. mit FileZilla) in das
+   Hauptverzeichnis des Webspace legen. `index.html` muss ganz oben liegen.
+4. **SSL einschalten** (im Kundenbereich, meist kostenlos), damit die Seite mit `https://` läuft.
+5. **Anpassen vor dem Hochladen** (macht Claude gern):
+   - `<meta name="robots" content="noindex">` aus `index.html` und `speisekarte.html` entfernen,
+     sonst findet Google die Seite nicht
+   - Adressen `https://chiaraans.github.io/auyama/…` in `index.html` und `speisekarte.html`
+     (Open Graph, JSON-LD) auf `https://www.auyama.de/` ändern
+   - In `datenschutz.html` den Abschnitt „Hosting“ auf den neuen Anbieter umschreiben und mit dem
+     Anbieter einen Auftragsverarbeitungsvertrag (AV-Vertrag) abschließen (gibt es im Kundenbereich)
+6. **Später pflegen:** Speisekarte, Termine und Öffnungszeiten ändern sich weiterhin in den
+   JSON-Dateien. Die geänderte Datei einfach im Datei-Manager des Anbieters neu hochladen.
 
 ---
 
