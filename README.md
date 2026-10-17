@@ -222,6 +222,7 @@ Jede abgenommene Version bleibt unter einem eigenen Link erhalten:
 | Version | Link |
 |---|---|
 | Version 1 (08.10.2026) | https://chiaraans.github.io/auyama/versionen/v1/ |
+| Version 2 (17.10.2026): neue Fotos, Brunch, Rückblick mit Flyern, Catering & Foodtruck, E-Mail | https://chiaraans.github.io/auyama/versionen/v2/ |
 
 Neue Gestaltungswünsche werden in einem neuen Ordner (`versionen/v2/`, `v3/` …) umgesetzt und
 bekommen einen eigenen Link. Die Hauptadresse https://chiaraans.github.io/auyama/ ändert sich

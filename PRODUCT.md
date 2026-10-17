@@ -37,7 +37,7 @@ Live open/closed status, today highlighted in the hours table, sticky mobile act
 
 Removed by user request: the dish glossary tiles ("¿Qué es eso?").
 
-Removed by user request: the "Feinkost & Catering" section and the catering enquiry. The user asked that the site look finished: no visible draft labels, placeholders or "example" badges.
+Removed by user request in Version 1: the "Feinkost & Catering" section and the catering enquiry. Re-added by user request in Version 2 as "Catering & Foodtruck" with real facts and a mailto enquiry. The user asked that the site look finished: no visible draft labels, placeholders or "example" badges.
 
 ## Brand Commitments
 
@@ -52,7 +52,10 @@ Removed by user request: the "Feinkost & Catering" section and the catering enqu
 - Photos in `assets/` are pitch placeholders, partly guest photos from Google; the owner should replace them before going live.
 - Salsa nights have no confirmed dates; never invent dates. Confirmed by the user: show only real, current dated events (from `events.json`), no dateless format cards.
 - Feinkost: mention in the About text with the facts above (wines, preserves, homemade, regional ingredients); no separate section.
-- No email address known; do not show one.
+- Email: auyama@gmx.de (supplied by the user, Oct 2026).
+- Catering (supplied by the user, Oct 2026, shown from Version 2): over 20 years of catering experience; weddings, birthdays and other celebrations; 15 to 250 guests; food truck; Auyama's rooms, the courtyard and the café next door can be rented for events with Auyama catering.
+- Brunch: monthly; next date Sunday 18.10.2026, 09:00 to 14:30, 36 € per person incl. Caribbean buffet and speciality drinks (from the owner's flyer).
+- Past events (flyers, all supplied by the user): Unter dem Feigenbaum (flamenco, 20.09.2025), Latin opening (30 April, salsa DJ), Caribbean Tapas live music (31 July), Salsa Night (21.08, DJ Cristobal), film night La Clave (11.10.2026).
 
 ## Product Principles
 

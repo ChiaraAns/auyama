@@ -12,6 +12,9 @@ Die Nutzerin möchte jede abgenommene Version unter einem festen Link behalten.
   Freising!“ läuft auf allen Geräten gleichmäßig langsam von selbst, immer im selben Tempo (auch beim
   Scrollen), ohne Pause-Knopf (08./09.10.2026). Hauptadresse und `versionen/v1/` sind dabei identisch
   geblieben.
+- `versionen/v2/` ist Version 2 (Stand 17.10.2026): neues Hero-Foto, neue Gerichtfotos, „Karibische Bowl“,
+  Events & Fiestas mit Brunch und Flyer-Rückblick, Abschnitt Catering & Foodtruck, E-Mail im Kontakt:
+  https://chiaraans.github.io/auyama/versionen/v2/
 - Die Hauptadresse https://chiaraans.github.io/auyama/ (Dateien im Hauptverzeichnis) bleibt
   ebenfalls auf Version 1 stehen, solange die Nutzerin nicht ausdrücklich sagt, dass eine neue
   Version die Hauptversion werden soll.
