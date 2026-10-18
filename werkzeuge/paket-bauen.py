@@ -6,7 +6,8 @@ passt den Abschnitt „Hosting“ im Datenschutz an und legt robots.txt, sitemap
 und eine kurze Anleitung dazu. Ergebnis: download/auyama-website.zip
 
 Aufruf (im Hauptverzeichnis):  python3 werkzeuge/paket-bauen.py
-Optional mit Name des Anbieters: python3 werkzeuge/paket-bauen.py --hoster "IONOS SE, Elgendorfer Str. 57, 56410 Montabaur"
+Hosting bei Netlify (aktuell):   python3 werkzeuge/paket-bauen.py --netlify
+Anderer Hoster mit Namen:        python3 werkzeuge/paket-bauen.py --hoster "Name, Anschrift"
 """
 import argparse, datetime, os, re, zipfile
 
@@ -19,15 +20,26 @@ DIRS = ['css', 'js', 'assets']
 ap = argparse.ArgumentParser()
 ap.add_argument('--domain', default='www.auyama-freising.de')
 ap.add_argument('--hoster', default='', help='Name und Anschrift des Webhosters für den Datenschutz')
+ap.add_argument('--netlify', action='store_true', help='Hosting bei Netlify (USA): passender Datenschutz-Absatz')
 args = ap.parse_args()
 new_url = 'https://' + args.domain + '/'
 
-hoster = ('unserem Webhoster ' + args.hoster) if args.hoster else 'unserem Webhoster'
-HOSTING = ('<p>Diese Website liegt auf den Servern von ' + hoster + '. Beim Aufruf verarbeitet der Hoster '
-           'technisch notwendige Daten wie Ihre IP-Adresse, Datum und Uhrzeit des Abrufs und die aufgerufene Seite, '
-           'um die Website auszuliefern und abzusichern. Rechtsgrundlage ist unser berechtigtes Interesse an einer '
-           'sicheren und stabilen Website (Art. 6 Abs. 1 lit. f DSGVO). Mit dem Hoster besteht ein Vertrag zur '
-           'Auftragsverarbeitung (Art. 28 DSGVO).</p>')
+if args.netlify:
+    # Netlify sitzt in den USA: Übermittlung in ein Drittland muss genannt werden
+    HOSTING = ('<p>Diese Website wird bei Netlify, Inc., San Francisco, USA, gehostet. Beim Aufruf verarbeitet '
+               'Netlify technisch notwendige Daten wie Ihre IP-Adresse, Datum und Uhrzeit des Abrufs und die '
+               'aufgerufene Seite, um die Website auszuliefern und abzusichern. Dabei können Daten in die USA '
+               'übermittelt werden. Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren und stabilen '
+               'Website (Art. 6 Abs. 1 lit. f DSGVO). Mit Netlify besteht ein Vertrag zur Auftragsverarbeitung '
+               '(Art. 28 DSGVO), der die Standardvertragsklauseln der EU-Kommission enthält (Art. 46 DSGVO). '
+               'Mehr dazu: <a href="https://www.netlify.com/privacy/" rel="noopener">netlify.com/privacy</a>.</p>')
+else:
+    hoster = ('unserem Webhoster ' + args.hoster) if args.hoster else 'unserem Webhoster'
+    HOSTING = ('<p>Diese Website liegt auf den Servern von ' + hoster + '. Beim Aufruf verarbeitet der Hoster '
+               'technisch notwendige Daten wie Ihre IP-Adresse, Datum und Uhrzeit des Abrufs und die aufgerufene Seite, '
+               'um die Website auszuliefern und abzusichern. Rechtsgrundlage ist unser berechtigtes Interesse an einer '
+               'sicheren und stabilen Website (Art. 6 Abs. 1 lit. f DSGVO). Mit dem Hoster besteht ein Vertrag zur '
+               'Auftragsverarbeitung (Art. 28 DSGVO).</p>')
 
 def transform(name, text):
     text = text.replace(OLD_URL, new_url)
@@ -63,4 +75,4 @@ with zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as z:
                 z.write(full, 'auyama-website/' + rel)
     for name, text in extra.items():
         z.writestr('auyama-website/' + name, text)
-print('Fertig:', os.path.relpath(out, ROOT), '·', new_url, '·', 'Hoster: ' + (args.hoster or '(ohne Namen)'))
+print('Fertig:', os.path.relpath(out, ROOT), '·', new_url, '·', 'Hoster: ' + ('Netlify' if args.netlify else (args.hoster or '(ohne Namen)')))

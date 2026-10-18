@@ -255,33 +255,28 @@ Version ausdrücklich zur Hauptversion gemacht wird.
 - [ ] vegan/vegetarisch-Labels in `menu.json` bestätigen
 - [x] Eigene Fotos statt Gästefotos (ab Version 3)
 - [x] Version 4 ist die Hauptversion (18.10.2026)
-- [ ] Domain `auyama-freising.de` und Webspace buchen, Paket hochladen (siehe unten)
+- [ ] Domain `auyama-freising.de` bei INWX, Website bei Netlify hochladen (siehe unten)
 - [ ] Link zur Website im Google-Unternehmensprofil und in der Instagram-Bio eintragen
 
 ## Die Website selbst hosten (www.auyama-freising.de)
 
-Die Website besteht nur aus Dateien (HTML, CSS, JavaScript, JSON, Bilder). Sie braucht keine
-Datenbank, kein PHP und kein WordPress und läuft darum bei **jedem** Webhoster im kleinsten Paket.
+Gewählt (18.10.2026): **Domain bei INWX, Website kostenlos bei Netlify.**
 
-**Fertiges Paket:** `download/auyama-website.zip` enthält die Hauptversion, schon eingestellt auf
-`https://www.auyama-freising.de/`: ohne Google-Sperre, mit `robots.txt`, `sitemap.xml` und einer
-kurzen `ANLEITUNG.txt`. Download:
+**Fertiges Paket:** `download/auyama-website.zip` enthält die Hauptversion, eingestellt auf
+`https://www.auyama-freising.de/`, ohne Google-Sperre, mit `robots.txt`, `sitemap.xml`, einer kurzen
+`ANLEITUNG.txt` und dem Datenschutz-Absatz für Netlify. Download:
 https://chiaraans.github.io/auyama/download/auyama-website.zip
 
-1. **Paket buchen:** Domain `auyama-freising.de` zusammen mit Webspace bei einem deutschen
-   Anbieter (z. B. IONOS, Strato, All-Inkl, Netcup). Der Inhaber bucht selbst, damit Domain und
-   Vertrag auf ihn laufen.
-2. **Hochladen:** ZIP entpacken, den **Inhalt** des Ordners `auyama-website` über den
-   Datei-Manager des Anbieters oder per FTP (FileZilla) ins Hauptverzeichnis legen.
-3. **SSL einschalten** (im Kundenbereich, meist kostenlos).
-4. **AV-Vertrag** mit dem Anbieter abschließen (Kundenbereich).
-5. **Anbieter im Datenschutz:** Gewählt ist STRATO (Hosting Starter). Das Paket nennt STRATO
-   bereits. Nach Änderungen neu bauen mit
-   `python3 werkzeuge/paket-bauen.py --hoster "STRATO GmbH, Otto-Ostrowski-Straße 7, 10249 Berlin"`.
-6. **Später pflegen:** Speisekarte, Termine, Öffnungszeiten ändern sich in den JSON-Dateien. Die
-   geänderte Datei einfach im Datei-Manager neu hochladen.
+1. Domain `auyama-freising.de` bei INWX registrieren (auf den Inhaber).
+2. Netlify-Konto anlegen, ZIP entpacken, den Ordner `auyama-website` auf https://app.netlify.com/drop ziehen.
+3. Bei Netlify unter „Domain management“ `www.auyama-freising.de` hinzufügen.
+4. Bei INWX unter „Nameserver“ zwei Einträge setzen: `A` für die Domain ohne www → `75.2.60.5`,
+   `CNAME` für `www` → `<seitenname>.netlify.app`. Vorhandene A/AAAA/CNAME-Einträge für die Domain
+   und `www` vorher löschen.
+5. HTTPS richtet Netlify danach selbst ein (Let's Encrypt).
+6. Änderungen: JSON-Datei ändern, dann bei Netlify unter „Deploys“ den ganzen Ordner neu hineinziehen.
 
-> Nach Änderungen an der Hauptversion das Paket neu bauen: `python3 werkzeuge/paket-bauen.py`.
+> Nach Änderungen an der Hauptversion das Paket neu bauen: `python3 werkzeuge/paket-bauen.py --netlify`.
 > Sobald die eigene Domain läuft, sollte die GitHub-Kopie nicht mehr bei Google erscheinen
 > (sonst doppelter Inhalt). Dann `noindex` in die Hauptdateien auf GitHub setzen oder
 > GitHub Pages abschalten.
