@@ -25,6 +25,10 @@ Die Nutzerin möchte jede abgenommene Version unter einem festen Link behalten.
   https://chiaraans.github.io/auyama/ (Dateien im Hauptverzeichnis) entspricht `versionen/v4/`,
   nur ohne `noindex` und mit og:image auf `assets/` im Hauptverzeichnis. Sie wechselt erst, wenn
   die Nutzerin ausdrücklich eine neue Version zur Hauptversion macht.
+- **Seit 18.10.2026 live unter https://www.auyama-freising.de/ (Netlify).** Die GitHub-Hauptadresse trägt
+  deshalb jetzt ebenfalls `noindex` plus `<link rel="canonical">` auf die eigene Domain. Änderungen an der
+  Live-Seite: Hauptverzeichnis ändern, Paket neu bauen (`--netlify`), Nutzerin lädt
+  `download/auyama-website-flach.zip` bzw. den Ordner bei Netlify unter „Deploys“ hoch.
 - Eigenes Hosting (Stand 18.10.2026): Domain www.auyama-freising.de bei INWX, Website gratis bei
   Netlify (Upload per Drag & Drop des Ordners, DNS bei INWX: A-Record @ → 75.2.60.5,
   CNAME www → <seite>.netlify.app). STRATO wurde verworfen. Nach jeder Änderung an der Hauptversion

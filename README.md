@@ -255,7 +255,8 @@ Version ausdrücklich zur Hauptversion gemacht wird.
 - [ ] vegan/vegetarisch-Labels in `menu.json` bestätigen
 - [x] Eigene Fotos statt Gästefotos (ab Version 3)
 - [x] Version 4 ist die Hauptversion (18.10.2026)
-- [ ] Domain `auyama-freising.de` bei INWX, Website bei Netlify hochladen (siehe unten)
+- [x] Live unter https://www.auyama-freising.de (Domain bei INWX, Website bei Netlify, 18.10.2026)
+- [ ] Adresse im Google-Unternehmensprofil und in der Instagram-Bio eintragen
 - [ ] Link zur Website im Google-Unternehmensprofil und in der Instagram-Bio eintragen
 
 ## Die Website selbst hosten (www.auyama-freising.de)
@@ -277,9 +278,7 @@ https://chiaraans.github.io/auyama/download/auyama-website.zip
 6. Änderungen: JSON-Datei ändern, dann bei Netlify unter „Deploys“ den ganzen Ordner neu hineinziehen.
 
 > Nach Änderungen an der Hauptversion das Paket neu bauen: `python3 werkzeuge/paket-bauen.py --netlify`.
-> Sobald die eigene Domain läuft, sollte die GitHub-Kopie nicht mehr bei Google erscheinen
-> (sonst doppelter Inhalt). Dann `noindex` in die Hauptdateien auf GitHub setzen oder
-> GitHub Pages abschalten.
+> Die GitHub-Kopie trägt seit dem Start `noindex` und verweist per `canonical` auf die eigene Domain.
 
 ---
 
