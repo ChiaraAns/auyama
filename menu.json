@@ -21,11 +21,12 @@
       "id": "bowls",
       "name": {"de": "Bowls & Salate", "en": "Bowls & Salads"},
       "stimmung": ["leicht"],
-      "bild": "assets/pokebowls.jpg",
-      "bildAlt": {"de": "Zwei karibische Pokebowls mit Reis, schwarzen Bohnen, Avocado, Cashewkernen und essbaren Blüten", "en": "Two Caribbean poke bowls with rice, black beans, avocado, cashews and edible flowers"},
+      "bild": "assets/karibische-bowl.jpg",
+      "bildFokus": "50% 55%",
+      "bildAlt": {"de": "Karibische Bowl mit Reis, schwarzen Bohnen, Feta, gebratener Kochbanane, Sternfrucht und Kapuzinerkresse, in der Hand gehalten", "en": "Caribbean bowl with rice, black beans, feta, fried plantain, star fruit and nasturtium flowers, held in one hand"},
       "gerichte": [
-        {"name": {"de": "Karibische Pokebowl", "en": "Caribbean poke bowl"}, "details": {"de": "mit Reis, Bohnen, Avocado, Cashewkernen und Kochbanane", "en": "with rice, beans, avocado, cashews and plantain"}, "preis": "14,80", "label": "vegan", "highlight": true, "bild": "assets/pokebowls.jpg", "bildAlt": {"de": "Zwei bunte Pokebowls mit Avocado, Cashewkernen und Blüten", "en": "Two colourful poke bowls with avocado, cashews and flowers"}},
-        {"name": {"de": "Karibische Pokebowl mit Huhn", "en": "Caribbean poke bowl with chicken"}, "details": {"de": "mit Reis, Bohnen, Avocado, Cashewkernen, Kochbanane und Huhn", "en": "with rice, beans, avocado, cashews, plantain and chicken"}, "preis": "16,80"},
+        {"name": {"de": "Karibische Bowl", "en": "Caribbean bowl"}, "details": {"de": "mit Reis, Bohnen, Avocado, Cashewkernen und Kochbanane", "en": "with rice, beans, avocado, cashews and plantain"}, "preis": "14,80", "label": "vegan"},
+        {"name": {"de": "Karibische Bowl mit Huhn", "en": "Caribbean bowl with chicken"}, "details": {"de": "mit Reis, Bohnen, Avocado, Cashewkernen, Kochbanane und Huhn", "en": "with rice, beans, avocado, cashews, plantain and chicken"}, "preis": "16,80", "highlight": true, "bild": "assets/karibische-bowl.jpg", "bildFokus": "50% 55%", "bildAlt": {"de": "Karibische Bowl mit Reis, schwarzen Bohnen, Fleisch, Feta, gebratener Kochbanane und Sternfrucht, in der Hand gehalten", "en": "Caribbean bowl with rice, black beans, meat, feta, fried plantain and star fruit, held in one hand"}},
         {"name": {"de": "Bunter Salat", "en": "Colourful salad"}, "details": {"de": "mit Mango, Ananas und Avocado", "en": "with mango, pineapple and avocado"}, "preis": "14,80", "label": "vegan", "highlight": true, "bild": "assets/salat-mango-avocado.jpg", "bildAlt": {"de": "Bunter Salat mit Mango und Avocado im Innenhof", "en": "Colourful salad with mango and avocado in the courtyard"}}
       ]
     },
@@ -33,10 +34,8 @@
       "id": "burritos",
       "name": {"de": "Burritos", "en": "Burritos"},
       "stimmung": ["satt"],
-      "bild": "assets/burrito-guacamole.jpg",
-      "bildAlt": {"de": "Burrito mit Pulled Beef, dazu Guacamole, Dip und bunter Salat auf einem grünen Teller", "en": "Pulled beef burrito with guacamole, dip and a colourful salad on a green plate"},
       "gerichte": [
-        {"name": {"de": "Burrito mit Pulled Beef", "en": "Pulled beef burrito"}, "details": {"de": "Bohnen, Feta, Guacamole, Salat und Dips", "en": "beans, feta, guacamole, salad and dips"}, "preis": "16,80", "highlight": true, "bild": "assets/burrito-guacamole.jpg", "bildFokus": "40% 78%", "bildAlt": {"de": "Burrito mit Pulled Beef, Guacamole und Salat", "en": "Pulled beef burrito with guacamole and salad"}},
+        {"name": {"de": "Burrito mit Pulled Beef", "en": "Pulled beef burrito"}, "details": {"de": "Bohnen, Feta, Guacamole, Salat und Dips", "en": "beans, feta, guacamole, salad and dips"}, "preis": "16,80"},
         {"name": {"de": "Burrito mit Bohnen", "en": "Bean burrito"}, "details": {"de": "Feta, Guacamole, Salat und Dips", "en": "feta, guacamole, salad and dips"}, "preis": "14,80", "label": "vegetarisch"}
       ]
     },
@@ -45,7 +44,7 @@
       "name": {"de": "Arepas", "en": "Arepas"},
       "stimmung": ["satt"],
       "gerichte": [
-        {"name": {"de": "Arepa „Reina Pepiada“", "en": "Arepa “Reina Pepiada”"}, "details": {"de": "mit Pulled Chicken, Dips und Salat", "en": "with pulled chicken, dips and salad"}, "preis": "14,80", "highlight": true},
+        {"name": {"de": "Arepa „Reina Pepiada“", "en": "Arepa “Reina Pepiada”"}, "details": {"de": "mit Pulled Chicken, Dips und Salat", "en": "with pulled chicken, dips and salad"}, "preis": "14,80", "highlight": true, "bild": "assets/arepa-reina-pepiada.jpg", "bildFokus": "45% 55%", "bildAlt": {"de": "Arepa Reina Pepiada mit Hühnchenfüllung, dazu bunter Salat und zwei Dips, auf einem Tisch in der Sonne", "en": "Arepa Reina Pepiada with chicken filling, a colourful salad and two dips on a sunny table"}},
         {"name": {"de": "Arepa mit Carne Mechada", "en": "Arepa with carne mechada"}, "details": {"de": "Kochbananen, Bohnen, Dips und Salat", "en": "plantain, beans, dips and salad"}, "preis": "15,80"},
         {"name": {"de": "Arepa mit Bohnen, Käse und Avocado", "en": "Arepa with beans, cheese and avocado"}, "details": {"de": "Dips und Salat", "en": "dips and salad"}, "preis": "12,80", "label": "vegetarisch"},
         {"name": {"de": "Arepa vegan", "en": "Vegan arepa"}, "details": {"de": "gefüllt mit Linsen und Mango, Dips und Salat", "en": "filled with lentils and mango, dips and salad"}, "preis": "12,80", "label": "vegan"}
@@ -56,9 +55,9 @@
       "name": {"de": "Currys & Klassiker", "en": "Curries & Classics"},
       "stimmung": ["satt"],
       "gerichte": [
-        {"name": {"de": "Karibisches Gemüsecurry", "en": "Caribbean vegetable curry"}, "details": {"de": "mit Kurkumareis", "en": "with turmeric rice"}, "preis": "14,80", "label": "vegetarisch"},
+        {"name": {"de": "Karibisches Gemüsecurry", "en": "Caribbean vegetable curry"}, "details": {"de": "mit Kurkumareis", "en": "with turmeric rice"}, "preis": "14,80", "label": "vegetarisch", "highlight": true, "bild": "assets/gemuesecurry.jpg", "bildFokus": "50% 40%", "bildAlt": {"de": "Karibisches Gemüsecurry mit Kurkumareis und schwarzem Sesam, darunter eine schwarze Auyama-Karte", "en": "Caribbean vegetable curry with turmeric rice and black sesame, an Auyama card underneath"}},
         {"name": {"de": "Karibisches Hähnchencurry", "en": "Caribbean chicken curry"}, "details": {"de": "mit Gemüse und Kurkumareis", "en": "with vegetables and turmeric rice"}, "preis": "16,80"},
-        {"name": {"de": "Pabellón Criollo", "en": "Pabellón Criollo"}, "details": {"de": "mit Carne Mechada, Reis, schwarzen Bohnen und gebratener Kochbanane", "en": "with carne mechada, rice, black beans and fried plantain"}, "preis": "19,80", "highlight": true}
+        {"name": {"de": "Pabellón Criollo", "en": "Pabellón Criollo"}, "details": {"de": "mit Carne Mechada, Reis, schwarzen Bohnen und gebratener Kochbanane", "en": "with carne mechada, rice, black beans and fried plantain"}, "preis": "19,80", "highlight": true, "bild": "assets/pabellon-criollo.jpg", "bildFokus": "50% 50%", "bildAlt": {"de": "Pabellón Criollo mit Kurkumareis, schwarzen Bohnen, Carne Mechada, Feta und gebratener Kochbanane", "en": "Pabellón Criollo with turmeric rice, black beans, carne mechada, feta and fried plantain"}}
       ]
     },
     {

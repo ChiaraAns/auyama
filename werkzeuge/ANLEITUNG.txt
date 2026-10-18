@@ -1,0 +1,58 @@
+AUYAMA WEBSITE · ANLEITUNG FÜR DEN EIGENEN WEBSPACE
+====================================================
+
+Adresse: {ADRESSE}
+
+
+1. HOCHLADEN
+------------
+Alles, was in diesem Ordner "auyama-website" liegt (index.html, die Ordner
+assets, css, js und alle anderen Dateien), kommt direkt in das Hauptverzeichnis
+des Webspace. Wichtig: index.html muss ganz oben liegen, nicht in einem
+Unterordner.
+
+So geht's:
+- über den Datei-Manager im Kundenbereich des Anbieters, oder
+- per FTP mit dem kostenlosen Programm FileZilla (https://filezilla-project.org).
+  Die Zugangsdaten (Server, Benutzername, Passwort) stehen im Kundenbereich
+  unter FTP oder SFTP.
+
+Danach im Kundenbereich SSL (HTTPS) für die Domain einschalten. Das ist meist
+kostenlos ("Let's Encrypt" oder "SSL-Zertifikat").
+
+
+2. PFLEGEN: DIESE DATEIEN ÄNDERN SICH
+-------------------------------------
+- menu.json        Monatskarte (Monat, Gerichte, Preise)
+- events.json      Termine (Brunch, Salsa, Konzerte ...). Vergangene
+                   Termine verschwinden von selbst.
+- restaurant.json  Öffnungszeiten, Telefon, E-Mail
+- texts.json       alle Texte der Seite (Deutsch und Englisch)
+- assets/          Fotos und Flyer (JPG, ca. 1200 px, unter 300 KB)
+
+Ablauf: Datei auf dem Computer mit einem einfachen Texteditor öffnen
+(Windows: Editor, Mac: TextEdit im Modus "Reiner Text"), ändern, speichern
+und im Datei-Manager bzw. in FileZilla neu hochladen. Die alte Datei wird dabei
+ersetzt.
+
+Drei Regeln für die .json-Dateien:
+- Texte stehen immer in "Anführungszeichen".
+- Zwischen zwei Einträgen steht ein Komma, nach dem letzten keins.
+- Klammern { } und [ ] nicht löschen.
+
+Wenn nach dem Hochladen etwas fehlt, ist meist ein Komma oder ein
+Anführungszeichen verrutscht. Prüfen kann man die Datei auf
+https://jsonlint.com (Inhalt hineinkopieren, "Validate JSON").
+
+Eine ausführliche Anleitung mit Beispielen steht hier:
+https://github.com/ChiaraAns/auyama/blob/claude/auyama-restaurant-website-i50v6u/README.md
+
+
+3. EINMALIG NACH DEM START
+-------------------------
+- Mit dem Anbieter den Vertrag zur Auftragsverarbeitung (AV-Vertrag)
+  abschließen. Den gibt es im Kundenbereich, meist per Klick.
+- Website-Adresse im Google-Unternehmensprofil und in der Instagram-Bio
+  eintragen.
+- Optional: Google Search Console einrichten und dort die Sitemap melden:
+  {ADRESSE}sitemap.xml

@@ -65,7 +65,7 @@ Die Überschrift lautet dann automatisch „Monatskarte November 2026“.
 - Auf der **Startseite** steht eine appetitliche **Vorschau**: die Gerichte mit `"highlight": true`
   (am besten 3 bis 5), dazu alle Kategorien mit „ab“-Preis und ein Knopf zur ganzen Karte.
 - Die **ganze Karte** steht auf der eigenen Seite `speisekarte.html`. Beide lesen dieselbe `menu.json`.
-- Ein Highlight kann ein Foto bekommen: `"bild": "assets/pokebowls.jpg"` und eine Bildbeschreibung
+- Ein Highlight kann ein Foto bekommen: `"bild": "assets/karibische-bowl.jpg"` und eine Bildbeschreibung
   `"bildAlt"`. Mit `"bildFokus": "40% 78%"` lässt sich der sichtbare Bildausschnitt verschieben
   (links/rechts in %, oben/unten in %). Ohne Foto erscheint eine bunte Fliesenkachel.
 
@@ -132,8 +132,8 @@ Ein Termin sieht so aus:
 
 | Feld | Bedeutung |
 |---|---|
-| `typ` | `"salsa"` (Noten-Symbol) oder `"film"` (Film-Symbol), sonst Stern. Ab Version 2 außerdem `"brunch"` (Becher) und `"musik"` (Live-Musik) |
-| `bild` | Ab Version 2, optional: Flyer als JPG in `assets/`, z. B. `"assets/flyer-brunch.jpg"`. Erscheint klein neben dem Termin und groß per Klick |
+| `typ` | `"brunch"` (Becher), `"salsa"` oder `"musik"` (Noten), `"film"` (Film), sonst Kalender |
+| `bild` | Optional: Flyer als JPG in `assets/`, z. B. `"assets/flyer-brunch.jpg"`. Erscheint klein neben dem Termin und groß per Klick |
 | `datum` | **Jahr-Monat-Tag**, z. B. `"2026-11-14"` für den 14. November 2026 |
 | `beginn` / `ende` | Uhrzeit, z. B. `"19:00"`. `ende` ist optional |
 | `titel`, `beschreibung` | Text auf Deutsch und (optional) Englisch |
@@ -197,15 +197,26 @@ Die Website spricht Gäste mit **„du“** an. Wer lieber „Sie“ möchte, ä
 
 ## 5. Fotos austauschen (`assets/`)
 
-- Neues Foto **mit demselben Dateinamen** in den Ordner `assets/` hochladen (z. B. `pokebowls.jpg`
-  ersetzen) – fertig.
+- Neues Foto **mit demselben Dateinamen** in den Ordner `assets/` hochladen (z. B.
+  `karibische-bowl.jpg` ersetzen), fertig.
 - Empfehlung: JPG, ca. **1200 px** an der langen Seite, unter **300 KB** (z. B. mit
   <https://squoosh.app> verkleinern). Hochformat oder quadratisch funktioniert am besten.
-- **Wichtig:** Die aktuellen Fotos stammen teils von Gästen (Google). Für die Live-Version bitte
-  durch **eigene Fotos** ersetzen, wegen der Bildrechte.
+- Alle Fotos sind von Joaquin von Dehn (Bildnachweis im Impressum).
 
 | Datei | Wo zu sehen? |
 |---|---|
+| `logo.jpg` | Kopfzeile, Fußzeile |
+| `hero-gruener-tisch.jpg` | Startbereich ganz oben, Galerie |
+| `karibische-bowl.jpg` | Vorschau, Speisekarte (Bowls), Galerie |
+| `salat-mango-avocado.jpg` | Über uns, Vorschau, Galerie |
+| `arepa-reina-pepiada.jpg`, `gemuesecurry.jpg`, `pabellon-criollo.jpg` | Vorschau, Galerie (Pabellón auch bei Über uns) |
+| `foodtruck.jpg` | Catering & Foodtruck |
+| `brunch-buffet.jpg`, `brunch-beeren.jpg`, `brunch-salat.jpg` | Events: Brunch (Beeren auch in der Galerie) |
+| `flyer-*.jpg` | Events: Flyer zum Termin und Rückblick „So feiern wir“ |
+| `og-image.jpg` | Vorschaubild beim Teilen (WhatsApp, Facebook …), 1200 × 630 px |
+| `favicon*.png`, `favicon.ico`, `apple-touch-icon.png` | Symbol im Browser-Tab / Homescreen |
+
+---|---|
 | `logo.jpg` | Kopfzeile, Fußzeile |
 | `pokebowls.jpg` | Startbereich, Vorschau, Speisekarte (Bowls), Galerie |
 | `salat-mango-avocado.jpg` | Über uns, Vorschau, Galerie |
@@ -227,9 +238,10 @@ Jede abgenommene Version bleibt unter einem eigenen Link erhalten:
 | Version 3 (17.10.2026): „Venezuelas Küche“, Galerie nur mit eigenen Fotos, Impressum mit Inhaber | https://chiaraans.github.io/auyama/versionen/v3/ |
 | Version 4 (18.10.2026): Fehler auf iPad (Events) und Handy (Kacheln oben) behoben, Catering-Text, Bildnachweis | https://chiaraans.github.io/auyama/versionen/v4/ |
 
-Neue Gestaltungswünsche werden in einem neuen Ordner (`versionen/v2/`, `v3/` …) umgesetzt und
-bekommen einen eigenen Link. Die Hauptadresse https://chiaraans.github.io/auyama/ ändert sich
-erst, wenn eine neue Version ausdrücklich zur Hauptversion gemacht wird.
+Neue Gestaltungswünsche werden in einem neuen Ordner (`versionen/v5/` …) umgesetzt und
+bekommen einen eigenen Link. **Hauptversion ist seit dem 18.10.2026 Version 4** (Dateien im
+Hauptverzeichnis, https://chiaraans.github.io/auyama/). Sie ändert sich erst, wenn eine neue
+Version ausdrücklich zur Hauptversion gemacht wird.
 
 > Hinweis: Speisekarte, Termine und Öffnungszeiten pflegt der Inhaber in den Dateien im
 > Hauptverzeichnis. Die gespeicherten Versionen haben eigene Kopien dieser Dateien und bleiben
@@ -242,38 +254,37 @@ erst, wenn eine neue Version ausdrücklich zur Hauptversion gemacht wird.
 - [ ] Aktuelle Termine in `events.json` eintragen
 - [ ] vegan/vegetarisch-Labels in `menu.json` bestätigen
 - [x] Eigene Fotos statt Gästefotos (ab Version 3)
-- [ ] Gewählte Version zur Hauptversion machen und beim eigenen Anbieter hochladen (siehe unten)
-- [ ] Bei eigener Domain: Adressen `https://chiaraans.github.io/auyama/` in `index.html` (Open Graph, JSON-LD) anpassen
+- [x] Version 4 ist die Hauptversion (18.10.2026)
+- [ ] Domain `auyama-freising.de` und Webspace buchen, Paket hochladen (siehe unten)
 - [ ] Link zur Website im Google-Unternehmensprofil und in der Instagram-Bio eintragen
 
-## Die Website selbst hosten (eigener Anbieter, eigene Domain)
+## Die Website selbst hosten (www.auyama-freising.de)
 
 Die Website besteht nur aus Dateien (HTML, CSS, JavaScript, JSON, Bilder). Sie braucht keine
-Datenbank, kein PHP und kein WordPress. Darum läuft sie bei **jedem** Webhoster, auch im
-kleinsten Paket.
+Datenbank, kein PHP und kein WordPress und läuft darum bei **jedem** Webhoster im kleinsten Paket.
 
-**So zieht sie um:**
+**Fertiges Paket:** `download/auyama-website.zip` enthält die Hauptversion, schon eingestellt auf
+`https://www.auyama-freising.de/`: ohne Google-Sperre, mit `robots.txt`, `sitemap.xml` und einer
+kurzen `ANLEITUNG.txt`. Download:
+https://chiaraans.github.io/auyama/download/auyama-website.zip
 
-1. **Domain prüfen:** Unter https://www.denic.de nachsehen, ob `auyama.de` noch frei ist. Ist sie
-   frei, wird sie zusammen mit dem Paket in Schritt 2 gebucht. Ist sie schon vergeben, gehört sie
-   jemand anderem; dann eine andere Adresse wählen (z. B. `auyama-freising.de`).
-2. **Anbieter wählen und Paket buchen:** ein deutscher Webhoster mit Domain und Webspace im Paket,
-   z. B. IONOS, Strato, All-Inkl oder Netcup. Das kleinste Paket reicht, die Seite braucht
-   kein WordPress und keine Datenbank. Am besten bucht der Inhaber selbst, damit Domain und
+1. **Paket buchen:** Domain `auyama-freising.de` zusammen mit Webspace bei einem deutschen
+   Anbieter (z. B. IONOS, Strato, All-Inkl, Netcup). Der Inhaber bucht selbst, damit Domain und
    Vertrag auf ihn laufen.
-3. **Dateien hochladen:** Den Inhalt des Ordners der gewählten Version (z. B. alles in
-   `versionen/v3/`) über den Datei-Manager des Anbieters oder per FTP (z. B. mit FileZilla) in das
-   Hauptverzeichnis des Webspace legen. `index.html` muss ganz oben liegen.
-4. **SSL einschalten** (im Kundenbereich, meist kostenlos), damit die Seite mit `https://` läuft.
-5. **Anpassen vor dem Hochladen** (macht Claude gern):
-   - `<meta name="robots" content="noindex">` aus `index.html` und `speisekarte.html` entfernen,
-     sonst findet Google die Seite nicht
-   - Adressen `https://chiaraans.github.io/auyama/…` in `index.html` und `speisekarte.html`
-     (Open Graph, JSON-LD) auf `https://www.auyama.de/` ändern
-   - In `datenschutz.html` den Abschnitt „Hosting“ auf den neuen Anbieter umschreiben und mit dem
-     Anbieter einen Auftragsverarbeitungsvertrag (AV-Vertrag) abschließen (gibt es im Kundenbereich)
-6. **Später pflegen:** Speisekarte, Termine und Öffnungszeiten ändern sich weiterhin in den
-   JSON-Dateien. Die geänderte Datei einfach im Datei-Manager des Anbieters neu hochladen.
+2. **Hochladen:** ZIP entpacken, den **Inhalt** des Ordners `auyama-website` über den
+   Datei-Manager des Anbieters oder per FTP (FileZilla) ins Hauptverzeichnis legen.
+3. **SSL einschalten** (im Kundenbereich, meist kostenlos).
+4. **AV-Vertrag** mit dem Anbieter abschließen (Kundenbereich).
+5. **Namen des Anbieters in den Datenschutz:** Paket neu bauen mit
+   `python3 werkzeuge/paket-bauen.py --hoster "Name, Anschrift des Anbieters"` und
+   `datenschutz.html` neu hochladen (macht Claude gern).
+6. **Später pflegen:** Speisekarte, Termine, Öffnungszeiten ändern sich in den JSON-Dateien. Die
+   geänderte Datei einfach im Datei-Manager neu hochladen.
+
+> Nach Änderungen an der Hauptversion das Paket neu bauen: `python3 werkzeuge/paket-bauen.py`.
+> Sobald die eigene Domain läuft, sollte die GitHub-Kopie nicht mehr bei Google erscheinen
+> (sonst doppelter Inhalt). Dann `noindex` in die Hauptdateien auf GitHub setzen oder
+> GitHub Pages abschalten.
 
 ---
 

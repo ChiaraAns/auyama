@@ -249,6 +249,15 @@
     $$('[data-street]').forEach(function (n) { n.textContent = a.strasse; });
     $$('[data-city]').forEach(function (n) { n.textContent = a.plz + ' ' + a.ort; });
     $$('[data-instagram]').forEach(function (n) { n.href = 'https://instagram.com/' + r.instagram; });
+    if (r.email) {
+      $$('[data-email]').forEach(function (n) { n.href = 'mailto:' + r.email; });
+      $$('[data-email-text]').forEach(function (n) { n.textContent = r.email; });
+      // Catering-Anfrage: Mail mit Betreff und kleiner Vorlage öffnen
+      var subject = t('catering.mailSubject'), body = t('catering.mailBody');
+      $$('[data-email-catering]').forEach(function (n) {
+        n.href = 'mailto:' + r.email + '?subject=' + encodeURIComponent(subject || 'Catering') + (body ? '&body=' + encodeURIComponent(body) : '');
+      });
+    }
   }
 
   /** schema.org-Daten mit restaurant.json abgleichen */
@@ -586,7 +595,8 @@
 
   /* ---------- Events ---------- */
 
-  var EVENT_ICONS = { salsa: 'i-music', film: 'i-film', other: 'i-cal' };
+  var EVENT_ICONS = { brunch: 'i-cup', salsa: 'i-music', musik: 'i-music', film: 'i-film', other: 'i-cal' };
+  var EVENT_LABELS = { brunch: 'brunch', salsa: 'salsa', musik: 'music', film: 'film', other: 'other' };
 
   function upcomingEvents() {
     var today = berlinNow().date;
@@ -623,9 +633,15 @@
         : '';
       var btn = el('button', { type: 'button', className: 'btn btn--small btn-cal', html: icon('i-cal') + '<span>' + t('events.addToCalendar') + '</span>' });
       btn.addEventListener('click', function () { downloadICS(ev); });
-      var metaText = t('events.' + type) + ' · ' + dp.long + (time ? ' · ' + time.replace(/ /g, '\u00a0') : '');
+      var metaText = t('events.' + EVENT_LABELS[type]) + ' · ' + dp.long + (time ? ' · ' + time.replace(/ /g, '\u00a0') : '');
 
-      root.appendChild(el('li', { className: 'event event--' + type }, [
+      // Optional: Flyer als kleines Bild, groß per Klick
+      var flyer = ev.bild ? el('button', { type: 'button', className: 'event-flyer', 'data-lightbox': ev.bild }, [
+        el('img', { src: ev.bild, alt: loc(ev.bildAlt) || loc(ev.titel), loading: 'lazy', decoding: 'async', width: '828', height: '1035' }),
+        el('span', { className: 'event-flyer-label', text: t('events.flyer') })
+      ]) : null;
+
+      root.appendChild(el('li', { className: 'event event--' + type + (flyer ? ' event--flyer' : '') }, [
         el('div', { className: 'event-date', 'aria-hidden': 'true' }, [
           el('span', { className: 'event-date-wd', text: dp.weekday }),
           el('span', { className: 'event-date-day', text: dp.day }),
@@ -636,7 +652,8 @@
           el('p', { className: 'event-meta' }, [el('span', { html: icon(EVENT_ICONS[type], 'event-type-icon') }), metaText]),
           ev.beschreibung ? el('p', { className: 'event-desc', text: loc(ev.beschreibung) }) : null,
           btn
-        ])
+        ]),
+        flyer
       ]));
     });
   }
@@ -681,7 +698,7 @@
       lines.push('DTSTART;VALUE=DATE:' + ev.datum.replace(/-/g, ''));
     }
     var title = loc(ev.titel);
-    var typeLabel = t('events.' + (EVENT_ICONS[ev.typ] ? ev.typ : 'other'));
+    var typeLabel = t('events.' + EVENT_LABELS[EVENT_ICONS[ev.typ] ? ev.typ : 'other']);
     if (typeLabel && title.toLowerCase().indexOf(typeLabel.toLowerCase()) === -1) title = typeLabel + ': ' + title;
     lines.push('SUMMARY:' + icsEscape(title));
     if (ev.beschreibung) lines.push('DESCRIPTION:' + icsEscape(loc(ev.beschreibung)));
@@ -781,14 +798,15 @@
     var img = el('img', { alt: '' });
     frame.appendChild(img);
     var opener = null;
-    $$('[data-lightbox]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        var thumb = $('img', btn);
-        img.src = btn.getAttribute('data-lightbox');
-        img.alt = thumb ? thumb.alt : '';
-        opener = btn;
-        dialog.showModal();
-      });
+    // Delegiert, damit auch später gerenderte Flyer (Events) funktionieren
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest ? e.target.closest('[data-lightbox]') : null;
+      if (!btn) return;
+      var thumb = $('img', btn);
+      img.src = btn.getAttribute('data-lightbox');
+      img.alt = thumb ? thumb.alt : '';
+      opener = btn;
+      dialog.showModal();
     });
     dialog.addEventListener('click', function (e) { if (e.target === dialog) dialog.close(); });
     dialog.addEventListener('close', function () { if (opener) opener.focus(); });

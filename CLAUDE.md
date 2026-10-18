@@ -21,9 +21,13 @@ Die Nutzerin möchte jede abgenommene Version unter einem festen Link behalten.
 - `versionen/v4/` ist Version 4 (Stand 18.10.2026): mitlaufende Events-Überschrift in eigenem Rahmen (iPad/Safari),
   Status- und Monatskarten-Kachel passen auf dem Handy, Catering-Text wörtlich nach der Nutzerin, Bildnachweis:
   https://chiaraans.github.io/auyama/versionen/v4/
-- Die Hauptadresse https://chiaraans.github.io/auyama/ (Dateien im Hauptverzeichnis) bleibt
-  ebenfalls auf Version 1 stehen, solange die Nutzerin nicht ausdrücklich sagt, dass eine neue
-  Version die Hauptversion werden soll.
+- **Hauptversion ist Version 4** (seit 18.10.2026 auf Wunsch der Nutzerin): Die Hauptadresse
+  https://chiaraans.github.io/auyama/ (Dateien im Hauptverzeichnis) entspricht `versionen/v4/`,
+  nur ohne `noindex` und mit og:image auf `assets/` im Hauptverzeichnis. Sie wechselt erst, wenn
+  die Nutzerin ausdrücklich eine neue Version zur Hauptversion macht.
+- Eigenes Hosting: Der Inhaber hostet selbst unter https://www.auyama-freising.de/ (Anbieter noch
+  offen). Nach jeder Änderung an der Hauptversion das Upload-Paket neu bauen:
+  `python3 werkzeuge/paket-bauen.py [--hoster "Name, Anschrift"]` → `download/auyama-website.zip`.
 - **Neue Änderungswünsche** werden in einem neuen Ordner `versionen/vN/` umgesetzt (N = nächste
   freie Nummer): zuerst die neueste Version dorthin kopieren, dann nur dort ändern. Danach den
   neuen Link https://chiaraans.github.io/auyama/versionen/vN/ nennen.

@@ -3,7 +3,7 @@
   "de": {
     "meta": {
       "title": "Auyama Freising · Venezolanische und karibische Küche in der Altstadt",
-      "description": "Venezolanische und karibische Küche mitten in der Freisinger Altstadt. Arepas, Bowls und Currys, jeden Monat eine neue Karte. Dazu Salsa Nights und Filmabende. Obere Hauptstr. 41, Freising."
+      "description": "Venezolanische und karibische Küche mitten in der Freisinger Altstadt. Arepas, Bowls, Currys und vieles mehr. Dazu Brunch, Fiestas und Catering für eure Feier. Obere Hauptstr. 41, Freising."
     },
     "skip": "Zum Inhalt springen",
     "brand": {
@@ -14,6 +14,7 @@
       "about": "Über uns",
       "menu": "Speisekarte",
       "events": "Events",
+      "catering": "Catering",
       "gallery": "Galerie",
       "visit": "Anfahrt",
       "toggle": "Menü öffnen",
@@ -23,9 +24,9 @@
       "fullMenu": "Ganze Karte"
     },
     "hero": {
-      "title": "Venezuela auf dem Teller. <em>Mitten in Freising.</em>",
-      "lead": "Arepas, Bowls und Currys, mit viel Liebe gekocht. Jeden Monat eine neue Karte.",
-      "imgAlt": "Zwei bunte Bowls mit Reis, schwarzen Bohnen, Avocado, Cashewkernen und Blüten, von oben fotografiert, daneben Limonade und Blumen",
+      "title": "Venezuelas Küche. <em>Mitten in Freising.</em>",
+      "lead": "Arepas, Bowls, Currys und vieles mehr, mit viel Liebe gekocht.",
+      "imgAlt": "Zwei bunte Salatbowls mit Avocado, Quinoa, Tomaten, Granatapfel, Mango und Kapuzinerkresse auf einem grünen Bistrotisch in der Sonne",
       "menuKicker": "Jetzt neu auf der Karte",
       "menuTitle": "Monatskarte {monat}",
       "welcome": "¡Bienvenidos!"
@@ -57,17 +58,17 @@
     ],
     "about": {
       "title": "¡Hola, <span class=\"squiggle\">Freising!</span>",
-      "lead": "Auyama heißt Kürbis. Bei uns heißt es: Willkommen zu Hause.",
+      "lead": "Auyama heißt Kürbis in der Sprache der Karibenindianer. Bei uns heißt es: Willkommen zu Hause.",
       "p2": "Im alten Entleutner-Haus in der Oberen Hauptstraße kochen wir venezolanisch und karibisch, mit regionalen Zutaten. Jeden Monat gibt es eine neue Karte.",
       "p3": "Im Laden warten erlesene Weine und Hausgemachtes zum Mitnehmen: Marmeladen, Chutneys, Pestos und Saucen.",
       "quote": "Mi casa es tu casa.",
       "s1": "Jeden Monat neue Karte",
       "s2": "Regionale Zutaten",
       "s3": "Weine & Eingemachtes",
-      "s4": "Salsa & Kino",
+      "s4": "Musik & Fiestas",
       "stamp": "Hecho en Freising · con mucho amor · ",
-      "img1": "Bunter Salat mit Mango, Avocado und Cashewkernen, im begrünten Innenhof in die Kamera gehalten",
-      "img2": "Angeschnittener Burrito mit Bohnen, dazu Salsa und Salat"
+      "img1": "Bunter Salat mit Mango, Avocado, Sprossen und Cashewkernen, im begrünten Innenhof in die Kamera gehalten",
+      "img2": "Pabellón Criollo mit Kurkumareis, schwarzen Bohnen, Carne Mechada und Feta"
     },
     "menu": {
       "title": "Monatskarte",
@@ -86,23 +87,69 @@
       "closing": "¡Buen provecho!"
     },
     "events": {
-      "title": "Salsa Nights & Filmabende",
-      "lead": "Bei uns wird nicht nur gegessen. Mal legt ein DJ Salsa auf, mal wird das Restaurant zum Kino.",
+      "title": "Events & <span class=\"accent-mango\">Fiestas</span>",
+      "lead": "Bei uns wird nicht nur gegessen, sondern auch gefeiert.",
+      "offer": "Mal legt ein DJ Salsa auf, mal spielt eine Band live im Hinterhof. Dazu Flamenco und Tapas, Filmabende und jeden Monat ein karibischer Brunch.",
       "addToCalendar": "In den Kalender",
       "time": "{zeit} Uhr",
       "timeRange": "{beginn} bis {ende} Uhr",
       "salsa": "Salsa Night",
       "film": "Filmabend",
+      "brunch": "Brunch",
+      "music": "Live-Musik",
       "other": "Event",
+      "flyer": "Flyer ansehen",
       "more": "Alle Termine auf Instagram",
       "empty": "Die nächsten Termine stehen bald fest. Schau solange auf Instagram vorbei."
     },
+    "brunch": {
+      "title": "¡Hora del brunch!",
+      "lead": "Einmal im Monat decken wir den Brunch-Tisch.",
+      "text": "Frisches Obst und Beeren, Joghurt und Nüsse, bunte Salate und Herzhaftes, dazu unsere Getränke-Spezialitäten. Ein tropisches Festmahl zum Ausschlafen.",
+      "note": "Den nächsten Termin findest du immer hier und auf Instagram.",
+      "img1": "Brunch-Buffet mit Obstsalat, Joghurt, Müsli und Nüssen in Schalen",
+      "img2": "Schalen mit Himbeeren und Heidelbeeren, dahinter Mandarinen und ein Auflauf",
+      "img3": "Großer Salat mit Feta, Gurke und Tomaten, daneben Eierbecher in Hühnchenform und Aufschnitt"
+    },
+    "past": {
+      "title": "So feiern wir",
+      "lead": "Ein paar Abende, die schon Geschichte sind. Tipp auf einen Flyer.",
+      "c1": "Flamenco & Tapas im Hinterhof",
+      "c2": "Caribbean Tapas mit Live-Musik",
+      "c3": "Salsa Night mit DJ Cristobal",
+      "c4": "Latin Opening mit Salsa-DJ",
+      "c5": "Filmabend: La Clave",
+      "a1": "Flyer: Unter dem Feigenbaum, Flamenco und Gipsy Band mit spanischem Tapas-Buffet im Hinterhof, 20.09.2025",
+      "a2": "Flyer: Caribbean Tapas mit Live-Musik von Nene und Martin Wessalowski, 31. Juli, Eintritt frei",
+      "a3": "Flyer: Salsa Night mit DJ Cristobal, 21.08. ab 19 Uhr, Eintritt frei",
+      "a4": "Flyer: Auyama Opening Latin Event am 30. April mit Salsa-DJ Christobal C.",
+      "a5": "Plakat zum Filmabend La Clave, Das Geheimnis der kubanischen Musik, 11. Oktober 2026, Eintritt frei"
+    },
+    "catering": {
+      "title": "Catering & Foodtruck",
+      "lead": "Ihr feiert. Wir kochen.",
+      "text": "Seit über 20 Jahren bringen wir karibische Küche auf Hochzeiten, Geburtstage und Feste aller Art. Mit Liebe gekocht, mit Herz serviert, und auf Wunsch rollt auch unser Foodtruck an.",
+      "s1": "Über 20 Jahre Erfahrung",
+      "s2": "Für 15 bis 250 Gäste",
+      "s3": "Hochzeiten, Geburtstage & Feiern",
+      "venueTitle": "Oder feiert direkt bei uns",
+      "venueText": "Gerne vermieten wir auch die Räume des Auyama/Hinterhof und des Café Nebenan. Dort verwöhnen wir euch mit unserem Catering.",
+      "ask": "Erzählt uns von eurem Fest: Anlass, Datum und Zahl der Gäste. Wir melden uns bei euch.",
+      "cta": "Catering anfragen",
+      "sticker": "¡Buen provecho!",
+      "imgAlt": "Der Stand von Auyama Caribbean Food bei einem Fest im Freien, vorne lodert eine Feuerschale, rundherum feiern Gäste an Biertischen",
+      "mailSubject": "Catering-Anfrage",
+      "mailBody": "Hallo liebes Auyama-Team,\n\nwir planen eine Feier und würden uns über euer Catering freuen.\n\nAnlass:\nDatum:\nOrt (bei euch oder bei uns):\nAnzahl Gäste:\n\nViele Grüße\n"
+    },
     "gallery": {
       "title": "Aus unserer Küche",
-      "a1": "Zwei Bowls mit Avocado, Cashewkernen und Kapuzinerkresse, daneben ein Blumenstrauß",
-      "a2": "Burrito mit Pulled Beef, Guacamole und Salat auf einem grünen Tisch",
-      "a3": "Salat mit Mango, Avocado und Cashewkernen im Innenhof",
-      "a4": "Angeschnittener Burrito mit Bohnen, dazu Salsa und Salat",
+      "a1": "Karibische Bowl mit Reis, schwarzen Bohnen, Feta, gebratener Kochbanane und Sternfrucht, in der Hand gehalten",
+      "a2": "Salat mit Mango, Avocado, Sprossen und Cashewkernen im Innenhof",
+      "a3": "Arepa Reina Pepiada mit Salat und zwei Dips auf einem Tisch in der Sonne",
+      "a4": "Pabellón Criollo mit Kurkumareis, schwarzen Bohnen, Carne Mechada und Feta",
+      "a5": "Karibisches Gemüsecurry mit Kurkumareis und schwarzem Sesam",
+      "a6": "Zwei bunte Salatbowls auf einem grünen Bistrotisch in der Sonne",
+      "a7": "Himbeeren und Heidelbeeren vom Brunch-Buffet",
       "insta": "Mehr auf Instagram"
     },
     "visit": {
@@ -125,7 +172,8 @@
       "hours": "Geöffnet",
       "legal": "Rechtliches",
       "imprint": "Impressum",
-      "privacy": "Datenschutz"
+      "privacy": "Datenschutz",
+      "email": "E-Mail:"
     },
     "bar": {
       "label": "Schnellzugriff",
@@ -143,8 +191,9 @@
       "Bowls",
       "Currys",
       "Hausgemachte Limonaden",
-      "Salsa Nights",
-      "Filmabende",
+      "Brunch",
+      "Fiestas",
+      "Catering",
       "Hecho en Freising"
     ],
     "preview": {
@@ -181,7 +230,7 @@
   "en": {
     "meta": {
       "title": "Auyama Freising · Venezuelan and Caribbean food in the old town",
-      "description": "Venezuelan and Caribbean cooking in the heart of Freising's old town. Arepas, bowls and curries with a new menu every month. Plus salsa nights and film nights. Obere Hauptstr. 41, Freising."
+      "description": "Venezuelan and Caribbean cooking in the heart of Freising's old town. Arepas, bowls, curries and much more. Plus brunch, fiestas and catering for your celebration. Obere Hauptstr. 41, Freising."
     },
     "skip": "Skip to content",
     "brand": {
@@ -192,6 +241,7 @@
       "about": "About",
       "menu": "Menu",
       "events": "Events",
+      "catering": "Catering",
       "gallery": "Gallery",
       "visit": "Visit",
       "toggle": "Open menu",
@@ -201,9 +251,9 @@
       "fullMenu": "Full menu"
     },
     "hero": {
-      "title": "Venezuela on a plate. <em>Right in Freising.</em>",
-      "lead": "Arepas, bowls and curries, cooked with love. A new menu every month.",
-      "imgAlt": "Two colourful bowls with rice, black beans, avocado, cashews and flowers, shot from above, next to a lemonade and flowers",
+      "title": "Venezuela's kitchen. <em>Right in Freising.</em>",
+      "lead": "Arepas, bowls, curries and much more, cooked with lots of love.",
+      "imgAlt": "Two colourful salad bowls with avocado, quinoa, tomatoes, pomegranate, mango and nasturtium flowers on a green bistro table in the sun",
       "menuKicker": "New on the menu now",
       "menuTitle": "{monat} menu",
       "welcome": "¡Bienvenidos!"
@@ -235,17 +285,17 @@
     ],
     "about": {
       "title": "¡Hola, <span class=\"squiggle\">Freising!</span>",
-      "lead": "Auyama means pumpkin. Here it means: welcome home.",
+      "lead": "Auyama means pumpkin in the language of the Carib people. Here it means: welcome home.",
       "p2": "In the old Entleutner house on Obere Hauptstraße we cook Venezuelan and Caribbean food with regional ingredients. There is a new menu every month.",
       "p3": "Our shop has fine wines and homemade treats to take away: jams, chutneys, pestos and sauces.",
       "quote": "Mi casa es tu casa.",
       "s1": "New menu every month",
       "s2": "Regional ingredients",
       "s3": "Wines & preserves",
-      "s4": "Salsa & cinema",
+      "s4": "Music & fiestas",
       "stamp": "Hecho en Freising · con mucho amor · ",
-      "img1": "Colourful salad with mango, avocado and cashews, held up in the leafy courtyard",
-      "img2": "Burrito with beans cut open, with salsa and salad"
+      "img1": "Colourful salad with mango, avocado, sprouts and cashews, held up in the leafy courtyard",
+      "img2": "Pabellón Criollo with turmeric rice, black beans, carne mechada and feta"
     },
     "menu": {
       "title": "Menu",
@@ -264,23 +314,69 @@
       "closing": "¡Buen provecho!"
     },
     "events": {
-      "title": "Salsa nights & film nights",
-      "lead": "It's not just about the food here. Some nights a DJ plays salsa, some nights the restaurant becomes a cinema.",
+      "title": "Events & <span class=\"accent-mango\">fiestas</span>",
+      "lead": "It's not just about the food here. We love to celebrate.",
+      "offer": "Some nights a DJ plays salsa, some nights a band plays live in the courtyard. Plus flamenco and tapas, film nights and a Caribbean brunch every month.",
       "addToCalendar": "Add to calendar",
       "time": "{zeit}",
       "timeRange": "{beginn} to {ende}",
       "salsa": "Salsa night",
       "film": "Film night",
+      "brunch": "Brunch",
+      "music": "Live music",
       "other": "Event",
+      "flyer": "View flyer",
       "more": "All dates on Instagram",
       "empty": "The next dates are coming soon. Check Instagram in the meantime."
     },
+    "brunch": {
+      "title": "¡Hora del brunch!",
+      "lead": "Once a month we lay the brunch table.",
+      "text": "Fresh fruit and berries, yoghurt and nuts, colourful salads and savoury bites, plus our speciality drinks. A tropical feast for a slow morning.",
+      "note": "You'll always find the next date here and on Instagram.",
+      "img1": "Brunch buffet with fruit salad, yoghurt, muesli and nuts in bowls",
+      "img2": "Bowls of raspberries and blueberries, with mandarins and a bake behind them",
+      "img3": "Large salad with feta, cucumber and tomatoes, next to chicken-shaped egg cups and cold cuts"
+    },
+    "past": {
+      "title": "How we celebrate",
+      "lead": "A few nights that are already history. Tap a flyer.",
+      "c1": "Flamenco & tapas in the courtyard",
+      "c2": "Caribbean tapas with live music",
+      "c3": "Salsa night with DJ Cristobal",
+      "c4": "Latin opening with a salsa DJ",
+      "c5": "Film night: La Clave",
+      "a1": "Flyer: Unter dem Feigenbaum, flamenco and gipsy band with a Spanish tapas buffet in the courtyard, 20 September 2025",
+      "a2": "Flyer: Caribbean tapas with live music by Nene and Martin Wessalowski, 31 July, free entry",
+      "a3": "Flyer: Salsa night with DJ Cristobal, 21 August from 7 pm, free entry",
+      "a4": "Flyer: Auyama opening Latin event on 30 April with salsa DJ Christobal C.",
+      "a5": "Poster for the film night La Clave, the secret of Cuban music, 11 October 2026, free entry"
+    },
+    "catering": {
+      "title": "Catering & food truck",
+      "lead": "You celebrate. We cook.",
+      "text": "For more than 20 years we have been bringing Caribbean food to weddings, birthdays and all kinds of parties. Cooked with love, served with heart, and if you like, our food truck rolls up too.",
+      "s1": "Over 20 years of experience",
+      "s2": "For 15 to 250 guests",
+      "s3": "Weddings, birthdays & parties",
+      "venueTitle": "Or celebrate right here",
+      "venueText": "We are also happy to rent out the rooms of Auyama/the courtyard and of Café Nebenan. We'll spoil you there with our catering.",
+      "ask": "Tell us about your party: the occasion, the date and the number of guests. We'll get back to you.",
+      "cta": "Ask about catering",
+      "sticker": "¡Buen provecho!",
+      "imgAlt": "The Auyama Caribbean Food stand at an outdoor party, a fire pit blazing in front, guests celebrating at long tables",
+      "mailSubject": "Catering enquiry",
+      "mailBody": "Hello Auyama team,\n\nwe are planning a celebration and would love to have your catering.\n\nOccasion:\nDate:\nPlace (at Auyama or elsewhere):\nNumber of guests:\n\nBest wishes\n"
+    },
     "gallery": {
       "title": "From our kitchen",
-      "a1": "Two bowls with avocado, cashews and nasturtium flowers, next to a bunch of flowers",
-      "a2": "Pulled beef burrito with guacamole and salad on a green table",
-      "a3": "Salad with mango, avocado and cashews in the courtyard",
-      "a4": "Burrito with beans cut open, with salsa and salad",
+      "a1": "Caribbean bowl with rice, black beans, feta, fried plantain and star fruit, held in one hand",
+      "a2": "Salad with mango, avocado, sprouts and cashews in the courtyard",
+      "a3": "Arepa Reina Pepiada with salad and two dips on a sunny table",
+      "a4": "Pabellón Criollo with turmeric rice, black beans, carne mechada and feta",
+      "a5": "Caribbean vegetable curry with turmeric rice and black sesame",
+      "a6": "Two colourful salad bowls on a green bistro table in the sun",
+      "a7": "Raspberries and blueberries from the brunch buffet",
       "insta": "More on Instagram"
     },
     "visit": {
@@ -303,7 +399,8 @@
       "hours": "Open",
       "legal": "Legal",
       "imprint": "Legal notice",
-      "privacy": "Privacy"
+      "privacy": "Privacy",
+      "email": "Email:"
     },
     "bar": {
       "label": "Quick access",
@@ -321,8 +418,9 @@
       "Bowls",
       "Curries",
       "Homemade lemonades",
-      "Salsa nights",
-      "Film nights",
+      "Brunch",
+      "Fiestas",
+      "Catering",
       "Hecho en Freising"
     ],
     "preview": {

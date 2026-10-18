@@ -1,18 +1,24 @@
 {
-  "_hinweis": "Termine mit festem Datum. Datum im Format JJJJ-MM-TT, Uhrzeit HH:MM. \"ende\" ist optional. \"typ\": \"salsa\" oder \"film\". Vergangene Termine verschwinden automatisch. Salsa Nights und Filmabende werden zusätzlich immer als feste Formate angezeigt. Mehr dazu in der README.md.",
+  "_hinweis": "Termine mit festem Datum. Datum im Format JJJJ-MM-TT, Uhrzeit HH:MM. \"ende\" ist optional. \"typ\": \"brunch\", \"salsa\", \"musik\" (Live-Musik), \"film\" oder weglassen (dann einfach Event). \"bild\" ist optional, z. B. der Flyer aus Instagram als JPG in assets/ (Tipp: hochkant). Vergangene Termine verschwinden automatisch. Mehr dazu in der README.md.",
 
   "termine": [
     {
-      "typ": "film",
-      "datum": "2026-10-11",
-      "beginn": "17:00",
+      "typ": "brunch",
+      "datum": "2026-10-18",
+      "beginn": "09:00",
+      "ende": "14:30",
       "titel": {
-        "de": "La Clave: Das Geheimnis der kubanischen Musik",
-        "en": "La Clave: Das Geheimnis der kubanischen Musik"
+        "de": "Karibischer Brunch",
+        "en": "Caribbean brunch"
       },
       "beschreibung": {
-        "de": "Filmabend im Auyama. Der Eintritt ist frei.",
-        "en": "Film night at Auyama. Free entry."
+        "de": "Karibisches Buffet und Getränke-Spezialitäten. 36 € pro Person. Guten Appetit und gute Laune!",
+        "en": "Caribbean buffet and speciality drinks. 36 € per person. Good food and good vibes!"
+      },
+      "bild": "assets/flyer-brunch.jpg",
+      "bildAlt": {
+        "de": "Flyer zum Brunch am Sonntag, 18.10.2026, von 9 bis 14:30 Uhr, 36 Euro pro Person inklusive karibischem Buffet und Getränke-Spezialitäten",
+        "en": "Flyer for the brunch on Sunday 18 October 2026, 9 am to 2:30 pm, 36 euros per person including a Caribbean buffet and speciality drinks"
       }
     }
   ]
