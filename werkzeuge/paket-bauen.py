@@ -75,4 +75,9 @@ with zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as z:
                 z.write(full, 'auyama-website/' + rel)
     for name, text in extra.items():
         z.writestr('auyama-website/' + name, text)
+# Zweite ZIP ohne Oberordner: index.html liegt ganz oben (für Upload als ZIP, z. B. am iPad bei Netlify)
+flat = os.path.join(ROOT, 'download', 'auyama-website-flach.zip')
+with zipfile.ZipFile(out) as src, zipfile.ZipFile(flat, 'w', zipfile.ZIP_DEFLATED) as dst:
+    for item in src.infolist():
+        dst.writestr(item.filename.split('/', 1)[1], src.read(item.filename))
 print('Fertig:', os.path.relpath(out, ROOT), '·', new_url, '·', 'Hoster: ' + ('Netlify' if args.netlify else (args.hoster or '(ohne Namen)')))
