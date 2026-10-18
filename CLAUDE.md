@@ -25,9 +25,11 @@ Die Nutzerin möchte jede abgenommene Version unter einem festen Link behalten.
   https://chiaraans.github.io/auyama/ (Dateien im Hauptverzeichnis) entspricht `versionen/v4/`,
   nur ohne `noindex` und mit og:image auf `assets/` im Hauptverzeichnis. Sie wechselt erst, wenn
   die Nutzerin ausdrücklich eine neue Version zur Hauptversion macht.
-- Eigenes Hosting: Der Inhaber hostet selbst unter https://www.auyama-freising.de/ (Anbieter noch
-  offen). Nach jeder Änderung an der Hauptversion das Upload-Paket neu bauen:
-  `python3 werkzeuge/paket-bauen.py [--hoster "Name, Anschrift"]` → `download/auyama-website.zip`.
+- Eigenes Hosting: Der Inhaber hostet selbst unter https://www.auyama-freising.de/ bei STRATO
+  (Paket „Hosting Starter“, gewählt 18.10.2026, Upload per SFTP mit FileZilla). Nach jeder Änderung
+  an der Hauptversion das Upload-Paket neu bauen:
+  `python3 werkzeuge/paket-bauen.py --hoster "STRATO GmbH, Otto-Ostrowski-Straße 7, 10249 Berlin"`
+  → `download/auyama-website.zip`.
 - **Neue Änderungswünsche** werden in einem neuen Ordner `versionen/vN/` umgesetzt (N = nächste
   freie Nummer): zuerst die neueste Version dorthin kopieren, dann nur dort ändern. Danach den
   neuen Link https://chiaraans.github.io/auyama/versionen/vN/ nennen.

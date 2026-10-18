@@ -275,9 +275,9 @@ https://chiaraans.github.io/auyama/download/auyama-website.zip
    Datei-Manager des Anbieters oder per FTP (FileZilla) ins Hauptverzeichnis legen.
 3. **SSL einschalten** (im Kundenbereich, meist kostenlos).
 4. **AV-Vertrag** mit dem Anbieter abschließen (Kundenbereich).
-5. **Namen des Anbieters in den Datenschutz:** Paket neu bauen mit
-   `python3 werkzeuge/paket-bauen.py --hoster "Name, Anschrift des Anbieters"` und
-   `datenschutz.html` neu hochladen (macht Claude gern).
+5. **Anbieter im Datenschutz:** Gewählt ist STRATO (Hosting Starter). Das Paket nennt STRATO
+   bereits. Nach Änderungen neu bauen mit
+   `python3 werkzeuge/paket-bauen.py --hoster "STRATO GmbH, Otto-Ostrowski-Straße 7, 10249 Berlin"`.
 6. **Später pflegen:** Speisekarte, Termine, Öffnungszeiten ändern sich in den JSON-Dateien. Die
    geänderte Datei einfach im Datei-Manager neu hochladen.
 
