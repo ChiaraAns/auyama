@@ -225,6 +225,7 @@ Jede abgenommene Version bleibt unter einem eigenen Link erhalten:
 | Version 1 (08.10.2026) | https://chiaraans.github.io/auyama/versionen/v1/ |
 | Version 2 (17.10.2026): neue Fotos, Brunch, Rückblick mit Flyern, Catering & Foodtruck, E-Mail | https://chiaraans.github.io/auyama/versionen/v2/ |
 | Version 3 (17.10.2026): „Venezuelas Küche“, Galerie nur mit eigenen Fotos, Impressum mit Inhaber | https://chiaraans.github.io/auyama/versionen/v3/ |
+| Version 4 (18.10.2026): Fehler auf iPad (Events) und Handy (Kacheln oben) behoben, Catering-Text, Bildnachweis | https://chiaraans.github.io/auyama/versionen/v4/ |
 
 Neue Gestaltungswünsche werden in einem neuen Ordner (`versionen/v2/`, `v3/` …) umgesetzt und
 bekommen einen eigenen Link. Die Hauptadresse https://chiaraans.github.io/auyama/ ändert sich
@@ -253,9 +254,13 @@ kleinsten Paket.
 
 **So zieht sie um:**
 
-1. **Domain klären:** Bei welchem Anbieter ist `auyama.de` registriert (z. B. IONOS, Strato,
-   All-Inkl, Netcup)? Dort gibt es meist auch Webspace dazu.
-2. **Webspace buchen**, falls noch keiner da ist. Das kleinste Paket reicht.
+1. **Domain prüfen:** Unter https://www.denic.de nachsehen, ob `auyama.de` noch frei ist. Ist sie
+   frei, wird sie zusammen mit dem Paket in Schritt 2 gebucht. Ist sie schon vergeben, gehört sie
+   jemand anderem; dann eine andere Adresse wählen (z. B. `auyama-freising.de`).
+2. **Anbieter wählen und Paket buchen:** ein deutscher Webhoster mit Domain und Webspace im Paket,
+   z. B. IONOS, Strato, All-Inkl oder Netcup. Das kleinste Paket reicht, die Seite braucht
+   kein WordPress und keine Datenbank. Am besten bucht der Inhaber selbst, damit Domain und
+   Vertrag auf ihn laufen.
 3. **Dateien hochladen:** Den Inhalt des Ordners der gewählten Version (z. B. alles in
    `versionen/v3/`) über den Datei-Manager des Anbieters oder per FTP (z. B. mit FileZilla) in das
    Hauptverzeichnis des Webspace legen. `index.html` muss ganz oben liegen.

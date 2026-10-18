@@ -18,6 +18,9 @@ Die Nutzerin möchte jede abgenommene Version unter einem festen Link behalten.
 - `versionen/v3/` ist Version 3 (Stand 17.10.2026): „Venezuelas Küche“, Galerie und Collage nur mit eigenen
   Fotos (Gästefotos entfernt), Impressum mit Inhaber Joaquin von Dehn:
   https://chiaraans.github.io/auyama/versionen/v3/
+- `versionen/v4/` ist Version 4 (Stand 18.10.2026): mitlaufende Events-Überschrift in eigenem Rahmen (iPad/Safari),
+  Status- und Monatskarten-Kachel passen auf dem Handy, Catering-Text wörtlich nach der Nutzerin, Bildnachweis:
+  https://chiaraans.github.io/auyama/versionen/v4/
 - Die Hauptadresse https://chiaraans.github.io/auyama/ (Dateien im Hauptverzeichnis) bleibt
   ebenfalls auf Version 1 stehen, solange die Nutzerin nicht ausdrücklich sagt, dass eine neue
   Version die Hauptversion werden soll.
