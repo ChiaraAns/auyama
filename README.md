@@ -237,6 +237,7 @@ Jede abgenommene Version bleibt unter einem eigenen Link erhalten:
 | Version 2 (17.10.2026): neue Fotos, Brunch, Rückblick mit Flyern, Catering & Foodtruck, E-Mail | https://chiaraans.github.io/auyama/versionen/v2/ |
 | Version 3 (17.10.2026): „Venezuelas Küche“, Galerie nur mit eigenen Fotos, Impressum mit Inhaber | https://chiaraans.github.io/auyama/versionen/v3/ |
 | Version 4 (18.10.2026): Fehler auf iPad (Events) und Handy (Kacheln oben) behoben, Catering-Text, Bildnachweis | https://chiaraans.github.io/auyama/versionen/v4/ |
+| Version 5 (19.10.2026): Google sieht die Seite immer auf Deutsch (Titel und Text in den Suchergebnissen) | https://chiaraans.github.io/auyama/versionen/v5/ |
 
 Neue Gestaltungswünsche werden in einem neuen Ordner (`versionen/v5/` …) umgesetzt und
 bekommen einen eigenen Link. **Hauptversion ist seit dem 18.10.2026 Version 4** (Dateien im

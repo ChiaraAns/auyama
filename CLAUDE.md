@@ -21,6 +21,8 @@ Die Nutzerin möchte jede abgenommene Version unter einem festen Link behalten.
 - `versionen/v4/` ist Version 4 (Stand 18.10.2026): mitlaufende Events-Überschrift in eigenem Rahmen (iPad/Safari),
   Status- und Monatskarten-Kachel passen auf dem Handy, Catering-Text wörtlich nach der Nutzerin, Bildnachweis:
   https://chiaraans.github.io/auyama/versionen/v4/
+- `versionen/v5/` ist Version 5 (Stand 19.10.2026): Suchmaschinen-Bots bekommen immer Deutsch (detectLang),
+  sonst wie Version 4: https://chiaraans.github.io/auyama/versionen/v5/
 - **Hauptversion ist Version 4** (seit 18.10.2026 auf Wunsch der Nutzerin): Die Hauptadresse
   https://chiaraans.github.io/auyama/ (Dateien im Hauptverzeichnis) entspricht `versionen/v4/`,
   nur ohne `noindex` und mit og:image auf `assets/` im Hauptverzeichnis. Sie wechselt erst, wenn
